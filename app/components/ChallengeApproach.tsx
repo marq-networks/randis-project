@@ -24,7 +24,7 @@ export default function ChallengeApproach() {
 
   return (
     <section className="">
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      <div className="max-w-[1200px] mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* The Challenge */}
           <div className="space-y-6">

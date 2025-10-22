@@ -28,8 +28,8 @@ export default function BookStrategyCall() {
   return (
     <section className="relative py-20 overflow-hidden">
   
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-[1200px] mx-auto">
           
           {/* Left side - Contact Information */}
           <div className="space-y-8">

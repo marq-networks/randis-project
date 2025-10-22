@@ -2,16 +2,15 @@ import React from 'react';
 
 const ReadyToSolveCTA = () => {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background with gradient */}
-      <div className="absolute inset-0 "></div>
+    <section className=" max-w-[1200px] mx-auto relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+     
       
       {/* Subtle pattern overlay */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-700/20 to-transparent"></div>
       </div>
       
-      <div className="relative max-w-4xl mx-auto text-center">
+      <div className="relative max-w-[1200px] mx-auto text-center">
         {/* Main heading */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
           Ready to Solve Your Problem Fast?

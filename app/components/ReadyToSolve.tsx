@@ -22,7 +22,7 @@ export default function ReadyToSolve() {
 
   return (
     <section className="border-t border-white/10">
-      <div className="relative">
+      <div className="relative max-w-[1200px] mx-auto">
         {/* top and bottom subtle band glow */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-10 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.06),transparent)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-[linear-gradient(to_top,rgba(255,255,255,0.06),transparent)]" />

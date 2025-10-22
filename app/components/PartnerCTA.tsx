@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function PartnerCTA() {
   return (
     <section className="border-t border-white/10">
-      <div className="relative">
+      <div className="relative max-w-[1200px] mx-auto">
         {/* subtle top glow */}
         <div className="pointer-events-none absolute inset-x-0 -top-10 h-16 bg-gradient-to-t from-[050A11] to-[0075FF] blur-md" />
         <div className="max-w-[1200px] mx-auto px-6 py-16 text-center">

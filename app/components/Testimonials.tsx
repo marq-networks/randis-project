@@ -89,14 +89,14 @@ const Testimonials = () => {
   );
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="max-w-[1200px] mx-auto relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
    
       
       {/* Decorative elements */}
       <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
       
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative max-w-[1200px] mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">

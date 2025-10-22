@@ -24,7 +24,7 @@ export default function EnterpriseTrust() {
 
   return (
     <section className="py-16 px-6">
-      <div className="max-w-[1094px] mx-auto">
+      <div className="max-w-[1200px] mx-auto">
         {/* Main Container - Matching the image design */}
         <div className="relative bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 rounded-2xl border border-blue-500/30 p-8 lg:p-12 overflow-hidden">
           {/* Background glow effect */}
