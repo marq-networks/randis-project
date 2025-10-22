@@ -6,7 +6,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
           {/* Company Branding */}
-          <div className="space-y-4">
+          <div className="space-y-4 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
             <h3 className="text-xl font-bold text-white">
               Rutledge &<br />
               Associates
@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-4 animate-[fadeInUp_0.8s_ease-out_0.3s_both]">
             <h4 className="text-lg font-semibold text-white">Quick Links</h4>
             <ul className="space-y-3">
               <li>
@@ -64,7 +64,7 @@ export default function Footer() {
           </div>
 
           {/* Our Services */}
-          <div className="space-y-4">
+          <div className="space-y-4 animate-[fadeInUp_0.8s_ease-out_0.4s_both]">
             <h4 className="text-lg font-semibold text-white">Our Services</h4>
             <ul className="space-y-3">
               <li>
@@ -95,7 +95,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Us */}
-          <div className="space-y-4">
+          <div className="space-y-4 animate-[fadeInUp_0.8s_ease-out_0.5s_both]">
             <h4 className="text-lg font-semibold text-white">Contact us</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -124,7 +124,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-slate-800 mt-12 pt-8">
+        <div className="border-t border-slate-800 mt-12 pt-8 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
           <p className="text-slate-500 text-sm text-center">
             © 2024 Rutledge & Associates. All rights reserved.
           </p>

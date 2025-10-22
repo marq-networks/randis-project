@@ -1,6 +1,9 @@
-'use client'
+"use client";
+
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 type Story = {
   id: string;
@@ -133,6 +136,44 @@ const STORIES: Story[] = [
   },
 ];
 
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+  }
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+  }
+};
+
+const slideInBottom = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+  }
+};
 
 export default function SuccessStories() {
   const [paused, setPaused] = useState(false);
@@ -176,17 +217,32 @@ export default function SuccessStories() {
 
   return (
     <section className="border-t border-white/10">
-      <div className="max-w-[1200px] mx-auto px-6 py-16">
+      <motion.div 
+        className="max-w-[1200px] mx-auto px-6 py-16"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className="flex items-start justify-between">
-          <h2 className="text-2xl md:text-3xl font-bold">
+          <motion.h2 
+            className="text-2xl md:text-3xl font-bold"
+            variants={slideInLeft}
+          >
             <span className="text-blue-500">Success</span> Stories
-          </h2>
-          <p className="max-w-xl text-sm text-white/70 hidden md:block">
+          </motion.h2>
+          <motion.p 
+            className="max-w-xl text-sm text-white/70 hidden md:block"
+            variants={slideInRight}
+          >
             Real results for partnerships with organizations across multiple industries.
-          </p>
+          </motion.p>
         </div>
 
-        <div className="relative mt-8">
+        <motion.div 
+          className="relative mt-8"
+          variants={slideInBottom}
+        >
           {/* Left/Right arrows */}
           <button
             type="button"
@@ -264,8 +320,8 @@ export default function SuccessStories() {
               ))}
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

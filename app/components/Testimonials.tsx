@@ -73,7 +73,7 @@ const Testimonials = () => {
   ];
 
   const TestimonialCard = ({ testimonial }: { testimonial: any }) => (
-    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 mb-6 hover:bg-slate-800/70 transition-all duration-300">
+    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 mb-6 hover:bg-slate-800/70 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300">
       <div className="flex items-start gap-4 mb-4">
         <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
           {testimonial.avatar}
@@ -98,7 +98,7 @@ const Testimonials = () => {
       
       <div className="relative max-w-[1200px] mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Testimonials
           </h2>

@@ -1,6 +1,55 @@
+"use client";
 import Link from "next/link";
 
+import { motion } from 'framer-motion';
+
 export default function CompanionModel() {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
+
+  const slideInBottom = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
   const tracks = [
     {
       id: "saas",
@@ -46,18 +95,33 @@ export default function CompanionModel() {
 
   return (
     <section className="border-t border-white/10">
-      <div className="max-w-[1200px] mx-auto px-6 py-16">
+      <motion.div 
+        className="max-w-[1200px] mx-auto px-6 py-16"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         {/* Heading */}
-        <h2 className="text-center text-2xl md:text-3xl font-bold">
+        <motion.h2 
+          className="text-center text-2xl md:text-3xl font-bold"
+          variants={slideInLeft}
+        >
           The <span className="text-blue-500">Companion</span> Model: SaaS + PaaS
-        </h2>
+        </motion.h2>
 
         {/* Tracks */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {tracks.map((track) => (
-            <div
+          {tracks.map((track, index) => (
+            <motion.div
               key={track.id}
-              className="relative rounded-[14px] min-h-[357px] bg-[linear-gradient(133.24deg,#0D1832_53.4%,rgba(19,36,73,0)_104.73%)] ring-1 ring-white/10 shadow-xl shadow-black/20 overflow-hidden"
+              className="relative rounded-[14px] min-h-[357px] bg-[linear-gradient(133.24deg,#0D1832_53.4%,rgba(19,36,73,0)_104.73%)] ring-1 ring-white/10 shadow-xl shadow-black/20 overflow-hidden transition-all duration-300"
+              variants={track.id === 'saas' ? slideInLeft : slideInRight}
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.2)" 
+              }}
+              transition={{ duration: 0.3 }}
             >
               {/* top accent line */}
               <div className="h-1 bg-gradient-to-r from-white/25 to-transparent" />
@@ -88,24 +152,34 @@ export default function CompanionModel() {
                   <span className="text-sm font-semibold">{track.ctaLabel}</span>
                   <Link
                     href={track.href}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 hover:bg-blue-500 transition-colors"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 hover:bg-blue-500 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/30 group"
                     aria-label={`${track.ctaLabel} →`}
                   >
-                    <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                       <path d="M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Steps */}
+        <motion.div 
+          className="mt-16"
+          variants={slideInRight}
+        >
+          <h3 className="text-2xl font-bold text-center mb-8">How It Works</h3>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {steps.map((s) => (
-            <div key={s.number} className="text-center">
+          {steps.map((s, index) => (
+            <motion.div 
+              key={s.number} 
+              className="text-center transition-transform duration-300"
+              variants={fadeInUp}
+              whileHover={{ scale: 1.05 }}
+            >
               <div className="relative inline-block">
                 <span className="text-6xl md:text-7xl font-black text-white/10 select-none">{s.number}</span>
               </div>
@@ -113,10 +187,11 @@ export default function CompanionModel() {
                 <div className="font-semibold">{s.title}</div>
                 <div className="mt-1 text-white/70">{s.description}</div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
+      </motion.div>
     </section>
   );
 }

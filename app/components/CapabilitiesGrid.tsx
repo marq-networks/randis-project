@@ -1,6 +1,48 @@
+"use client";
 import Image from "next/image";
 
+import { motion } from 'framer-motion';
+
 export default function CapabilitiesGrid() {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
+
   const items = [
     {
       id: 1,
@@ -30,17 +72,36 @@ export default function CapabilitiesGrid() {
 
   return (
     <section className="border-t border-white/10">
-      <div className="max-w-[1200px] mx-auto px-6 py-14">
+      <motion.div 
+        className="max-w-[1200px] mx-auto px-6 py-14"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">Our Capabilities</h2>
-          <p className="mt-2 text-white/70 text-[12px] md:text-[13px]">Transforming Business Visions Into Production-Grade Systems.</p>
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold"
+            variants={slideInRight}
+          >
+            Our Capabilities
+          </motion.h2>
+          <motion.p 
+            className="mt-2 text-white/70 text-[12px] md:text-[13px]"
+            variants={slideInLeft}
+          >
+            Transforming Business Visions Into Production-Grade Systems.
+          </motion.p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
-          {items.map((item) => (
-            <div
+          {items.map((item, index) => (
+            <motion.div
               key={item.id}
-              className="group rounded-2xl bg-gradient-to-r from-[#0D1832] to-[#132449] border border-white/10 shadow-xl shadow-black/20 overflow-hidden flex flex-col"
+              className="group rounded-2xl bg-gradient-to-r from-[#0D1832] to-[#132449] border border-white/10 shadow-xl shadow-black/20 overflow-hidden flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20"
+              variants={index % 2 === 0 ? slideInLeft : slideInRight}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
             >
               {/* top accent line */}
               <div className="h-1" />
@@ -56,10 +117,10 @@ export default function CapabilitiesGrid() {
                   <Image src={item.image} alt={item.title} fill className="object-cover" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,8 +1,38 @@
-'use client';
+"use client";
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function BookStrategyCall() {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -28,25 +58,43 @@ export default function BookStrategyCall() {
   return (
     <section className="relative py-20 overflow-hidden">
   
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+      <motion.div 
+        className="max-w-[1200px] mx-auto px-6 relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-[1200px] mx-auto">
           
           {/* Left side - Contact Information */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+              <motion.h2 
+                className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+                variants={slideInLeft}
+              >
                 Book Your Strategy Call
-              </h2>
-              <p className="text-xl text-slate-300 leading-relaxed">
+              </motion.h2>
+              <motion.p 
+                className="text-xl text-slate-300 leading-relaxed"
+                variants={slideInRight}
+              >
                 Ready to transform your business into a competitive advantage? 
                 Click below to schedule your free 30-day strategy call.
-              </p>
+              </motion.p>
             </div>
 
             {/* Contact Details */}
-            <div className="space-y-6">
+              <motion.div 
+                className="space-y-6"
+                variants={slideInLeft}
+              >
               {/* Phone */}
-              <div className="flex items-center space-x-4">
+              <motion.div 
+                className="flex items-center space-x-4 transition-transform duration-300"
+                whileHover={{ scale: 1.05 }}
+              >
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -56,10 +104,13 @@ export default function BookStrategyCall() {
                   <p className="text-white font-semibold">Phone:</p>
                   <p className="text-slate-300">(917) 123-7897</p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Email */}
-              <div className="flex items-center space-x-4">
+              <motion.div 
+                className="flex items-center space-x-4 transition-transform duration-300"
+                whileHover={{ scale: 1.05 }}
+              >
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -69,10 +120,13 @@ export default function BookStrategyCall() {
                   <p className="text-white font-semibold">Email us:</p>
                   <p className="text-slate-300">contact@randis-associates.com</p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Address */}
-              <div className="flex items-center space-x-4">
+              <motion.div 
+                className="flex items-center space-x-4 transition-transform duration-300"
+                whileHover={{ scale: 1.05 }}
+              >
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -83,12 +137,16 @@ export default function BookStrategyCall() {
                   <p className="text-white font-semibold">Address:</p>
                   <p className="text-slate-300">1234 Blue Ridge Suite 200</p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* Right side - Contact Form */}
-          <div className="bg-slate-800/80 backdrop-blur-sm rounded-3xl p-8 border border-slate-600/30">
+          <motion.div 
+            className="bg-slate-800/80 backdrop-blur-sm rounded-3xl p-8 border border-slate-600/30 transition-transform duration-300"
+            variants={slideInRight}
+            whileHover={{ scale: 1.05 }}
+          >
             <h3 className="text-2xl font-bold text-white mb-8 text-center">Contact Us</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -178,19 +236,21 @@ export default function BookStrategyCall() {
               </div>
 
               {/* Submit Button */}
-              <button
+              <motion.button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2 group"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <span>Schedule a Free Consultation</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
