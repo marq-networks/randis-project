@@ -24,41 +24,35 @@ const slideInLeft = {
     opacity: 1, 
     x: 0,
     transition: {
-      duration: 0.4,
-      ease: [0.25, 0.46, 0.45, 0.94]
-    }
+        duration: 0.4,
+        ease: "easeOut"
+      }
   }
 };
 
 const slideInRight = {
-  hidden: { 
-    opacity: 0, 
-    x: 30 
-  },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: {
-      duration: 0.4,
-      ease: [0.25, 0.46, 0.45, 0.94]
+    hidden: { opacity: 0, x: 30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut"
+      }
     }
-  }
-};
+  };
 
-const slideInBottom = {
-  hidden: { 
-    opacity: 0, 
-    y: 30 
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: [0.25, 0.46, 0.45, 0.94]
+  const slideInBottom = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut"
+      }
     }
-  }
-};
+  };
 
 export default function HeroSection() {
   return (
