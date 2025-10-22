@@ -3,7 +3,17 @@ import CapabilitiesGrid from "./components/CapabilitiesGrid";
 import ChallengeApproach from "./components/ChallengeApproach";
 import CompanyProfile from "./components/CompanyProfile";
 import WhatToExpect from "./components/WhatToExpect";
-import Link from "next/link";
+import PartnerCTA from "./components/PartnerCTA";
+import CompanionModel from "./components/CompanionModel";
+import SuccessStories from "./components/SuccessStories";
+import Transfromation from "./components/Transformation";
+import CompanyProfileAgain from "./components/CompanyProfileAgain";
+import ReadyToSolve from "./components/ReadyToSolve";
+import EnterpriseTrust from "./components/EnterpriseTrust";
+import ReadyToSolveCTA from "./components/ReadyToSolveCTA";
+import Testimonials from "./components/Testimonials";
+import BookStrategyCall from "./components/BookStrategyCall";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -11,16 +21,18 @@ export default function Home() {
       <HeroSection />
       <CapabilitiesGrid />
       <ChallengeApproach />
-      <section className="border-t border-white/10">
-        <div className="max-w-[1200px] mx-auto px-6 py-14 text-center">
-          <h3 className="text-xl md:text-2xl font-semibold">Ready to Partner with a Privacy-first Leader?</h3>
-          <div className="mt-6 flex justify-center">
-            <Link href="/contact" className="rounded-full btn-primary px-6 py-3 text-sm font-semibold">Let’s Talk</Link>
-          </div>
-        </div>
-      </section>
-      <CompanyProfile />
+      <PartnerCTA />
+      <CompanionModel /> 
+      <Transfromation />
+      <CompanyProfileAgain />
+      <SuccessStories />
+      <ReadyToSolve />
+      <EnterpriseTrust />
       <WhatToExpect />
+      <ReadyToSolveCTA />
+      <Testimonials />
+      <BookStrategyCall />
+      <Footer />
     </div>
   );
 }

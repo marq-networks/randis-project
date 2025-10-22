@@ -1,14 +1,16 @@
-import Image from "next/image";
+import React from 'react';
+import { CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ChallengeApproach() {
   const approachSteps = [
     {
       title: "Assess & Strategize",
-      description: "We Dive Into Your Current Systems, Risks, And Goals.",
+      description: "We Dive Deep Into Your Current Systems, Risks, And Goals.",
     },
     {
       title: "Prototype & Build",
-      description: "We Deliver Archival, Secure Staff-Proof Solutions Fast.",
+      description: "We Deliver Working, Secure SaaS/PaaS Solutions Fast.",
     },
     {
       title: "Deploy & Integrate",
@@ -21,74 +23,72 @@ export default function ChallengeApproach() {
   ];
 
   return (
-    <section className="border-t border-white/10">
-      <div className="max-w-[1200px] mx-auto px-6 py-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+    <section className="">
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* The Challenge */}
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">The Challenge</h2>
-            <p className="text-white/70 text-[14px] leading-relaxed mb-8">
-              Many Agencies Juggle Outdated Systems, Silos Of Inconsistent 
-              Data, And Labor-Intensive Processes That Stifle Decision-
-              Making, Agility, And Limits Transparency.
+          <div className="space-y-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              The Challenge
+            </h2>
+            <p className="text-gray-300 text-base leading-relaxed">
+              Many Agencies Juggle Outdated Systems, Silos Of Inconsistent
+              Data, And Labor-Intensive Processes. That Slows Decision-Making,
+              Adds Risk, And Limits Transparency.
             </p>
-            
-            {/* Challenge Image with Icons */}
-            <div className="relative">
-              <div className="relative w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-900/20 to-blue-800/10 border border-white/10 overflow-hidden">
-                <Image 
-                  src="/homepage/our approach/our approach.png" 
-                  alt="Challenge Visual" 
-                  fill 
-                  className="object-cover opacity-80" 
-                />
-                
-                {/* Overlay icons - positioned to match screenshot */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-full h-full">
-                    {/* Center hand/touch icon */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      <div className="w-16 h-16 rounded-full bg-blue-500/20 border border-blue-400/30 flex items-center justify-center">
-                        <div className="w-8 h-8 bg-blue-400 rounded-full"></div>
-                      </div>
-                    </div>
-                    
-                    {/* Surrounding icons */}
-                    <div className="absolute top-1/4 left-1/4 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-                      <div className="w-6 h-6 bg-blue-400 rounded"></div>
-                    </div>
-                    <div className="absolute top-1/4 right-1/4 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-                      <div className="w-6 h-6 bg-green-400 rounded-full"></div>
-                    </div>
-                    <div className="absolute bottom-1/4 left-1/4 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-                      <div className="w-6 h-6 bg-purple-400 rounded"></div>
-                    </div>
-                    <div className="absolute bottom-1/4 right-1/4 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-                      <div className="w-6 h-6 bg-orange-400 rounded"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+            {/* Challenge Visual */}
+            <div className="relative mt-8 w-full">
+              {/* Decorative background elements */}
+              <Image
+                src="/homepage/our approach/our approach.png"
+                alt="Challenge Visual"
+                width={800}
+                height={800}
+                className="object-cover opacity-80 w-full h-full"
+              />
+
+
+
+
             </div>
           </div>
 
           {/* Our Approach */}
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Our Approach</h2>
-            
-            <div className="space-y-6">
+          <div className="space-y-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">
+              Our Approach
+            </h2>
+
+            {/* Timeline Steps */}
+            <div className="space-y-3">
               {approachSteps.map((step, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  {/* Check icon */}
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center mt-1">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
+                <div key={index} className="flex gap-2 group">
+                  {/* Icon with connector */}
+                  <div className="flex flex-col items-center flex-shrink-0">
+                    <div className="relative">
+                      {/* Glow effect */}
+                      <div className="absolute -inset-2 bg-blue-500/30 rounded-full blur-xl group-hover:bg-blue-400/40 transition-all duration-300"></div>
+                      {/* Icon circle */}
+                      <div className="relative w-12 h-12 rounded-full bg-blue-500/20 border-2 border-blue-400/40 flex items-center justify-center backdrop-blur-sm group-hover:bg-blue-500/30 group-hover:border-blue-400/60 transition-all duration-300">
+                        <CheckCircle2 className="w-6 h-6 text-blue-300" />
+                      </div>
+                    </div>
+
+                    {/* Connector line */}
+                    {index !== approachSteps.length - 1 && (
+                      <div className="w-0.5 h-16 bg-gradient-to-b from-blue-400/40 to-blue-400/10 mt-2"></div>
+                    )}
                   </div>
-                  
-                  <div>
-                    <h3 className="text-[16px] font-semibold text-white mb-1">{step.title}</h3>
-                    <p className="text-[14px] text-white/70">{step.description}</p>
+
+                  {/* Content */}
+                  <div className="flex-1 pb-4">
+                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
                 </div>
               ))}

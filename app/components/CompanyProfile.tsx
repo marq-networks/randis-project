@@ -22,7 +22,7 @@ export default function CompanyProfile() {
             ))}
           </ul>
         </div>
-        <div className="relative h-64 md:h-80 rounded-2xl card overflow-hidden">
+        <div className="relative h-64 md:h-full rounded-2xl card overflow-hidden">
           <Image src="/homepage/company profile/company profile.png" alt="Company" fill className="object-cover" />
         </div>
       </div>

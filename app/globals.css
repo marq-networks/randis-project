@@ -36,3 +36,34 @@ body {
 .btn-primary {
   background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
 }
+
+/* Testimonials animations */
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 60s ease-in-out infinite;
+}
+
+.animate-slideDown {
+  animation: slideDown 55s ease-in-out infinite;
+}
+
+.animate-slideUpSlow {
+  animation: slideUp 60s ease-in-out infinite;
+}
