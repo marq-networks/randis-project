@@ -1,11 +1,11 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const ReadyToSolveCTA = () => {
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,7 +16,7 @@ const ReadyToSolveCTA = () => {
     }
   };
 
-  const slideInLeft = {
+  const slideInLeft: Variants = {
     hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
@@ -25,7 +25,7 @@ const ReadyToSolveCTA = () => {
     }
   };
 
-  const slideInRight = {
+  const slideInRight: Variants = {
     hidden: { opacity: 0, x: 20 },
     visible: {
       opacity: 1,
@@ -34,7 +34,7 @@ const ReadyToSolveCTA = () => {
     }
   };
 
-  const slideInBottom = {
+  const slideInBottom: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,

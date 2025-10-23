@@ -1,9 +1,6 @@
 "use client";
-
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 type Story = {
   id: string;
@@ -137,7 +134,7 @@ const STORIES: Story[] = [
 ];
 
 // Animation variants
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -148,7 +145,7 @@ const containerVariants = {
   }
 };
 
-const slideInLeft = {
+const slideInLeft: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: {
     opacity: 1,
@@ -157,7 +154,7 @@ const slideInLeft = {
   }
 };
 
-const slideInRight = {
+const slideInRight: Variants = {
   hidden: { opacity: 0, x: 20 },
   visible: {
     opacity: 1,
@@ -166,7 +163,7 @@ const slideInRight = {
   }
 };
 
-const slideInBottom = {
+const slideInBottom: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -276,8 +273,8 @@ export default function SuccessStories() {
                       className="relative rounded-[20px] min-h-[260px] md:min-h-[320px] bg-[linear-gradient(133.24deg,#0D1832_53.4%,rgba(19,36,73,0)_104.73%)] ring-1 ring-white/15 shadow-xl shadow-black/30 overflow-hidden"
                     >
                       {/* top accent line */}
-                      <div className="h-1 bg-gradient-to-r from-white/25 to-transparent" />
-                      <div className="h-1 bg-gradient-to-r from-white/25 to-transparent" />
+                      <div className="h-1 bg-linear-to-r from-white/25 to-transparent" />
+                      <div className="h-1 bg-linear-to-r from-white/25 to-transparent" />
                       {/* subtle top-left glow */}
                    <div className="absolute top-0 left-0 w-[240px] h-[160px] bg-[radial-gradient(120px_80px_at_40px_40px,rgba(255,255,255,0.16),transparent)] opacity-40 pointer-events-none" />
 
