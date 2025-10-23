@@ -1,9 +1,20 @@
+import Image from 'next/image';
 import React from 'react';
 
 export default function CompanyProfile() {
   return (
     <section className="bg-white text-gray-900 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
+
+      <div className="max-w-[1200px] mx-auto">
+          <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
+        </div>
         {/* Main Heading */}
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">

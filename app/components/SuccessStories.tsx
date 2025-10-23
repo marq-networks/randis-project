@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 
 type Story = {
   id: string;
@@ -153,7 +154,16 @@ export default function SuccessStories() {
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-900/50 to-slate-800/30">
+    <section className="py-20 ">
+        <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
+        </div>
       <motion.div 
         className="max-w-7xl mx-auto px-6"
         variants={containerVariants}
@@ -161,6 +171,7 @@ export default function SuccessStories() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
+       
         {/* Header */}
         <div className="flex items-start justify-between mb-16">
           <motion.div variants={cardVariants}>

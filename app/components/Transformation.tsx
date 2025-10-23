@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -87,13 +88,16 @@ export default function Transfromation() {
 
   return (
     <div className="relative">
-      {/* Enhanced top glow effect - positioned outside */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 -top-16 w-[1200px] h-16 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-500/30 via-blue-600/15 to-transparent blur-2xl"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0075FF]/25 via-[#050A11]/12 to-transparent blur-xl"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0075FF]/20 via-[#050A11]/10 to-transparent blur-lg"></div>
-      </div>
-
+   
+   <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
+        </div>
       <section className="relative  z-10">
         <div className="relative max-w-[1200px] mx-auto">
           <div 
@@ -139,11 +143,15 @@ export default function Transfromation() {
       </section>
 
       {/* Enhanced bottom glow effect - positioned outside */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-16 w-[1200px] h-12 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-500/30 via-blue-600/15 to-transparent blur-2xl"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-400/25 via-blue-500/12 to-transparent blur-xl"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-300/20 via-blue-400/10 to-transparent blur-lg"></div>
-      </div>
+       <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
+        </div>
     </div>
   );
 }

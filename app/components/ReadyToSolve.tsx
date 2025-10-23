@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from 'framer-motion';
+import Image from 'next/image';
 
 export default function ReadyToSolve() {
   // Animation variants
@@ -56,11 +57,16 @@ export default function ReadyToSolve() {
   return (
     <section className="PY-20 ">
       <div className="relative max-w-[1200px] mx-auto">
-        <div className="absolute left-1/2 transform -translate-x-1/2  w-[1200px] h-8 pointer-events-none z-0">
-          <div className="absolute inset-0 bg-linear-to-b from-blue-500/30 via-blue-600/15 to-transparent blur-2xl"></div>
-          <div className="absolute inset-0 bg-linear-to-b from-[#0075FF]/25 via-[#050A11]/12 to-transparent blur-xl"></div>
-          <div className="absolute inset-0 bg-linear-to-b from-[#0075FF]/20 via-[#050A11]/10 to-transparent blur-lg"></div>
+        <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
         </div>
+       
         <motion.div
           className="max-w-[1200px] mx-auto px-6 py-20"
           variants={containerVariants}
@@ -106,11 +112,15 @@ export default function ReadyToSolve() {
           </div>
         </motion.div>
       </div>
-      <div className="absolute left-1/2 transform -translate-x-1/2  w-[1200px] h-8 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-linear-to-b from-blue-500/30 via-blue-600/15 to-transparent blur-2xl"></div>
-        <div className="absolute inset-0 bg-linear-to-b from-[#0075FF]/25 via-[#050A11]/12 to-transparent blur-xl"></div>
-        <div className="absolute inset-0 bg-linear-to-b from-[#0075FF]/20 via-[#050A11]/10 to-transparent blur-lg"></div>
-      </div>
-    </section>
+      <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
+        </div>
+    </section >
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
+import Image from 'next/image';
 
 export default function BookStrategyCall() {
   // Animation variants
@@ -55,12 +56,6 @@ export default function BookStrategyCall() {
     console.log('Form submitted:', formData);
   };
 
-  // Common input field style
-  const inputFieldStyle = {
-    background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
-    borderRadius: '20.0304px'
-  };
-
   return (
     <section className="relative py-20 overflow-hidden ">
   
@@ -77,7 +72,7 @@ export default function BookStrategyCall() {
           <div className="space-y-8">
             <div>
               <motion.h2 
-                className="text-[42px] md:text-[48px] font-bold text-white mb-6 leading-tight"
+                className="text-[30px] md:text-[42px] font-bold text-white mb-6 leading-tight"
                 variants={slideInLeft}
               >
                 Book Your Strategy Call
@@ -261,6 +256,15 @@ export default function BookStrategyCall() {
           </motion.div>
         </div>
       </motion.div>
+        <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
+        </div>
     </section>
   );
 }

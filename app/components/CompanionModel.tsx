@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 export default function CompanionModel() {
@@ -72,7 +73,7 @@ export default function CompanionModel() {
   ];
 
   return (
-    <section className="py-24 bg-[#0a0e1a]" ref={containerRef}>
+    <section className="py-20 bg-[#0a0e1a]" ref={containerRef}>
       <style jsx>{`
         @keyframes fadeInUp {
           from {
@@ -94,7 +95,8 @@ export default function CompanionModel() {
         }
       `}</style>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+       
         {/* Header */}
         <div className="text-center mb-16 opacity-0" ref={titleRef}>
           <h2 className="text-[42px] md:text-[48px] font-bold text-white mb-6">
@@ -103,7 +105,7 @@ export default function CompanionModel() {
         </div>
 
         {/* Tracks Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20 opacity-0" ref={cardsRef}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-5 opacity-0" ref={cardsRef}>
           {tracks.map((track, index) => (
             <div
               key={index}
@@ -156,7 +158,7 @@ export default function CompanionModel() {
         </div>
 
         {/* Steps */}
-        <div className="mt-24 opacity-0" ref={stepsRef}>
+        <div className=" opacity-0" ref={stepsRef}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <div 
