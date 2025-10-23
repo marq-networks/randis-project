@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -93,7 +94,15 @@ const ReadyToSolveCTA = () => {
   return (
     <section className=" max-w-[1200px] mx-auto relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
      
-      
+        <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
+        </div>
       {/* Subtle pattern overlay */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-700/20 to-transparent"></div>
@@ -158,9 +167,15 @@ const ReadyToSolveCTA = () => {
         </div>
       </div>
       
-      {/* Decorative elements */}
-      <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+     <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
+        </div>
     </section>
   );
 };

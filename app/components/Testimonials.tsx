@@ -3,9 +3,7 @@
 import React from 'react';
 
 const Testimonials = () => {
-  // Sample testimonial data based on the image
   const testimonials = [
-    // Column 1 (moves up)
     [
       {
         name: "Michael T.",
@@ -92,7 +90,6 @@ const Testimonials = () => {
     <section className="max-w-[1200px] mx-auto relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
    
       
-      {/* Decorative elements */}
       <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
       

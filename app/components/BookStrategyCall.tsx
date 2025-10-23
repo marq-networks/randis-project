@@ -55,8 +55,14 @@ export default function BookStrategyCall() {
     console.log('Form submitted:', formData);
   };
 
+  // Common input field style
+  const inputFieldStyle = {
+    background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
+    borderRadius: '20.0304px'
+  };
+
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-20 overflow-hidden ">
   
       <motion.div 
         className="max-w-[1200px] mx-auto px-6 relative z-10"
@@ -101,8 +107,8 @@ export default function BookStrategyCall() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-semibold">Phone:</p>
-                  <p className="text-slate-300">(917) 123-7897</p>
+                  <p className="text-white font-semibold">Call us:</p>
+                  <p className="text-slate-300">610-938-7897</p>
                 </div>
               </motion.div>
 
@@ -118,7 +124,7 @@ export default function BookStrategyCall() {
                 </div>
                 <div>
                   <p className="text-white font-semibold">Email us:</p>
-                  <p className="text-slate-300">contact@randis-associates.com</p>
+                  <p className="text-slate-300">contact@rutledge.associates</p>
                 </div>
               </motion.div>
 
@@ -135,7 +141,7 @@ export default function BookStrategyCall() {
                 </div>
                 <div>
                   <p className="text-white font-semibold">Address:</p>
-                  <p className="text-slate-300">1234 Blue Ridge Suite 200</p>
+                  <p className="text-slate-300">8350 Bee Ridge Suite 262</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -143,7 +149,11 @@ export default function BookStrategyCall() {
 
           {/* Right side - Contact Form */}
           <motion.div 
-            className="bg-slate-800/80 backdrop-blur-sm rounded-3xl p-8 border border-slate-600/30 transition-transform duration-300"
+            className="p-8 transition-transform duration-300"
+            style={{
+              background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
+              borderRadius: '20.0304px'
+            }}
             variants={slideInRight}
             whileHover={{ scale: 1.05 }}
           >
@@ -178,7 +188,7 @@ export default function BookStrategyCall() {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-slate-700/80 border border-slate-500/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
-                    placeholder="Singh"
+                    placeholder="Dough"
                     required
                   />
                 </div>
@@ -196,7 +206,7 @@ export default function BookStrategyCall() {
                   value={formData.email}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-slate-700/80 border border-slate-500/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
-                  placeholder="example@email.com"
+                  placeholder="abc@gmail.com"
                   required
                 />
               </div>
@@ -213,7 +223,7 @@ export default function BookStrategyCall() {
                   value={formData.businessName}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-slate-700/80 border border-slate-500/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
-                  placeholder="Unilever Inc."
+                  placeholder="Innovations"
                   required
                 />
               </div>

@@ -58,15 +58,20 @@ export default function EnterpriseTrust() {
   ];
 
   return (
-    <section className="py-16 px-6 bg-[#0a0e1a]">
+    <section className=" px-6 bg-[#0a0e1a]">
+        
       <div className="max-w-[1200px] mx-auto">
-        <Image 
-          src="./public/line.png" 
-          alt="Enterprise Trust" 
-          width={1200} 
-          height={200} 
-          className="w-full h-auto" 
-        />
+     
+     
+      <div className="mb-10">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={200} 
+            className="w-full h-auto" 
+          />
+        </div>
         {/* Main Container - Matching the image design */}
         <motion.div 
           className="relative rounded-2xl border border-blue-500/30 p-8 lg:p-12 overflow-hidden backdrop-blur-sm"
@@ -176,7 +181,7 @@ export default function EnterpriseTrust() {
         {/* Bottom Image */}
         <div className="mt-8">
           <Image 
-            src="/enterprise-trust.svg" 
+            src="/line.png" 
             alt="Enterprise Trust" 
             width={1200} 
             height={200} 
