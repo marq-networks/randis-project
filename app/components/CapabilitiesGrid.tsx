@@ -1,126 +1,206 @@
 "use client";
 import Image from "next/image";
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { motion, Variants } from 'framer-motion';
+gsap.registerPlugin(ScrollTrigger);
 
 export default function CapabilitiesGrid() {
-  // Animation variants
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const title = titleRef.current;
+    const subtitle = subtitleRef.current;
+    const cards = cardsRef.current;
+
+    if (!container || !title || !subtitle || !cards) return;
+
+    // Set initial states - title and subtitle from top
+    gsap.set([title, subtitle], {
+      opacity: 0,
+      y: -30
+    });
+
+    // Set initial states for cards from different directions
+    gsap.set(cards.children[0], {
+      opacity: 0,
+      x: -60,
+      y: 0,
+      force3D: true
+    });
+
+    gsap.set(cards.children[1], {
+      opacity: 0,
+      x: 0,
+      y: 60,
+      force3D: true
+    });
+
+    gsap.set(cards.children[2], {
+      opacity: 0,
+      x: 60,
+      y: 0,
+      force3D: true
+    });
+
+    // Create timeline with optimized settings
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        once: true
       }
-    }
-  };
+    });
 
-  const slideInLeft: Variants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
-  };
-
-  const slideInRight: Variants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
-  };
-
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
+    // Animate elements with optimized timing
+    tl.to(title, {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
-  };
+      duration: 0.6,
+      ease: "power2.out"
+    })
+    .to(subtitle, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.3")
+    .to(cards.children[0], {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      force3D: true
+    }, "-=0.2")
+    .to(cards.children[1], {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      force3D: true
+    }, "-=0.5")
+    .to(cards.children[2], {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      force3D: true
+    }, "-=0.5");
 
-  const items = [
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  const capabilities = [
     {
       id: 1,
-      title: "Compliance Automation",
-      description: "Streamline audits, reporting, and regulatory tracking.",
+      title: "Information Technology Solution",
+      description: "Design and implementation of scalable cloud solutions tailored to organizational needs.",
       image: "/homepage/our capabilities/image1.png",
     },
     {
       id: 2,
-      title: "Performance Analytics & Dashboards",
-      description: "Turn data into decision support.",
+      title: "Facilites Operations & Maintenance",
+      description: "Efficient management of facilities to ensure operational excellence and cost-effectiveness.",
       image: "/homepage/our capabilities/image2.png",
     },
     {
       id: 3,
-      title: "Health Informatics",
-      description: "Integrate public health data across systems.",
+      title: "Program Management",
+      description: "Design and implementation of scalable cloud solutions tailored to organizational needs.",
       image: "/homepage/our capabilities/image3.png",
     },
-    {
-      id: 4,
-      title: "Workforce & Training Solutions",
-      description: "Integrate public health data across systems.",
-      image: "/homepage/our capabilities/image4.png",
-    },
+   
   ];
 
   return (
     <section className="border-t border-white/10">
-      <motion.div 
-        className="max-w-[1200px] mx-auto px-6 py-14"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+      <div 
+        ref={containerRef}
+        className="max-w-[1200px] mx-auto px-6 py-16"
       >
-        <div className="text-center">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold"
-            variants={slideInRight}
+        <div className="text-center mb-12">
+          <h2 
+            ref={titleRef}
+            className="text-[42px] md:text-[48px] font-bold text-white mb-4"
           >
             Our Capabilities
-          </motion.h2>
-          <motion.p 
-            className="mt-2 text-white/70 text-[12px] md:text-[13px]"
-            variants={slideInLeft}
+          </h2>
+          <p 
+            ref={subtitleRef}
+            className="text-white/70 text-sm"
           >
             Transforming Business Visions Into Production-Grade Systems.
-          </motion.p>
+          </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
-          {items.map((item, index) => (
-            <motion.div
-              key={item.id}
-              className="group rounded-2xl bg-gradient-to-r from-[#0D1832] to-[#132449] border border-white/10 shadow-xl shadow-black/20 overflow-hidden flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20"
-              variants={index % 2 === 0 ? slideInLeft : slideInRight}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+        <div 
+          ref={cardsRef}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {capabilities.map((capability) => (
+            <div
+              key={capability.id}
+              className="relative rounded-2xl p-6 overflow-hidden group hover:scale-105 transition-transform duration-300 border-l-2 border-blue-500/40 before:absolute before:top-0 before:left-0 before:w-[70%] before:h-0.5 before:bg-blue-500/40"
+              style={{
+                background: 'linear-gradient(135deg, #0D1832 0%, #132449 52%, #1A2B4A 100%)'
+              }}
             >
-              {/* top accent line */}
-              <div className="h-1" />
-
-              <div className="p-5 flex-1">
-                <h3 className="text-[15px] font-semibold leading-tight tracking-wide">{item.title}</h3>
-                <Image src="/homepage/our capabilities/line.png" alt={item.title} width={200} height={150} className="mt-4 rounded-xl" />
-                <p className="mt-2 text-[13px] text-white/70">{item.description}</p>
+              {/* Arrow Icon */}
+              <div className="absolute top-6 right-6 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300">
+                <svg 
+                  className="w-4 h-4 text-white" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M7 17L17 7M17 7H7M17 7V17" 
+                  />
+                </svg>
               </div>
 
-              <div className="px-5 pb-5 mt-auto">
-                <div className="relative aspect-[4/3] rounded-xl bg-white/3 ring-1 ring-white/10 overflow-hidden shadow-inner">
-                  <Image src={item.image} alt={item.title} fill className="object-cover" />
+              {/* Content */}
+              <div className="relative z-10">
+                <h3 className="text-white font-semibold text-[22px] mb-3 pr-12">
+                  {capability.title}
+                </h3>
+                 
+                <p className="text-white/80 text-sm mb-6 leading-relaxed">
+                  {capability.description}
+                </p>
+
+                {/* Divider Line */}
+
+                {/* Image */}
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image 
+                    src={capability.image} 
+                    alt={capability.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
-            </motion.div>
+
+              {/* Background Pattern/Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

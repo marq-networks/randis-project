@@ -1,76 +1,119 @@
 "use client";
 
 import Link from "next/link";
-import { motion, Variants } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function PartnerCTA() {
-  // Animation variants
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const arrowRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const title = titleRef.current;
+    const description = descriptionRef.current;
+    const button = buttonRef.current;
+    const arrow = arrowRef.current;
+
+    if (!container || !title || !description || !button || !arrow) return;
+
+    // Set initial states
+    gsap.set([title, description, button], {
+      opacity: 0,
+      x: -100
+    });
+
+    // Create timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        once: true
       }
-    }
-  };
+    });
 
-  const slideInRight: Variants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: {
+    // Animate elements with stagger
+    tl.to(title, {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
-  };
-
-  const slideInLeft: Variants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
+      duration: 0.6,
+      ease: "power2.out"
+    })
+    .to(description, {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
-  };
-
-  const slideInBottom: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.4")
+    .to(button, {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
+      x: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.4");
+
+    // Arrow hover animation
+    const buttonElement = button.querySelector('a');
+    if (buttonElement) {
+      buttonElement.addEventListener('mouseenter', () => {
+        gsap.to(arrow, {
+          x: 4,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      buttonElement.addEventListener('mouseleave', () => {
+        gsap.to(arrow, {
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
     }
-  };
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
   return (
-    <section className="border-t border-white/10">
-      <div className="relative max-w-[1200px] mx-auto">
-        {/* subtle top glow */}
-        <div className="pointer-events-none absolute inset-x-0 -top-10 h-16 bg-gradient-to-t from-[050A11] to-[0075FF] blur-md" />
-        <motion.div 
-          className="max-w-[1200px] mx-auto px-6 py-16 text-center"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+    <div className="relative">
+      {/* Enhanced top glow effect - positioned outside */}
+      <div className="absolute left-1/2 transform -translate-x-1/2  w-[1200px] h-8 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-linear-to-b from-blue-500/30 via-blue-600/15 to-transparent blur-2xl"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-[#0075FF]/25 via-[#050A11]/12 to-transparent blur-xl"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-[#0075FF]/20 via-[#050A11]/10 to-transparent blur-lg"></div>
+      </div>
+
+      <section className="relative border-white/10 z-10">
+        <div className="relative max-w-[1200px] mx-auto">
+        <div 
+          ref={containerRef}
+          className=" px-6 py-16 text-center relative z-10"
         >
-          <motion.h2 
+          <h2 
+            ref={titleRef}
             className="text-2xl md:text-3xl font-bold"
-            variants={slideInRight}
           >
             Ready to Partner with a Proven Leader?
-          </motion.h2>
-          <motion.p 
+          </h2>
+          <p 
+            ref={descriptionRef}
             className="mt-3 text-[13px] text-white/70"
-            variants={slideInLeft}
           >
             Download Our Capability Statement Today And Discover How Excelcus Can
             Support Your Mission With Expertise And Innovation!
-          </motion.p>
+          </p>
 
-          <motion.div 
+          <div 
+            ref={buttonRef}
             className="mt-8 flex justify-center"
-            variants={slideInBottom}
           >
             <Link
               href="/contact"
@@ -78,7 +121,8 @@ export default function PartnerCTA() {
             >
               View Capability Statement
               <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                ref={arrowRef}
+                className="w-4 h-4 transition-transform duration-300"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,11 +131,17 @@ export default function PartnerCTA() {
                 <path d="M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
-          </motion.div>
-        </motion.div>
-        {/* subtle bottom glow */}
-        <div className="pointer-events-none absolute inset-x-0 -bottom-10 h-16 bg-gradient-to-t from-white/5 to-transparent blur-md" />
+          </div>
+        </div>
+        </div>
+      </section>
+
+      {/* Enhanced bottom glow effect - positioned outside */}
+      <div className="absolute left-1/2 transform -translate-x-1/2  w-[1200px] h-8 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-500/30 via-blue-600/15 to-transparent blur-2xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-400/25 via-blue-500/12 to-transparent blur-xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-300/20 via-blue-400/10 to-transparent blur-lg"></div>
       </div>
-    </section>
+    </div>
   );
 }

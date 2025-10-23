@@ -79,7 +79,7 @@ const Testimonials = () => {
           {testimonial.avatar}
         </div>
         <div>
-          <h4 className="text-white font-semibold text-lg">{testimonial.name}</h4>
+          <h4 className="text-white font-semibold text-[22px]">{testimonial.name}</h4>
           <p className="text-slate-400 text-sm">{testimonial.role}</p>
           <p className="text-slate-500 text-xs">{testimonial.company}</p>
         </div>
@@ -99,7 +99,7 @@ const Testimonials = () => {
       <div className="relative max-w-[1200px] mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-[42px] md:text-[48px] font-bold text-white mb-4">
             Testimonials
           </h2>
         </div>

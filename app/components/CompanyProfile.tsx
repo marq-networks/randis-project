@@ -1,29 +1,65 @@
-import Image from "next/image";
+import React from 'react';
 
 export default function CompanyProfile() {
   return (
-    <section className="border-t border-white/10">
-      <div className="max-w-[1200px] mx-auto px-6 py-16 grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 className="text-2xl font-semibold">Company Profile</h2>
-          <p className="mt-4 text-white/80 text-[14px]">
-            Trusted public sector partner focused on compliance modernization, secure data collaboration, and actionable analytics outcomes.
+    <section className="bg-white text-gray-900 py-12 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Main Heading */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            Company Profile
+          </h1>
+          <p className="text-lg text-gray-700">
+            Transforming Business Visions Into Production-Grade Systems.
           </p>
-          <ul className="mt-6 grid grid-cols-1 gap-3 text-[14px] text-white/80">
-            {[
-              "Public sector expertise across compliance frameworks.",
-              "Security-first engineering and delivery.",
-              "Outcome-driven engagements with measurable value.",
-            ].map((t) => (
-              <li key={t} className="flex items-start gap-3">
-                <Image src="/homepage/our approach/check.png" alt="Check" width={18} height={18} />
-                <span>{t}</span>
-              </li>
-            ))}
-          </ul>
         </div>
-        <div className="relative h-64 md:h-full rounded-2xl card overflow-hidden">
-          <Image src="/homepage/company profile/company profile.png" alt="Company" fill className="object-cover" />
+
+        {/* Divider */}
+        <div className="border-t border-gray-300 my-8"></div>
+
+        {/* Federal Certifications */}
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4">Federal Certifications</h2>
+          <div className="space-y-2 text-gray-700">
+            <p>8(A) Certified Small Business</p>
+            <p>Economically Disadvantaged Woman Owned Small Business (EDWOSB)</p>
+          </div>
+        </div>
+
+        {/* State Certifications */}
+        <div className="mb-8">
+          <h3 className="text-lg font-bold mb-3">State Certifications</h3>
+          <p className="text-gray-700">
+            MBE/DBE : Georgia, Tennessee, Pennsylvania, Missouri, Illinois, Maryland, Massachusetts
+          </p>
+        </div>
+
+        {/* Contract Vehicles */}
+        <div className="mb-8">
+          <h3 className="text-lg font-bold mb-3">Contract Vehicles</h3>
+          <div className="space-y-2 text-gray-700">
+            <p>GSA MAS Schedule: 47QTCA19D00KK</p>
+            <p>Jets 2.0 IDIQ (Subcontractor), Ba STARS III</p>
+          </div>
+        </div>
+
+        {/* NAICS Codes */}
+        <div className="mb-8">
+          <h3 className="text-lg font-bold mb-3">NAICS Codes</h3>
+          <p className="text-gray-700">
+            541611 (Primary), 541511, 541641, 423430, 561210, 561990, 562910, 562119
+          </p>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-gray-300 my-8"></div>
+
+        {/* Footer Note */}
+        <div className="text-center text-gray-500 text-sm">
+          <p className="mb-1">
+            <strong>Activate Windows</strong>
+          </p>
+          <p>Go to Settings to activate Windows.</p>
         </div>
       </div>
     </section>

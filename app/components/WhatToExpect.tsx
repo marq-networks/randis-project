@@ -2,34 +2,36 @@ import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 
 export default function WhatToExpect() {
-    const approachSteps = [
+    const expectationSteps = [
     {
-      title: "Assess & Strategize",
-      description: "We Dive Deep Into Your Current Systems, Risks, And Goals.",
+      title: "Strategic Assessment",
+      description: "We'll Analyze Your Current Challenge And Identify The Fastest Path To A Technology Solution.",
     },
     {
-      title: "Prototype & Build",
-      description: "We Deliver Working, Secure SaaS/PaaS Solutions Fast.",
+      title: "90-Day Roadmap",
+      description: "Get A Clear Timeline From Prototype To Production-Ready Solution.",
     },
     {
-      title: "Deploy & Integrate",
-      description: "We Ensure Systems Work Seamlessly In Your Ecosystem.",
+      title: "Technology Architecture",
+      description: "Understand The Enterprise-Grade Infrastructure We'll Build For Your Solution.",
     },
     {
-      title: "Train & Sustain",
-      description: "We Empower Your Teams To Run Systems Independently.",
+      title: "Investment & ROI",
+      description: "Clear Pricing And Expected Return On Your Technology Investment.",
     },
   ];
   return (
-    <section className="border-t border-white/10">
-      <div className="max-w-[1200px] mx-auto px-6 py-16 grid md:grid-cols-2 gap-8 items-start">
-        <div>
-          <h2 className="text-2xl font-semibold mb-4 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">What to Expect</h2>
-         <div className="space-y-2">
-              {approachSteps.map((step, index) => (
-                <div key={index} className={`flex gap-2 group animate-[fadeInUp_0.8s_ease-out_${0.3 + index * 0.1}s_both]`}>
+    <section className="py-20 px-6 bg-[#0a0e1a]">
+      <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div className="space-y-8">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
+            What to Expect
+          </h2>
+         <div className="space-y-6">
+              {expectationSteps.map((step, index) => (
+                <div key={index} className={`flex gap-4 group animate-[fadeInUp_0.8s_ease-out_${0.3 + index * 0.1}s_both]`}>
                   {/* Icon with connector */}
-                  <div className="flex flex-col items-center flex-shrink-0 gap-2">
+                  <div className="flex flex-col items-center flex-shrink-0">
                     <div className="relative">
                       {/* Glow effect */}
                       <div className="absolute -inset-2 bg-blue-500/30 rounded-full blur-xl group-hover:bg-blue-400/40 transition-all duration-300"></div>
@@ -40,17 +42,17 @@ export default function WhatToExpect() {
                     </div>
 
                     {/* Connector line */}
-                    {index !== approachSteps.length - 1 && (
-                      <div className="w-0.5 h-16 bg-gradient-to-b from-blue-400/40 to-blue-400/10 mt-2"></div>
+                    {index !== expectationSteps.length - 1 && (
+                      <div className="w-0.5 h-12 bg-gradient-to-b from-blue-400/40 to-blue-400/10 mt-2"></div>
                     )}
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 pb-4">
-                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                    <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-300 transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
+                    <p className="text-gray-400 text-base leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -58,8 +60,15 @@ export default function WhatToExpect() {
               ))}
             </div>
         </div>
-        <div className="relative h-64 md:h-full rounded-2xl card overflow-hidden animate-[fadeInUp_0.8s_ease-out_0.4s_both]">
-          <Image src="/homepage/what to expect/what to expect.png" alt="Expect" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+        <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden animate-[fadeInUp_0.8s_ease-out_0.4s_both]">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-purple-900/40 rounded-2xl border border-blue-500/30 backdrop-blur-sm">
+            <Image 
+              src="/homepage/what to expect/what to expect.png" 
+              alt="Technology Visualization - Laptop with Global Network" 
+              fill 
+              className="object-cover rounded-2xl hover:scale-105 transition-transform duration-500" 
+            />
+          </div>
         </div>
       </div>
     </section>

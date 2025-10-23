@@ -1,8 +1,16 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useRef } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ChallengeApproach() {
+  const containerRef = useRef<HTMLElement>(null);
+  const challengeRef = useRef<HTMLDivElement>(null);
+  const approachRef = useRef<HTMLDivElement>(null);
   const approachSteps = [
     {
       title: "Assess & Strategize",
@@ -22,12 +30,63 @@ export default function ChallengeApproach() {
     },
   ];
 
+  useEffect(() => {
+    const container = containerRef.current;
+    const challenge = challengeRef.current;
+    const approach = approachRef.current;
+
+    if (!container || !challenge || !approach) return;
+
+    // Set initial states
+    gsap.set(challenge, {
+      opacity: 0,
+      x: -60,
+      force3D: true
+    });
+
+    gsap.set(approach, {
+      opacity: 0,
+      x: 60,
+      force3D: true
+    });
+
+    // Create timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        once: true
+      }
+    });
+
+    // Animate elements
+    tl.to(challenge, {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    })
+    .to(approach, {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    }, "-=0.6");
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
-    <section className="">
-      <div className="max-w-[1200px] mx-auto px-6 py-20">
+    <section 
+      ref={containerRef}
+      className="py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden "
+    >
+      <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* The Challenge */}
-          <div className="space-y-6">
+          <div ref={challengeRef} className="space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               The Challenge
             </h2>
@@ -38,24 +97,23 @@ export default function ChallengeApproach() {
             </p>
 
             {/* Challenge Visual */}
-            <div className="relative mt-8 w-full">
-              {/* Decorative background elements */}
+            <div className="relative mt-8 h-full">
               <Image
                 src="/homepage/our approach/our approach.png"
                 alt="Challenge Visual"
                 width={800}
-                height={800}
+                height={1000}
                 className="object-cover opacity-80 w-full h-full"
               />
-
-
-
-
             </div>
           </div>
 
           {/* Our Approach */}
-          <div className="space-y-6">
+          <div 
+            ref={approachRef} 
+            className="space-y-6 p-6 rounded-lg"
+          
+          >
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">
               Our Approach
             </h2>
@@ -77,7 +135,7 @@ export default function ChallengeApproach() {
 
                     {/* Connector line */}
                     {index !== approachSteps.length - 1 && (
-                      <div className="w-0.5 h-16 bg-gradient-to-b from-blue-400/40 to-blue-400/10 mt-2"></div>
+                      <div className="w-0.5 h-8 bg-gradient-to-b from-blue-400/40 to-blue-400/10 mt-2"></div>
                     )}
                   </div>
 

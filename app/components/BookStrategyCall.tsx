@@ -17,11 +17,11 @@ export default function BookStrategyCall() {
   };
 
   const slideInLeft: Variants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, x: -100 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
@@ -71,13 +71,13 @@ export default function BookStrategyCall() {
           <div className="space-y-8">
             <div>
               <motion.h2 
-                className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+                className="text-[42px] md:text-[48px] font-bold text-white mb-6 leading-tight"
                 variants={slideInLeft}
               >
                 Book Your Strategy Call
               </motion.h2>
               <motion.p 
-                className="text-xl text-slate-300 leading-relaxed"
+                className="text-[18px] text-slate-300 leading-relaxed"
                 variants={slideInRight}
               >
                 Ready to transform your business into a competitive advantage? 
@@ -147,7 +147,7 @@ export default function BookStrategyCall() {
             variants={slideInRight}
             whileHover={{ scale: 1.05 }}
           >
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">Contact Us</h3>
+            <h3 className="text-[22px] font-bold text-white mb-8 text-center">Contact Us</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Fields */}

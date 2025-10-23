@@ -2,59 +2,67 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05
-    }
-  }
-};
-
-const slideInLeft: Variants = {
-  hidden: { 
-    opacity: 0, 
-    x: -30 
-  },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-  }
-};
-
-const slideInRight: Variants = {
-    hidden: { opacity: 0, x: 30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const slideInBottom: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 export default function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const arrowRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Set initial states
+      gsap.set([titleRef.current, descriptionRef.current, buttonRef.current], {
+        opacity: 0,
+        x: -100
+      });
+
+      // Create timeline for staggered animations
+      const tl = gsap.timeline();
+      
+      tl.to(titleRef.current, {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      })
+      .to(descriptionRef.current, {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      }, "-=0.4")
+      .to(buttonRef.current, {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      }, "-=0.4");
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const handleArrowHover = () => {
+    gsap.to(arrowRef.current, {
+      x: 4,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+  };
+
+  const handleArrowLeave = () => {
+    gsap.to(arrowRef.current, {
+      x: 0,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+  };
+
   return (
     <section className="relative overflow-hidden h-screen mx-auto">
       {/* Background video */}
@@ -73,43 +81,45 @@ export default function HeroSection() {
       <div className="absolute top-6 left-6 right-6 h-px bg-white/10" />
 
       <div className="max-w-[1200px] min-h-[72vh] md:min-h-[80vh] mx-auto px-6 flex items-center">
-        <motion.div 
-          className="max-w-[680px] motion-element"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+        <div 
+          ref={containerRef}
+          className="max-w-[680px]"
         >
-          <motion.h1 
-            className="section-title text-white text-[36px] md:text-[56px] font-extrabold leading-[1.1] tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
-            variants={slideInLeft}
+          <h1 
+            ref={titleRef}
+            className="section-title text-white text-[42px] md:text-[48px] lg:text-[54px] font-bold leading-tight tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
           >
             Modernizing Compliance & Analytics for Government
-          </motion.h1>
-          <motion.p 
-            className="mt-4 text-white/80 text-[15px] md:text-[17px] max-w-[640px]"
-            variants={slideInRight}
+          </h1>
+          <p 
+            ref={descriptionRef}
+            className="mt-4 text-white/80 text-[18px] md:text-[20px] max-w-[640px] leading-relaxed"
           >
             We build mission-ready SaaS/PaaS systems that automate audits, enable performance insight, and empower public sector decision-making.
-          </motion.p>
-          <motion.div 
+          </p>
+          <div 
+            ref={buttonRef}
             className="mt-8"
-            variants={slideInBottom}
           >
-            <Link href="/contact" className="group inline-flex items-center rounded-full btn-primary px-6 py-3 text-sm font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30">
+            <Link 
+              href="/contact" 
+              className="group inline-flex items-center rounded-full btn-primary px-6 py-3 text-sm font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30"
+              onMouseEnter={handleArrowHover}
+              onMouseLeave={handleArrowLeave}
+            >
               Book Your 90-Day Strategy Call
-              <motion.svg 
+              <svg 
+                ref={arrowRef}
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 24 24" 
                 fill="currentColor" 
                 className="ml-2 h-4 w-4"
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.3 }}
               >
                 <path d="M13.172 12l-4.95 4.95 1.414 1.414L16 12l-6.364-6.364-1.414 1.414z" />
-              </motion.svg>
+              </svg>
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
