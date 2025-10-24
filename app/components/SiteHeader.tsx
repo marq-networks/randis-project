@@ -16,7 +16,7 @@ export default function SiteHeader() {
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-[14px] text-white/90 font-medium">
           <Link href="/" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.1s_both]">Home</Link>
-          <Link href="/company" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.2s_both]">About</Link>
+          <Link href="/about" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.2s_both]">About Us</Link>
           <Link href="/capabilities" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.3s_both]">Commercial Solutions</Link>
           <Link href="/approach" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.4s_both]">Govt Solutions</Link>
           <Link href="/expect" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.5s_both]">Projects</Link>
