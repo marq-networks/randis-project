@@ -26,7 +26,7 @@ export default function AboutUsCapabilitiesGrid() {
     });
 
     // Set initial states for cards from different directions
-    // Left card - from far left edge of screen
+    // First card - from far left edge of screen
     gsap.set(cards.children[0], {
       opacity: 0,
       x: "-100vw", // Start from far left edge of viewport
@@ -34,16 +34,24 @@ export default function AboutUsCapabilitiesGrid() {
       force3D: true
     });
 
-    // Center card - from bottom
+    // Second card - from top
     gsap.set(cards.children[1], {
+      opacity: 0,
+      x: 0,
+      y: "-100vh", // Start from top of viewport
+      force3D: true
+    });
+
+    // Third card - from bottom
+    gsap.set(cards.children[2], {
       opacity: 0,
       x: 0,
       y: "100vh", // Start from bottom of viewport
       force3D: true
     });
 
-    // Right card - from far right edge of screen
-    gsap.set(cards.children[2], {
+    // Fourth card - from far right edge of screen
+    gsap.set(cards.children[3], {
       opacity: 0,
       x: "100vw", // Start from far right edge of viewport
       y: 0,
@@ -92,6 +100,14 @@ export default function AboutUsCapabilitiesGrid() {
       opacity: 1,
       x: 0,
       y: 0,
+      duration: 1.5, // Slower duration for viewport height distance
+      ease: "power2.out",
+      force3D: true
+    }, "-=1.2")
+    .to(cards.children[3], {
+      opacity: 1,
+      x: 0,
+      y: 0,
       duration: 1.5, // Slower duration for viewport width distance
       ease: "power2.out",
       force3D: true
@@ -105,18 +121,23 @@ export default function AboutUsCapabilitiesGrid() {
   const capabilities = [
     {
       id: 1,
-      title: "Our Mission",
-      description: "To revolutionize government operations through innovative technology solutions that enhance transparency, efficiency, and public service delivery while maintaining the highest standards of security and compliance.",
+      title: "Trusted as Strategic",
+      description: "We serve as trusted strategic partners, providing expert guidance and innovative solutions that align with your organization's long-term goals and objectives.",
     },
     {
       id: 2,
-      title: "Our Vision",
-      description: "To be the leading partner for government agencies seeking digital transformation, creating a future where technology empowers public servants to better serve their communities.",
+      title: "Infrastructure as Advantage",
+      description: "Our robust infrastructure solutions provide competitive advantages, ensuring scalable, secure, and efficient operations for government agencies.",
     },
     {
       id: 3,
-      title: "Our Values",
-      description: "Integrity, innovation, and excellence guide everything we do. We believe in building lasting partnerships with our clients and delivering solutions that make a meaningful impact on society.",
+      title: "Cybersecurity as Advantage",
+      description: "Advanced cybersecurity measures that protect critical government data and systems, providing peace of mind and operational security.",
+    },
+    {
+      id: 4,
+      title: "Rapid Enterprise Results",
+      description: "Delivering fast, measurable results at enterprise scale, ensuring quick implementation and immediate value for government operations.",
     },
   ];
 
@@ -131,19 +152,19 @@ export default function AboutUsCapabilitiesGrid() {
             ref={titleRef}
             className="text-[42px] md:text-[48px] font-bold text-white mb-4"
           >
-            Who We Are
+            Our Core Principles
           </h2>
           <p 
             ref={subtitleRef}
             className="text-white/70 text-[18px]"
           >
-            Dedicated to Excellence in Government Technology Solutions.
+            Guiding values that drive our commitment to excellence.
           </p>
         </div>
 
         <div 
           ref={cardsRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {capabilities.map((capability) => (
             <div

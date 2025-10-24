@@ -90,13 +90,13 @@ export default function AboutUsHeroSection() {
             ref={titleRef}
             className="section-title text-white text-[42px] md:text-[48px] lg:text-[54px] font-bold leading-tight tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
           >
-            Empowering Government Through Innovation
+            About Rutledge &<br />Associates
           </h1>
           <p 
             ref={descriptionRef}
-            className="mt-4 text-white/80 text-[18px] md:text-[20px] max-w-[640px] leading-relaxed"
+            className="mt-6 text-white/90 text-[18px] md:text-[20px] max-w-[640px] leading-relaxed"
           >
-            We are a dedicated team of experts committed to transforming public sector operations through cutting-edge technology solutions, ensuring transparency, efficiency, and accountability in government processes.
+            Transforming government operations through innovative technology solutions, ensuring transparency, efficiency, and accountability in public sector processes.
           </p>
           <div 
             ref={buttonRef}
