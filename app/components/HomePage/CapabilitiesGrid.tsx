@@ -1,11 +1,12 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AboutUsCapabilitiesGrid() {
+export default function CapabilitiesGrid() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -26,7 +27,7 @@ export default function AboutUsCapabilitiesGrid() {
     });
 
     // Set initial states for cards from different directions
-    // First card - from far left edge of screen
+    // Left card - from far left edge of screen
     gsap.set(cards.children[0], {
       opacity: 0,
       x: "-100vw", // Start from far left edge of viewport
@@ -34,24 +35,16 @@ export default function AboutUsCapabilitiesGrid() {
       force3D: true
     });
 
-    // Second card - from top
+    // Center card - from bottom
     gsap.set(cards.children[1], {
-      opacity: 0,
-      x: 0,
-      y: "-100vh", // Start from top of viewport
-      force3D: true
-    });
-
-    // Third card - from bottom
-    gsap.set(cards.children[2], {
       opacity: 0,
       x: 0,
       y: "100vh", // Start from bottom of viewport
       force3D: true
     });
 
-    // Fourth card - from far right edge of screen
-    gsap.set(cards.children[3], {
+    // Right card - from far right edge of screen
+    gsap.set(cards.children[2], {
       opacity: 0,
       x: "100vw", // Start from far right edge of viewport
       y: 0,
@@ -100,14 +93,6 @@ export default function AboutUsCapabilitiesGrid() {
       opacity: 1,
       x: 0,
       y: 0,
-      duration: 1.5, // Slower duration for viewport height distance
-      ease: "power2.out",
-      force3D: true
-    }, "-=1.2")
-    .to(cards.children[3], {
-      opacity: 1,
-      x: 0,
-      y: 0,
       duration: 1.5, // Slower duration for viewport width distance
       ease: "power2.out",
       force3D: true
@@ -121,24 +106,23 @@ export default function AboutUsCapabilitiesGrid() {
   const capabilities = [
     {
       id: 1,
-      title: "Trusted as Strategic",
-      description: "We serve as trusted strategic partners, providing expert guidance and innovative solutions that align with your organization's long-term goals and objectives.",
+      title: "Information Technology Solution",
+      description: "Design and implementation of scalable cloud solutions tailored to organizational needs.",
+      image: "/homepage/our capabilities/image1.png",
     },
     {
       id: 2,
-      title: "Infrastructure as Advantage",
-      description: "Our robust infrastructure solutions provide competitive advantages, ensuring scalable, secure, and efficient operations for government agencies.",
+      title: "Facilites Operations & Maintenance",
+      description: "Efficient management of facilities to ensure operational excellence and cost-effectiveness.",
+      image: "/homepage/our capabilities/image2.png",
     },
     {
       id: 3,
-      title: "Cybersecurity as Advantage",
-      description: "Advanced cybersecurity measures that protect critical government data and systems, providing peace of mind and operational security.",
+      title: "Program Management",
+      description: "Design and implementation of scalable cloud solutions tailored to organizational needs.",
+      image: "/homepage/our capabilities/image3.png",
     },
-    {
-      id: 4,
-      title: "Rapid Enterprise Results",
-      description: "Delivering fast, measurable results at enterprise scale, ensuring quick implementation and immediate value for government operations.",
-    },
+   
   ];
 
   return (
@@ -152,24 +136,24 @@ export default function AboutUsCapabilitiesGrid() {
             ref={titleRef}
             className="text-[42px] md:text-[48px] font-bold text-white mb-4"
           >
-            Our Core Principles
+            Our Capabilities
           </h2>
           <p 
             ref={subtitleRef}
             className="text-white/70 text-[18px]"
           >
-            Guiding values that drive our commitment to excellence.
+            Transforming Business Visions Into Production-Grade Systems.
           </p>
         </div>
 
         <div 
           ref={cardsRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {capabilities.map((capability) => (
             <div
               key={capability.id}
-              className="relative rounded-2xl p-8 overflow-hidden group hover:scale-105 transition-transform duration-300 border-l-2 border-blue-500/40 before:absolute before:top-0 before:left-0 before:w-[70%] before:h-0.5 before:bg-blue-500/40 min-h-[280px] flex flex-col"
+              className="relative rounded-2xl p-6 overflow-hidden group hover:scale-105 transition-transform duration-300 border-l-2 border-blue-500/40 before:absolute before:top-0 before:left-0 before:w-[70%] before:h-0.5 before:bg-blue-500/40"
               style={{
                 background: 'linear-gradient(135deg, #0D1832 0%, #132449 52%, #1A2B4A 100%)'
               }}
@@ -192,17 +176,26 @@ export default function AboutUsCapabilitiesGrid() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 flex-1 flex flex-col">
-                <h3 className="text-white font-semibold text-[24px] mb-4 pr-12">
+              <div className="relative z-10">
+                <h3 className="text-white font-semibold text-[22px] mb-3 pr-12">
                   {capability.title}
                 </h3>
                  
-                <p className="text-white/80 text-[16px] leading-relaxed flex-1">
+                <p className="text-white/80 text-sm mb-6 leading-relaxed">
                   {capability.description}
                 </p>
 
-                {/* Decorative element at bottom */}
-                <div className="mt-6 w-12 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+          
+
+                {/* Image */}
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image 
+                    src={capability.image} 
+                    alt={capability.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
 
               {/* Background Pattern/Overlay */}

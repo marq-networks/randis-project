@@ -1,4 +1,4 @@
-import CompanyProfile from "../components/CompanyProfile";
+import CompanyProfile from "../components/HomePage/CompanyProfile";
 
 export default function CompanyPage() {
   return (

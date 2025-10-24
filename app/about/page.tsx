@@ -1,10 +1,10 @@
-import AboutUsHeroSection from "../components/AboutUsHeroSection";
-import AboutUsCapabilitiesGrid from "../components/AboutUsCapabilitiesGrid";
-import AboutUsSection from "../components/AboutUsSection";
-import ReadyToSolveCTA from "../components/ReadyToSolveCTA";
-import WhatToExpect from "../components/WhatToExpect";
-import BookStrategyCall from "../components/BookStrategyCall";
-import Footer from "../components/Footer";
+import AboutUsHeroSection from "../components/About/AboutUsHeroSection";
+import AboutUsCapabilitiesGrid from "../components/About/AboutUsCapabilitiesGrid";
+import AboutUsSection from "../components/About/AboutUsSection";
+import ReadyToSolveCTA from "../components/Shared/ReadyToSolveCTA";
+import WhatToExpect from "../components/Shared/WhatToExpect";
+import BookStrategyCall from "../components/Shared/BookStrategyCall";
+import Footer from "../components/Shared/Footer";
 
 export default function AboutUs() {
   return (

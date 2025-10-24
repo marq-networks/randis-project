@@ -1,4 +1,4 @@
-import ChallengeApproach from "../components/ChallengeApproach";
+import ChallengeApproach from "../components/HomePage/ChallengeApproach";
 
 export default function ApproachPage() {
   return (

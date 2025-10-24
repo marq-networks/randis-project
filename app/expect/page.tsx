@@ -1,4 +1,4 @@
-import WhatToExpect from "../components/WhatToExpect";
+import WhatToExpect from "../components/Shared/WhatToExpect";
 
 export default function ExpectPage() {
   return (

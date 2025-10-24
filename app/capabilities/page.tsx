@@ -1,4 +1,4 @@
-import CapabilitiesGrid from "../components/CapabilitiesGrid";
+import CapabilitiesGrid from "../components/HomePage/CapabilitiesGrid";
 
 export default function CapabilitiesPage() {
   return (
