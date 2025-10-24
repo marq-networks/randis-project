@@ -1,39 +1,67 @@
 "use client";
 
-import { useState } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
+// Register GSAP plugin
+gsap.registerPlugin(ScrollTrigger);
+
 export default function BookStrategyCall() {
-  // Animation variants
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1
+  // Refs for GSAP animations
+  const containerRef = useRef<HTMLDivElement>(null);
+  const leftSectionRef = useRef<HTMLDivElement>(null);
+  const rightSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const leftSection = leftSectionRef.current;
+    const rightSection = rightSectionRef.current;
+
+    if (!container || !leftSection || !rightSection) return;
+
+    // Set initial states - left section from far left, right section from far right
+    gsap.set(leftSection, {
+      opacity: 0,
+      x: "-100vw", // Start from far left edge of viewport
+      force3D: true
+    });
+
+    gsap.set(rightSection, {
+      opacity: 0,
+      x: "100vw", // Start from far right edge of viewport
+      force3D: true
+    });
+
+    // Create timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        once: true
       }
-    }
-  };
+    });
 
-  const slideInLeft: Variants = {
-    hidden: { opacity: 0, x: -100 },
-    visible: {
+    // Animate elements with slower, more elegant timing
+    tl.to(leftSection, {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-
-  const slideInRight: Variants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: {
+      duration: 1.5, // Slower duration for viewport width distance
+      ease: "power2.out"
+    })
+    .to(rightSection, {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
-  };
+      duration: 1.5, // Slower duration for viewport width distance
+      ease: "power2.out"
+    }, "-=1.2"); // Better overlap timing
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -57,45 +85,27 @@ export default function BookStrategyCall() {
   };
 
   return (
-    <section className="relative py-20 overflow-hidden ">
+    <section className="relative py-20 overflow-hidden" ref={containerRef}>
   
-      <motion.div 
-        className="max-w-[1200px] mx-auto px-6 relative z-10"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-[1200px] mx-auto">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10 overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-[1200px] mx-auto">
           
           {/* Left side - Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-8" ref={leftSectionRef}>
             <div>
-              <motion.h2 
-                className="text-[30px] md:text-[42px] font-bold text-white mb-6 leading-tight"
-                variants={slideInLeft}
-              >
+              <h2 className="text-[30px] md:text-[42px] font-bold text-white mb-6 leading-tight">
                 Book Your Strategy Call
-              </motion.h2>
-              <motion.p 
-                className="text-[18px] text-slate-300 leading-relaxed"
-                variants={slideInRight}
-              >
+              </h2>
+              <p className="text-[18px] text-slate-300 leading-relaxed">
                 Ready to transform your business into a competitive advantage? 
                 Click below to schedule your free 30-day strategy call.
-              </motion.p>
+              </p>
             </div>
 
             {/* Contact Details */}
-              <motion.div 
-                className="space-y-6"
-                variants={slideInLeft}
-              >
+            <div className="space-y-6">
               {/* Phone */}
-              <motion.div 
-                className="flex items-center space-x-4 transition-transform duration-300"
-                whileHover={{ scale: 1.05 }}
-              >
+              <div className="flex items-center space-x-4 transition-transform duration-300 hover:scale-105">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -105,13 +115,10 @@ export default function BookStrategyCall() {
                   <p className="text-white font-semibold">Call us:</p>
                   <p className="text-slate-300">610-938-7897</p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Email */}
-              <motion.div 
-                className="flex items-center space-x-4 transition-transform duration-300"
-                whileHover={{ scale: 1.05 }}
-              >
+              <div className="flex items-center space-x-4 transition-transform duration-300 hover:scale-105">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -121,13 +128,10 @@ export default function BookStrategyCall() {
                   <p className="text-white font-semibold">Email us:</p>
                   <p className="text-slate-300">contact@rutledge.associates</p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Address */}
-              <motion.div 
-                className="flex items-center space-x-4 transition-transform duration-300"
-                whileHover={{ scale: 1.05 }}
-              >
+              <div className="flex items-center space-x-4 transition-transform duration-300 hover:scale-105">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -138,19 +142,18 @@ export default function BookStrategyCall() {
                   <p className="text-white font-semibold">Address:</p>
                   <p className="text-slate-300">8350 Bee Ridge Suite 262</p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
 
           {/* Right side - Contact Form */}
-          <motion.div 
-            className="p-8 transition-transform duration-300"
+          <div 
+            className="p-8 transition-transform duration-300 hover:scale-105"
             style={{
               background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
               borderRadius: '20.0304px'
             }}
-            variants={slideInRight}
-            whileHover={{ scale: 1.05 }}
+            ref={rightSectionRef}
           >
             <h3 className="text-[22px] font-bold text-white mb-8 text-center">Contact Us</h3>
             
@@ -189,38 +192,38 @@ export default function BookStrategyCall() {
                 </div>
               </div>
 
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
-                  Email*
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-slate-700/80 border border-slate-500/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
-                  placeholder="abc@gmail.com"
-                  required
-                />
-              </div>
-
-              {/* Business Name */}
-              <div>
-                <label htmlFor="businessName" className="block text-sm font-medium text-slate-300 mb-2">
-                  Business Name*
-                </label>
-                <input
-                  type="text"
-                  id="businessName"
-                  name="businessName"
-                  value={formData.businessName}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-slate-700/80 border border-slate-500/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
-                  placeholder="Innovations"
-                  required
-                />
+              {/* Email and Business Name Fields */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                    Email*
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-slate-700/80 border border-slate-500/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+                    placeholder="abc@gmail.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="businessName" className="block text-sm font-medium text-slate-300 mb-2">
+                    Business Name*
+                  </label>
+                  <input
+                    type="text"
+                    id="businessName"
+                    name="businessName"
+                    value={formData.businessName}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-slate-700/80 border border-slate-500/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+                    placeholder="Innovations"
+                    required
+                  />
+                </div>
               </div>
 
               {/* Help Message */}
@@ -241,21 +244,19 @@ export default function BookStrategyCall() {
               </div>
 
               {/* Submit Button */}
-              <motion.button
+              <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2 group"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center space-x-2 group"
               >
                 <span>Schedule a Free Consultation</span>
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </motion.button>
+              </button>
             </form>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
         <div className="">
           <Image 
             src="/line.png" 

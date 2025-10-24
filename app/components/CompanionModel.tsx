@@ -1,6 +1,10 @@
 "use client";
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function CompanionModel() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -9,24 +13,76 @@ export default function CompanionModel() {
   const stepsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
+    const container = containerRef.current;
+    const title = titleRef.current;
+    const cards = cardsRef.current;
+    const steps = stepsRef.current;
+
+    if (!container || !title || !cards || !steps) return;
+
+    // Get individual card elements
+    const cardElements = cards.querySelectorAll('.track-card');
+    const leftCard = cardElements[0];
+    const rightCard = cardElements[1];
+
+    // Set initial states
+    gsap.set(title, {
+      opacity: 0,
+      y: "-100vh", // Start from top of viewport
+      force3D: true
+    });
+
+    gsap.set(leftCard, {
+      opacity: 0,
+      x: "-100vw", // Start from far left edge
+      force3D: true
+    });
+
+    gsap.set(rightCard, {
+      opacity: 0,
+      x: "100vw", // Start from far right edge
+      force3D: true
+    });
+
+    gsap.set(steps, {
+      opacity: 0,
+      y: "100vh", // Start from bottom of viewport
+      force3D: true
+    });
+
+    // Create timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        once: true
+      }
+    });
+
+    // Animate elements with staggered timing
+    tl.to(title, {
+      opacity: 1,
+      y: 0,
+      duration: 1.5,
+      ease: "power2.out"
+    })
+    .to([leftCard, rightCard], {
+      opacity: 1,
+      x: 0,
+      duration: 1.5,
+      ease: "power2.out",
+      stagger: 0.3
+    }, "-=1.0")
+    .to(steps, {
+      opacity: 1,
+      y: 0,
+      duration: 1.5,
+      ease: "power2.out"
+    }, "-=0.8");
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
-        }
-      });
-    }, observerOptions);
-
-    if (titleRef.current) observer.observe(titleRef.current);
-    if (cardsRef.current) observer.observe(cardsRef.current);
-    if (stepsRef.current) observer.observe(stepsRef.current);
-
-    return () => observer.disconnect();
   }, []);
 
   const tracks = [
@@ -73,43 +129,23 @@ export default function CompanionModel() {
   ];
 
   return (
-    <section className="py-20 bg-[#0a0e1a]" ref={containerRef}>
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fade-in {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
+    <section className="py-20 bg-[#0a0e1a] overflow-hidden" ref={containerRef}>
 
-        .opacity-0 {
-          opacity: 0;
-        }
-      `}</style>
-
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
        
         {/* Header */}
-        <div className="text-center mb-16 opacity-0" ref={titleRef}>
+        <div className="text-center mb-16" ref={titleRef}>
           <h2 className="text-[42px] md:text-[48px] font-bold text-white mb-6">
             Our Companion Model
           </h2>
         </div>
 
         {/* Tracks Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-5 opacity-0" ref={cardsRef}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-5" ref={cardsRef}>
           {tracks.map((track, index) => (
             <div
               key={index}
-              className="relative overflow-hidden rounded-2xl bg-[#0f1729] border border-[#1e3a8a]/60 p-8 h-full flex flex-col group hover:border-[#3b82f6]/80 transition-all duration-500 hover:shadow-2xl hover:shadow-[#3b82f6]/10"
+              className="track-card relative overflow-hidden rounded-2xl bg-[#0f1729] border border-[#1e3a8a]/60 p-8 h-full flex flex-col group hover:border-[#3b82f6]/80 transition-all duration-500 hover:shadow-2xl hover:shadow-[#3b82f6]/10"
             >
               {/* Content */}
               <div className="relative z-10 flex flex-col h-full">
@@ -158,7 +194,7 @@ export default function CompanionModel() {
         </div>
 
         {/* Steps */}
-        <div className=" opacity-0" ref={stepsRef}>
+        <div className="" ref={stepsRef}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <div 

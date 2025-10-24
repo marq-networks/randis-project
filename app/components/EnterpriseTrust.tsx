@@ -149,10 +149,7 @@ export default function EnterpriseTrust() {
                       </div>
                     </div>
 
-                    {/* Connector line */}
-                    {index !== features.length - 1 && (
-                      <div className="w-0.5 h-8 bg-gradient-to-b from-blue-400/40 to-blue-400/10 mt-2"></div>
-                    )}
+                  
                   </div>
 
                   {/* Content */}

@@ -1,8 +1,65 @@
+"use client";
 import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function WhatToExpect() {
-    const expectationSteps = [
+  const containerRef = useRef<HTMLElement>(null);
+  const leftSectionRef = useRef<HTMLDivElement>(null);
+  const rightSectionRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const container = containerRef.current;
+    const leftSection = leftSectionRef.current;
+    const rightSection = rightSectionRef.current;
+
+    if (!container || !leftSection || !rightSection) return;
+
+    // Set initial states - left section from far left, right section from far right
+    gsap.set(leftSection, {
+      opacity: 0,
+      x: "-100vw", // Start from far left edge of viewport
+      force3D: true
+    });
+
+    gsap.set(rightSection, {
+      opacity: 0,
+      x: "100vw", // Start from far right edge of viewport
+      force3D: true
+    });
+
+    // Create timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        once: true
+      }
+    });
+
+    // Animate elements with slower, more elegant timing
+    tl.to(leftSection, {
+      opacity: 1,
+      x: 0,
+      duration: 1.5, // Slower duration for viewport width distance
+      ease: "power2.out"
+    })
+    .to(rightSection, {
+      opacity: 1,
+      x: 0,
+      duration: 1.5, // Slower duration for viewport width distance
+      ease: "power2.out"
+    }, "-=1.2"); // Better overlap timing
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  const expectationSteps = [
     {
       title: "Strategic Assessment",
       description: "We'll Analyze Your Current Challenge And Identify The Fastest Path To A Technology Solution.",
@@ -21,29 +78,29 @@ export default function WhatToExpect() {
     },
   ];
   return (
-    <section className="pt-20 px-6 ">
-      <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        <div className="space-y-8">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
+    <section className="pt-20  overflow-hidden" ref={containerRef}>
+      <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-12 items-center overflow-hidden">
+        <div className="space-y-8" ref={leftSectionRef}>
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">
             What to Expect
           </h2>
          <div className="space-y-6">
               {expectationSteps.map((step, index) => (
-                <div key={index} className={`flex gap-4 group animate-[fadeInUp_0.8s_ease-out_${0.3 + index * 0.1}s_both]`}>
+                <div key={index} className="flex gap-4 group">
                   {/* Icon with connector */}
-                  <div className="flex flex-col items-center flex-shrink-0">
+                  <div className="flex flex-col items-center ">
                     <div className="relative">
                       {/* Glow effect */}
-                      <div className="absolute -inset-2 bg-blue-500/30 rounded-full blur-xl group-hover:bg-blue-400/40 transition-all duration-300"></div>
+                      <div className="absolute  bg-blue-500/30 rounded-full blur-xl group-hover:bg-blue-400/40 transition-all duration-300"></div>
                       {/* Icon circle */}
                       <div className="relative w-12 h-12 rounded-full bg-blue-500/20 border-2 border-blue-400/40 flex items-center justify-center backdrop-blur-sm group-hover:bg-blue-500/30 group-hover:border-blue-400/60 transition-all duration-300">
-                        <CheckCircle2 className="w-6 h-6 text-blue-300" />
+                        <CheckCircle2 className="w-6 h-10 text-blue-300" />
                       </div>
                     </div>
 
                     {/* Connector line */}
                     {index !== expectationSteps.length - 1 && (
-                      <div className="w-0.5 h-12 bg-gradient-to-b from-blue-400/40 to-blue-400/10 mt-2"></div>
+                      <div className="w-1 h-10 bg-gradient-to-b from-blue-400/40 to-blue-400/10 mt-2"></div>
                     )}
                   </div>
 
@@ -60,7 +117,7 @@ export default function WhatToExpect() {
               ))}
             </div>
         </div>
-        <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden animate-[fadeInUp_0.8s_ease-out_0.4s_both]">
+        <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden" ref={rightSectionRef}>
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-purple-900/40 rounded-2xl border border-blue-500/30 backdrop-blur-sm">
             <Image 
               src="/homepage/what to expect/what to expect.png" 

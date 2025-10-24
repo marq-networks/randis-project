@@ -1,8 +1,64 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useRef } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function CompanyProfileAgain() {
+  const containerRef = useRef<HTMLElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
+  const stepsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const container = containerRef.current;
+    const profile = profileRef.current;
+    const steps = stepsRef.current;
+
+    if (!container || !profile || !steps) return;
+
+    // Set initial states - profile from far left, steps from far right
+    gsap.set(profile, {
+      opacity: 0,
+      x: "-100vw", // Start from far left edge of viewport
+      force3D: true
+    });
+
+    gsap.set(steps, {
+      opacity: 0,
+      x: "100vw", // Start from far right edge of viewport
+      force3D: true
+    });
+
+    // Create timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        once: true
+      }
+    });
+
+    // Animate elements with slower, more elegant timing
+    tl.to(profile, {
+      opacity: 1,
+      x: 0,
+      duration: 1.5, // Slower duration for viewport width distance
+      ease: "power2.out"
+    })
+    .to(steps, {
+      opacity: 1,
+      x: 0,
+      duration: 1.5, // Slower duration for viewport width distance
+      ease: "power2.out"
+    }, "-=1.2"); // Better overlap timing
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   const approachSteps = [
     {
       title: "Assess & Strategize",
@@ -23,8 +79,8 @@ export default function CompanyProfileAgain() {
   ];
 
   return (
-    <section className="">
-      <div className="max-w-[1200px] mx-auto px-6 md:pt-20 ">
+    <section className="overflow-hidden" ref={containerRef}>
+      <div className="max-w-[1200px] mx-auto px-6 md:pt-20 overflow-hidden">
         {/* <div className="">
           <Image
             src="/line.png"
@@ -37,7 +93,7 @@ export default function CompanyProfileAgain() {
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* The Challenge */}
-          <div className="space-y-6">
+          <div className="space-y-6" ref={profileRef}>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Company Profile
             </h2>
@@ -66,7 +122,7 @@ export default function CompanyProfileAgain() {
 
 
           {/* Timeline Steps */}
-          <div className="space-y-3">
+          <div className="space-y-3" ref={stepsRef}>
             {approachSteps.map((step, index) => (
               <div key={index} className="flex gap-2 group">
                 {/* Icon with connector */}

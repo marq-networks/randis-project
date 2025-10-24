@@ -78,6 +78,19 @@ const STORIES: Story[] = [
     ],
     icon: "chart",
   },
+   {
+    id: "enterprise-data",
+    title: "Enterprise Data Platform",
+    subtitle: "Fortune 500 Financial Services",
+    description:
+      "Complete stakeholder dashboard and compliance system delivered from prototype to production in 45 days, featuring real-time analytics, automated reporting, and regulatory compliance tools that transformed how the client tracks performance metrics and addresses critical business requirements.",
+    metrics: [
+      { label: "Project Value", value: "$125K" },
+      { label: "Delivery Time", value: "45 Days" },
+      { label: "Cloud Platform", value: "Azure" },
+    ],
+    icon: "chart",
+  },
 ];
 
 const containerVariants: Variants = {
