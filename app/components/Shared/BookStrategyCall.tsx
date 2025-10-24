@@ -85,9 +85,17 @@ export default function BookStrategyCall() {
   };
 
   return (
-    <section className="relative py-20 overflow-hidden" ref={containerRef}>
-
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10 overflow-hidden">
+    <section className="relative overflow-hidden" ref={containerRef}>
+ <div className="">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={5} 
+            className="w-full h-auto" 
+          />
+        </div>
+      <div className="max-w-[1200px] pt-20 mx-auto px-6 relative z-10 overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-[1200px] mx-auto">
 
           {/* Left side - Contact Information */}

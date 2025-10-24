@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -169,7 +170,7 @@ export default function AboutUsCapabilitiesGrid() {
           {capabilities.map((capability) => (
             <div
               key={capability.id}
-              className="relative rounded-2xl p-2 overflow-hidden group hover:scale-105 transition-transform duration-300 border-l-2 border-blue-500/40 before:absolute before:top-0 before:left-0 before:w-[70%] before:h-0.5 before:bg-blue-500/40 min-h-[150px] flex flex-col"
+              className="relative rounded-2xl p-3 overflow-hidden group hover:scale-105 transition-transform duration-300 border-l-2 border-blue-500/40 before:absolute before:top-0 before:left-0 before:w-[70%] before:h-0.5 before:bg-blue-500/40 min-h-[150px] flex flex-col"
               style={{
                 background: 'linear-gradient(135deg, #0D1832 0%, #132449 52%, #1A2B4A 100%)'
               }}
@@ -181,8 +182,13 @@ export default function AboutUsCapabilitiesGrid() {
                 <h3 className="text-white font-semibold text-[22px] mb-4 pr-12">
                   {capability.title}
                 </h3>
-                 
-                <div className="mt-6 w-12 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+                 <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={2} 
+            className="w-full h-[10px]" 
+          />
                 <p className="text-white/80 text-[16px] leading-relaxed flex-1">
                   {capability.description}
                 </p>

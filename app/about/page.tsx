@@ -5,6 +5,8 @@ import ReadyToSolveCTA from "../components/Shared/ReadyToSolveCTA";
 import WhatToExpect from "../components/Shared/WhatToExpect";
 import BookStrategyCall from "../components/Shared/BookStrategyCall";
 import Footer from "../components/Shared/Footer";
+import TransformChallenge from "../components/About/TransformChallenge";
+import ReadyToSolveCTANew from "../components/About/ReadyToSolveCTANew";
 
 export default function AboutUs() {
   return (
@@ -13,8 +15,10 @@ export default function AboutUs() {
       <AboutUsCapabilitiesGrid />
       <AboutUsSection />
       <ReadyToSolveCTA />
+      <TransformChallenge />
+
+      <ReadyToSolveCTANew />
       <WhatToExpect />
-      <ReadyToSolveCTA />
       <BookStrategyCall />
       <Footer />
     </div>

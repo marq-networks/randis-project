@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ReadyToSolveCTA = () => {
+const ReadyToSolveCTANew = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -129,7 +129,7 @@ const ReadyToSolveCTA = () => {
   ];
 
   return (
-    <section className="  mx-auto py-10">
+    <section className="  ">
      
         <div className="">
           <Image 
@@ -147,21 +147,9 @@ const ReadyToSolveCTA = () => {
         ref={containerRef}
         className="relative  pt-20 mx-auto text-center"
       >
-        {/* Main heading */}
-        <h2 
-          ref={titleRef}
-          className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
-        >
-          Ready to Solve Your Problem Fast?
-        </h2>
+     
         
-        {/* Subtitle */}
-        <p 
-          ref={subtitleRef}
-          className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-16"
-        >
-          Stop compromising between speed and quality. We deliver best-in-class solutions for rapid execution without sacrificing enterprise-grade results. Our 90-day competitive advantage here.
-        </p>
+    
 
         {/* Steps Section */}
         <div ref={stepsRef} className="mb-16">
@@ -204,7 +192,7 @@ const ReadyToSolveCTA = () => {
     
       </div>
       
-     <div className="">
+     {/* <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
@@ -212,9 +200,9 @@ const ReadyToSolveCTA = () => {
             height={5} 
             className="w-full h-auto" 
           />
-        </div>
+        </div> */}
     </section>
   );
 };
 
-export default ReadyToSolveCTA;
+export default ReadyToSolveCTANew;

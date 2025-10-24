@@ -102,21 +102,10 @@ export default function AboutUsSection() {
             </h2>
             
             <div className="space-y-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
-              <p>
-                Rutledge & Associates is a leading technology consulting firm specializing in government and enterprise solutions. With over two decades of experience, we have established ourselves as trusted partners in digital transformation.
-              </p>
+              <p className="text-[18px]">
+When everyone else is still scheduling meetings about your challenge, we are already building the solution that makes your competition obsolete.              </p>
               
-              <p>
-                Our team of experts combines deep technical knowledge with an understanding of government operations, enabling us to deliver solutions that not only meet current needs but also anticipate future challenges.
-              </p>
-              
-              <p>
-                We pride ourselves on our commitment to excellence, innovation, and the highest standards of security and compliance. Every project we undertake is guided by our core principles of integrity, transparency, and measurable results.
-              </p>
-              
-              <p>
-                From cybersecurity and infrastructure modernization to enterprise software development, we provide comprehensive solutions that empower organizations to achieve their strategic objectives efficiently and securely.
-              </p>
+          <p>We do not just solve technology problems—we architect the unfair advantages that keep you three steps ahead of everyone still debating transformation strategies. Our approach transforms your biggest business challenges into competitive infrastructure in 90 days. While others compromise between speed and quality, we optimize for both—delivering enterprise-grade solutions that redefine how modern business systems should work.</p>
             </div>
 
             <div 
@@ -125,7 +114,7 @@ export default function AboutUsSection() {
             >
               <Link 
                 href="/contact"
-                className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 group"
+                className="inline-flex  rounded-4xl items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4  font-medium text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 group"
               >
                 Get to Know Strategy Call
                 <svg 
@@ -142,27 +131,17 @@ export default function AboutUsSection() {
 
           {/* Image Content */}
           <div ref={imageRef} className="relative">
-            <div className="relative rounded-2xl overflow-hidden">
+            <div className="relative rounded-2xl overflow-hidden h-full">
               <Image
                 src="/About Us/about us section/aboutus.png"
                 alt="About Rutledge & Associates"
                 width={600}
-                height={400}
-                className="w-full h-auto object-cover"
+                height={800}
+                className="w-full h-full object-cover"
               />
               
-              {/* Overlay with stats or highlight */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               
-              {/* Stats overlay */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white mb-2">20+</div>
-                    <div className="text-white/80 text-sm">Years of Excellence</div>
-                  </div>
-                </div>
-              </div>
+            
             </div>
           </div>
         </div>

@@ -17,9 +17,10 @@ export default function SiteHeader() {
         <nav className="hidden md:flex items-center gap-8 text-[14px] text-white/90 font-medium">
           <Link href="/" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.1s_both]">Home</Link>
           <Link href="/about" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.2s_both]">About Us</Link>
-          <Link href="/capabilities" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.3s_both]">Commercial Solutions</Link>
-          <Link href="/approach" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.4s_both]">Govt Solutions</Link>
-          <Link href="/expect" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.5s_both]">Projects</Link>
+          <Link href="/solutions" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.3s_both]">Solutions</Link>
+          <Link href="/capabilities" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.4s_both]">Commercial Solutions</Link>
+          <Link href="/approach" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.5s_both]">Govt Solutions</Link>
+          <Link href="/expect" className="hover:text-white transition-colors animate-[fadeInUp_0.6s_ease-out_0.6s_both]">Projects</Link>
         </nav>
         <Link href="/contact" className="flex items-center gap-2 bg-transparent border border-white/20 hover:border-white/40 text-white text-sm font-medium px-6 py-2.5 rounded-lg transition-all duration-200 hover:bg-white/5 hover:scale-105 animate-[fadeInUp_0.6s_ease-out_0.6s_both]">
           Contact Us
