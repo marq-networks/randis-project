@@ -50,12 +50,12 @@ export default function BookStrategyCall() {
       duration: 1.5, // Slower duration for viewport width distance
       ease: "power2.out"
     })
-    .to(rightSection, {
-      opacity: 1,
-      x: 0,
-      duration: 1.5, // Slower duration for viewport width distance
-      ease: "power2.out"
-    }, "-=1.2"); // Better overlap timing
+      .to(rightSection, {
+        opacity: 1,
+        x: 0,
+        duration: 1.5, // Slower duration for viewport width distance
+        ease: "power2.out"
+      }, "-=1.2"); // Better overlap timing
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -86,10 +86,10 @@ export default function BookStrategyCall() {
 
   return (
     <section className="relative py-20 overflow-hidden" ref={containerRef}>
-  
+
       <div className="max-w-[1200px] mx-auto px-6 relative z-10 overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-[1200px] mx-auto">
-          
+
           {/* Left side - Contact Information */}
           <div className="space-y-8" ref={leftSectionRef}>
             <div>
@@ -97,7 +97,7 @@ export default function BookStrategyCall() {
                 Book Your Strategy Call
               </h2>
               <p className="text-[18px] text-slate-300 leading-relaxed">
-                Ready to transform your business into a competitive advantage? 
+                Ready to transform your business into a competitive advantage?
                 Click below to schedule your free 30-day strategy call.
               </p>
             </div>
@@ -147,7 +147,7 @@ export default function BookStrategyCall() {
           </div>
 
           {/* Right side - Contact Form */}
-          <div 
+          <div
             className="p-8 transition-transform duration-300 hover:scale-105"
             style={{
               background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
@@ -156,7 +156,7 @@ export default function BookStrategyCall() {
             ref={rightSectionRef}
           >
             <h3 className="text-[22px] font-bold text-white mb-8 text-center">Contact Us</h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Fields */}
               <div className="grid grid-cols-2 gap-4">
@@ -257,15 +257,15 @@ export default function BookStrategyCall() {
           </div>
         </div>
       </div>
-        <div className="">
-          <Image 
-            src="/line.png" 
-            alt="Enterprise Trust" 
-            width={1200} 
-            height={5} 
-            className="w-full h-auto" 
-          />
-        </div>
+      <div className="">
+        <Image
+          src="/line.png"
+          alt="Enterprise Trust"
+          width={1200}
+          height={5}
+          className="w-full h-auto"
+        />
+      </div>
     </section>
   );
 }
