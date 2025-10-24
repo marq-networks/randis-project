@@ -21,7 +21,7 @@ export default function WhatToExpect() {
     },
   ];
   return (
-    <section className="py-20 px-6 bg-[#0a0e1a]">
+    <section className="pt-20 px-6 ">
       <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">

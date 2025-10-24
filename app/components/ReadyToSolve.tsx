@@ -55,20 +55,21 @@ export default function ReadyToSolve() {
   ];
 
   return (
-    <section className="PY-20 ">
-      <div className="relative max-w-[1200px] mx-auto">
-        <div className="mb-10">
+    <section className="">
+         <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
             width={1200} 
-            height={200} 
+            height={5} 
             className="w-full h-auto" 
           />
         </div>
+      <div className="relative max-w-[1200px] mx-auto pt-20">
+     
        
         <motion.div
-          className="max-w-[1200px] mx-auto px-6 py-20"
+          className=""
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -89,7 +90,7 @@ export default function ReadyToSolve() {
             </motion.p>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className=" grid grid-cols-1 md:grid-cols-3 gap-12">
             {items.map((it, index) => (
               <motion.div
                 key={it.num}
@@ -99,7 +100,28 @@ export default function ReadyToSolve() {
               >
                 {/* big background number */}
                 <div className=" inset-0 flex items-center justify-center select-none">
-                  <span className={`text-8xl md:text-9xl font-black ${it.color} opacity-30`}>{it.num}</span>
+                  <span 
+                    className="font-black select-none"
+                    style={{
+                    
+                      fontFamily: 'Cabinet Grotesk, sans-serif',
+                      fontStyle: 'normal',
+                      fontWeight: 900,
+                      fontSize: '160px',
+                      lineHeight: '198px',
+                      textTransform: 'capitalize',
+                      background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      flex: 'none',
+                      order: 0,
+                      flexGrow: 0,
+                      margin: '-20px 0px'
+                    }}
+                  >
+                    {it.num}
+                  </span>
                 </div>
 
                 {/* foreground content */}
@@ -112,12 +134,12 @@ export default function ReadyToSolve() {
           </div>
         </motion.div>
       </div>
-      <div className="mb-10">
+      <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
             width={1200} 
-            height={200} 
+            height={5} 
             className="w-full h-auto" 
           />
         </div>

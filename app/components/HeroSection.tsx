@@ -14,10 +14,10 @@ export default function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Set initial states
+      // Set initial states - starting from far left edge of screen
       gsap.set([titleRef.current, descriptionRef.current, buttonRef.current], {
         opacity: 0,
-        x: -100
+        x: "-100vw" // Start from the very left edge of the viewport
       });
 
       // Create timeline for staggered animations
@@ -26,21 +26,21 @@ export default function HeroSection() {
       tl.to(titleRef.current, {
         opacity: 1,
         x: 0,
-        duration: 0.6,
+        duration: 0.8, // Slightly longer duration for the longer distance
         ease: "power2.out"
       })
       .to(descriptionRef.current, {
         opacity: 1,
         x: 0,
-        duration: 0.6,
+        duration: 0.8,
         ease: "power2.out"
-      }, "-=0.4")
+      }, "-=0.6") // Adjusted timing for better stagger effect
       .to(buttonRef.current, {
         opacity: 1,
         x: 0,
-        duration: 0.6,
+        duration: 0.8,
         ease: "power2.out"
-      }, "-=0.4");
+      }, "-=0.6");
 
     }, containerRef);
 

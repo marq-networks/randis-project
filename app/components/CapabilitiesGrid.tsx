@@ -20,30 +20,33 @@ export default function CapabilitiesGrid() {
 
     if (!container || !title || !subtitle || !cards) return;
 
-    // Set initial states - title and subtitle from top
+    // Set initial states - title and subtitle from very top of screen
     gsap.set([title, subtitle], {
       opacity: 0,
-      y: -30
+      y: "-100vh" // Start from top of viewport
     });
 
     // Set initial states for cards from different directions
+    // Left card - from far left edge of screen
     gsap.set(cards.children[0], {
       opacity: 0,
-      x: -60,
+      x: "-100vw", // Start from far left edge of viewport
       y: 0,
       force3D: true
     });
 
+    // Center card - from bottom
     gsap.set(cards.children[1], {
       opacity: 0,
       x: 0,
-      y: 60,
+      y: "100vh", // Start from bottom of viewport
       force3D: true
     });
 
+    // Right card - from far right edge of screen
     gsap.set(cards.children[2], {
       opacity: 0,
-      x: 60,
+      x: "100vw", // Start from far right edge of viewport
       y: 0,
       force3D: true
     });
@@ -57,43 +60,43 @@ export default function CapabilitiesGrid() {
       }
     });
 
-    // Animate elements with optimized timing
+    // Animate elements with slower, more elegant timing
     tl.to(title, {
       opacity: 1,
       y: 0,
-      duration: 0.6,
+      duration: 1.2, // Slower duration for more elegant animation
       ease: "power2.out"
     })
     .to(subtitle, {
       opacity: 1,
       y: 0,
-      duration: 0.6,
+      duration: 1.2,
       ease: "power2.out"
-    }, "-=0.3")
+    }, "-=0.8")
     .to(cards.children[0], {
       opacity: 1,
       x: 0,
       y: 0,
-      duration: 0.6,
+      duration: 1.5, // Slower duration for viewport width distance
       ease: "power2.out",
       force3D: true
-    }, "-=0.2")
+    }, "-=0.6")
     .to(cards.children[1], {
       opacity: 1,
       x: 0,
       y: 0,
-      duration: 0.6,
+      duration: 1.5, // Slower duration for viewport height distance
       ease: "power2.out",
       force3D: true
-    }, "-=0.5")
+    }, "-=1.2")
     .to(cards.children[2], {
       opacity: 1,
       x: 0,
       y: 0,
-      duration: 0.6,
+      duration: 1.5, // Slower duration for viewport width distance
       ease: "power2.out",
       force3D: true
-    }, "-=0.5");
+    }, "-=1.2");
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -123,10 +126,10 @@ export default function CapabilitiesGrid() {
   ];
 
   return (
-    <section className="border-t border-white/10">
+    <section className="border-t border-white/10 overflow-hidden">
       <div 
         ref={containerRef}
-        className="max-w-[1200px] mx-auto px-6 py-16"
+        className="max-w-[1200px] mx-auto px-6 py-16 overflow-hidden"
       >
         <div className="text-center mb-12">
           <h2 
@@ -137,7 +140,7 @@ export default function CapabilitiesGrid() {
           </h2>
           <p 
             ref={subtitleRef}
-            className="text-white/70 text-sm"
+            className="text-white/70 text-[18px]"
           >
             Transforming Business Visions Into Production-Grade Systems.
           </p>

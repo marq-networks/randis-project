@@ -37,16 +37,16 @@ export default function ChallengeApproach() {
 
     if (!container || !challenge || !approach) return;
 
-    // Set initial states
+    // Set initial states - challenge from far left, approach from far right
     gsap.set(challenge, {
       opacity: 0,
-      x: -60,
+      x: "-100vw", // Start from far left edge of viewport
       force3D: true
     });
 
     gsap.set(approach, {
       opacity: 0,
-      x: 60,
+      x: "100vw", // Start from far right edge of viewport
       force3D: true
     });
 
@@ -59,19 +59,19 @@ export default function ChallengeApproach() {
       }
     });
 
-    // Animate elements
+    // Animate elements with slower, more elegant timing
     tl.to(challenge, {
       opacity: 1,
       x: 0,
-      duration: 0.8,
+      duration: 1.5, // Slower duration for viewport width distance
       ease: "power2.out"
     })
     .to(approach, {
       opacity: 1,
       x: 0,
-      duration: 0.8,
+      duration: 1.5, // Slower duration for viewport width distance
       ease: "power2.out"
-    }, "-=0.6");
+    }, "-=1.2"); // Better overlap timing
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -81,16 +81,16 @@ export default function ChallengeApproach() {
   return (
     <section 
       ref={containerRef}
-      className="py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden "
+      className="px-4 md:px-8 lg:px-16 relative overflow-hidden"
     >
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1200px] mx-auto px-6 overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* The Challenge */}
           <div ref={challengeRef} className="space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-[42px] font-bold text-white mb-4">
               The Challenge
             </h2>
-            <p className="text-gray-300 text-base leading-relaxed">
+            <p className="text-gray-300 text-[18px] leading-relaxed">
               Many Agencies Juggle Outdated Systems, Silos Of Inconsistent
               Data, And Labor-Intensive Processes. That Slows Decision-Making,
               Adds Risk, And Limits Transparency.
@@ -111,10 +111,10 @@ export default function ChallengeApproach() {
           {/* Our Approach */}
           <div 
             ref={approachRef} 
-            className="space-y-6 p-6 rounded-lg"
+            className="space-y-6  rounded-lg"
           
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">
+            <h2 className="text-2xl md:text-[42px] font-bold text-white mb-8">
               Our Approach
             </h2>
 

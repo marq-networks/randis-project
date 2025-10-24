@@ -165,10 +165,29 @@ export default function CompanionModel() {
                 key={step.number} 
                 className="text-center group relative"
               >
-                <div className="relative mb-6">
-                  <span className="text-8xl md:text-9xl font-black text-blue-900/20 select-none leading-none block">{step.number}</span>
+                <div className="relative mb-6 z-0">
+                  <span 
+                    className="font-black select-none leading-none block"
+                    style={{
+                      
+                      fontFamily: 'Cabinet Grotesk, sans-serif',
+                      fontStyle: 'normal',
+                      fontWeight: 900,
+                      fontSize: '160px',
+                      lineHeight: '198px',
+                      textTransform: 'capitalize',
+                      background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                     zIndex:1,
+                      margin: ' 0px'
+                    }}
+                  >
+                    {step.number}
+                  </span>
                 </div>
-                <div className="text-cente -mt-16">
+                <div className="text-cente -mt-20 relative z-20">
                   <div className="font-bold text-[22px] text-white mb-2">{step.title}</div>
                   <div className="text-white/70 text-[18px] leading-relaxed">{step.description}</div>
                 </div>

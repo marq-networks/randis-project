@@ -24,8 +24,8 @@ export default function CompanyProfileAgain() {
 
   return (
     <section className="">
-      <div className="max-w-[1200px] mx-auto px-6 ">
-        {/* <div className="mb-10">
+      <div className="max-w-[1200px] mx-auto px-6 md:pt-20 ">
+        {/* <div className="">
           <Image
             src="/line.png"
             alt="Enterprise Trust"

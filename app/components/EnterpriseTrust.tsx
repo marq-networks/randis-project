@@ -58,14 +58,14 @@ export default function EnterpriseTrust() {
   ];
 
   return (
-    <section className=" px-6 bg-[#0a0e1a]">
-        
-      <div className="max-w-[1200px] mx-auto">
-     
-     
-      
+    <section className="pt-20  ">
+
+      <div className="max-w-[1200px]  mx-auto">
+
+
+
         {/* Main Container - Matching the image design */}
-        <motion.div 
+        <motion.div
           className="relative rounded-2xl border border-blue-500/30 p-8 lg:p-12 overflow-hidden backdrop-blur-sm"
           style={{
             background: "linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)",
@@ -78,43 +78,43 @@ export default function EnterpriseTrust() {
         >
           {/* Background glow effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl"></div>
-          
+
           <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left Content */}
             <div className="space-y-6">
-              <motion.h2 
+              <motion.h2
                 className="text-3xl lg:text-4xl font-bold text-white leading-tight"
                 variants={slideInLeft}
               >
                 Enterprise Trust from{" "}
                 <span className="text-blue-400">Day One</span>
               </motion.h2>
-              
+
               <div className="space-y-4">
-                <motion.p 
+                <motion.p
                   className="text-slate-300 leading-relaxed text-base"
                   variants={slideInLeft}
                 >
-                  Your prototype is not just a demo—it is the foundation of your 
-                  production system. By transitioning to Microsoft Azure for 
-                  deployment, we ensure your rapid prototype can seamlessly 
-                  scale to serve millions meeting the strictest enterprise 
+                  Your prototype is not just a demo—it is the foundation of your
+                  production system. By transitioning to Microsoft Azure for
+                  deployment, we ensure your rapid prototype can seamlessly
+                  scale to serve millions meeting the strictest enterprise
                   requirements.
                 </motion.p>
-                
-                <motion.p 
+
+                <motion.p
                   className="text-slate-400 leading-relaxed text-base"
                   variants={slideInLeft}
                 >
-                  Get prototypes get thrown away when it is time to build the real 
-                  system. Our Azure transition approach means your working 
-                  prototype becomes your production platform—with enterprise 
+                  Get prototypes get thrown away when it is time to build the real
+                  system. Our Azure transition approach means your working
+                  prototype becomes your production platform—with enterprise
                   security, compliance, and scaling built in when you deploy.
                 </motion.p>
               </div>
-              
+
               <div className="pt-4">
-                <motion.button 
+                <motion.button
                   className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 group text-base hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30"
                   variants={slideInLeft}
                   whileHover={{ scale: 1.05 }}
@@ -127,12 +127,12 @@ export default function EnterpriseTrust() {
                 </motion.button>
               </div>
             </div>
-            
+
             {/* Right Features List - Timeline Design */}
             <div className="space-y-3">
               {features.map((feature, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="flex gap-4 group"
                   variants={slideInRight}
                 >
@@ -169,17 +169,18 @@ export default function EnterpriseTrust() {
             </div>
           </div>
         </motion.div>
-        
+
         {/* Bottom Image */}
-        <div className="mt-8">
-          <Image 
-            src="/line.png" 
-            alt="Enterprise Trust" 
-            width={1200} 
-            height={200} 
-            className="w-full h-auto" 
-          />
-        </div>
+
+      </div>
+      <div className="">
+        <Image
+          src="/line.png"
+          alt="Enterprise Trust"
+          width={1200}
+          height={5}
+          className="w-full h-auto"
+        />
       </div>
     </section>
   );

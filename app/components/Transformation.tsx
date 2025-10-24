@@ -89,7 +89,7 @@ export default function Transfromation() {
   return (
     <div className="relative">
    
-   <div className="mb-10">
+   <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
@@ -102,7 +102,7 @@ export default function Transfromation() {
         <div className="relative max-w-[1200px] mx-auto">
           <div 
             ref={containerRef}
-            className="px-6 py-20 text-center relative z-10"
+            className="px-6 pt-10 text-center relative z-10"
           >
             <h2 
               ref={titleRef}
@@ -143,7 +143,7 @@ export default function Transfromation() {
       </section>
 
       {/* Enhanced bottom glow effect - positioned outside */}
-       <div className="mb-10">
+       <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 

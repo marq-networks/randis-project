@@ -92,25 +92,23 @@ const ReadyToSolveCTA = () => {
     };
   }, []);
   return (
-    <section className=" max-w-[1200px] mx-auto relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="  mx-auto py-10">
      
-        <div className="mb-10">
+        <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
             width={1200} 
-            height={200} 
+            height={5} 
             className="w-full h-auto" 
           />
         </div>
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-700/20 to-transparent"></div>
-      </div>
+     
+    
       
       <div 
         ref={containerRef}
-        className="relative max-w-[1200px] mx-auto text-center"
+        className="relative  pt-20 mx-auto text-center"
       >
         {/* Main heading */}
         <h2 
@@ -123,7 +121,7 @@ const ReadyToSolveCTA = () => {
         {/* Subtitle */}
         <p 
           ref={subtitleRef}
-          className="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-slate-300  max-w-3xl mx-auto leading-relaxed"
         >
           Book your strategy session and discover how we can transform your business challenges into competitive advantage.
         </p>
@@ -131,7 +129,7 @@ const ReadyToSolveCTA = () => {
         {/* CTA Buttons */}
         <div 
           ref={buttonsRef}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex mt-10 flex-col sm:flex-row gap-4 justify-center items-center"
         >
           {/* Primary CTA Button */}
           <button 
@@ -167,12 +165,12 @@ const ReadyToSolveCTA = () => {
         </div>
       </div>
       
-     <div className="mb-10">
+     <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
             width={1200} 
-            height={200} 
+            height={5} 
             className="w-full h-auto" 
           />
         </div>

@@ -154,18 +154,18 @@ export default function SuccessStories() {
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
-    <section className="py-20 ">
-        <div className="mb-10">
+    <section className=" ">
+        <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
             width={1200} 
-            height={200} 
+            height={5} 
             className="w-full h-auto" 
           />
         </div>
       <motion.div 
-        className="max-w-7xl mx-auto px-6"
+        className="max-w-[1200px] pt-20 mx-auto"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

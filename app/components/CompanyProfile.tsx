@@ -6,7 +6,7 @@ export default function CompanyProfile() {
     <section className="bg-white text-gray-900 py-12 px-4">
 
       <div className="max-w-[1200px] mx-auto">
-          <div className="mb-10">
+          <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 

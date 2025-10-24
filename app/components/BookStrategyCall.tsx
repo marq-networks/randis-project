@@ -256,12 +256,12 @@ export default function BookStrategyCall() {
           </motion.div>
         </div>
       </motion.div>
-        <div className="mb-10">
+        <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
             width={1200} 
-            height={200} 
+            height={5} 
             className="w-full h-auto" 
           />
         </div>

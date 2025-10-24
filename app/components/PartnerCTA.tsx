@@ -86,31 +86,31 @@ export default function PartnerCTA() {
   return (
     <div className="relative">
       {/* Enhanced top glow effect - positioned outside */}
-        <div className="mb-10">
+        <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
             width={1200} 
-            height={200} 
+            height={5} 
             className="w-full h-auto" 
           />
         </div>
 
       <section className="relative border-white/10 z-10">
-        <div className="relative max-w-[1200px] mx-auto">
+        <div className="relative max-w-[750px] mx-auto">
         <div 
           ref={containerRef}
-          className=" px-6 py-16 text-center relative z-10"
+          className=" px-6 pt-20 text-center relative z-10"
         >
           <h2 
             ref={titleRef}
-            className="text-2xl md:text-3xl font-bold"
+            className="text-2xl md:text-[42px] font-bold"
           >
             Ready to Partner with a Proven Leader?
           </h2>
           <p 
             ref={descriptionRef}
-            className="mt-3 text-[13px] text-white/70"
+            className="mt-3 text-[18px] text-white/70"
           >
             Download Our Capability Statement Today And Discover How Excelcus Can
             Support Your Mission With Expertise And Innovation!
@@ -142,12 +142,12 @@ export default function PartnerCTA() {
       </section>
 
       {/* Enhanced bottom glow effect - positioned outside */}
-        <div className="mb-10">
+        <div className="">
           <Image 
             src="/line.png" 
             alt="Enterprise Trust" 
             width={1200} 
-            height={200} 
+            height={5} 
             className="w-full h-auto" 
           />
         </div>
