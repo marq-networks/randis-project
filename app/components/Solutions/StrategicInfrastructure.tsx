@@ -103,16 +103,8 @@ export default function StrategicInfrastructure() {
   };
 
   return (
-    <section className="pt-20 bg-[#0a0e1a]" ref={containerRef}>
-      <div className="">
-        <Image 
-          src="/line.png" 
-          alt="Enterprise Trust" 
-          width={1200} 
-          height={5} 
-          className="w-full h-auto" 
-        />
-      </div>
+    <section className=" bg-[#0a0e1a]" ref={containerRef}>
+     
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         
@@ -181,7 +173,15 @@ export default function StrategicInfrastructure() {
         
         </div>
       </div>
-    
+     <div className="">
+          <Image 
+            src="/line.png" 
+            alt="Enterprise Trust" 
+            width={1200} 
+            height={5} 
+            className="w-full h-auto" 
+          />
+        </div>
     </section>
   );
 }

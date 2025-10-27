@@ -113,16 +113,19 @@ const ReadyToSolveCTA = () => {
   const steps = [
     {
       number: "01",
+      image: "/01.png",
       title: "Week 1-2",
       description: "Strategic Discovery & Architecture Alignment"
     },
     {
       number: "02",
+      image: "/02.png",
       title: "Week 3-10", 
       description: "Rapid Development & Enterprise Integration"
     },
     {
       number: "03",
+      image: "/03.png",
       title: "Week 11-12",
       description: "Production Deployment & Competitive Advantage"
     }
@@ -171,26 +174,14 @@ const ReadyToSolveCTA = () => {
                 key={step.number} 
                 className="text-center group relative"
               >
-                <div className="relative mb-6 z-0">
-                  <span 
-                    className="font-black select-none leading-none block"
-                    style={{
-                      fontFamily: 'Cabinet Grotesk, sans-serif',
-                      fontStyle: 'normal',
-                      fontWeight: 900,
-                      fontSize: '120px',
-                      lineHeight: '140px',
-                      textTransform: 'capitalize',
-                      background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      zIndex: 1,
-                      margin: '0px'
-                    }}
-                  >
-                    {step.number}
-                  </span>
+                <div className="relative mb-6 z-0 flex justify-center">
+                  <Image
+                    src={step.image}
+                    alt={`Step ${step.number}`}
+                    width={120}
+                    height={140}
+                    className="object-contain"
+                  />
                 </div>
                 <div className="text-center -mt-16 relative z-20">
                   <div className="font-bold text-[20px] text-white mb-2">{step.title}</div>

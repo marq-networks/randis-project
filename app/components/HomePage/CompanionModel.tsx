@@ -113,16 +113,19 @@ export default function CompanionModel() {
   const steps = [
     {
       number: "01",
+      image: "/01.png",
       title: "Whiteboard",
       description: "Align Vision And Core Concepts."
     },
     {
       number: "02",
+      image: "/02.png",
       title: "Prototype",
       description: "Test And Validate Interactively."
     },
     {
       number: "03",
+      image: "/03.png",
       title: "Azure-Powered Platform",
       description: "Deploy Scalable Enterprise Solutions."
     }
@@ -201,27 +204,14 @@ export default function CompanionModel() {
                 key={step.number} 
                 className="text-center group relative"
               >
-                <div className="relative mb-6 z-0">
-                  <span 
-                    className="font-black select-none leading-none block"
-                    style={{
-                      
-                      fontFamily: 'Cabinet Grotesk, sans-serif',
-                      fontStyle: 'normal',
-                      fontWeight: 900,
-                      fontSize: '160px',
-                      lineHeight: '198px',
-                      textTransform: 'capitalize',
-                      background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                     zIndex:1,
-                      margin: ' 0px'
-                    }}
-                  >
-                    {step.number}
-                  </span>
+                <div className="relative mb-6 z-0 flex justify-center">
+                  <Image
+                    src={step.image}
+                    alt={`Step ${step.number}`}
+                    width={160}
+                    height={198}
+                    className="object-contain"
+                  />
                 </div>
                 <div className="text-cente -mt-20 relative z-20">
                   <div className="font-bold text-[22px] text-white mb-2">{step.title}</div>

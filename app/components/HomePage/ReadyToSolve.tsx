@@ -36,18 +36,21 @@ export default function ReadyToSolve() {
   const items = [
     {
       num: "01",
+      image: "/01.png",
       title: "Free 90-Day Strategy Call",
       subtitle: "No Obligations, Just Solutions",
       color: "text-blue-400/20",
     },
     {
       num: "02",
+      image: "/02.png",
       title: "24-Hour Response",
       subtitle: "Fast Scheduling, Faster Solutions",
       color: "text-blue-400/20",
     },
     {
       num: "03",
+      image: "/03.png",
       title: "Rapid Implementation",
       subtitle: "From Call To Solution In 90 Days",
       color: "text-blue-400/20",
@@ -99,29 +102,14 @@ export default function ReadyToSolve() {
                 whileHover={{ scale: 1.02 }}
               >
                 {/* big background number */}
-                <div className=" inset-0 flex items-center justify-center select-none">
-                  <span 
-                    className="font-black select-none"
-                    style={{
-                    
-                      fontFamily: 'Cabinet Grotesk, sans-serif',
-                      fontStyle: 'normal',
-                      fontWeight: 900,
-                      fontSize: '160px',
-                      lineHeight: '198px',
-                      textTransform: 'capitalize',
-                      background: 'linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      flex: 'none',
-                      order: 0,
-                      flexGrow: 0,
-                      margin: '-20px 0px'
-                    }}
-                  >
-                    {it.num}
-                  </span>
+                <div className="inset-0 flex items-center justify-center select-none">
+                  <Image
+                    src={it.image}
+                    alt={`Step ${it.num}`}
+                    width={160}
+                    height={198}
+                    className="object-contain"
+                  />
                 </div>
 
                 {/* foreground content */}
