@@ -79,7 +79,7 @@ export default function HeroSection() {
       <div className="absolute bottom-0 left-0 right-0 h-32 -z-10 bg-gradient-to-t from-black/60 to-transparent" />
       <div className="absolute top-6 left-6 right-6 h-px bg-white/10" />
 
-      <div className="max-w-[1200px] min-h-[72vh] md:min-h-[80vh] mx-auto px-6 flex items-center">
+      <div className="max-w-[1200px] min-h-[72vh] md:min-h-[80vh] mx-auto px-[10px] md:px-6 flex items-center">
         <div 
           ref={containerRef}
           className="max-w-[680px]"

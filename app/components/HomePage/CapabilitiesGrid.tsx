@@ -129,7 +129,7 @@ export default function CapabilitiesGrid() {
     <section className="border-t border-white/10 overflow-hidden">
       <div 
         ref={containerRef}
-        className="max-w-[1200px] mx-auto px-6 py-16 overflow-hidden"
+        className="max-w-[1200px] mx-auto px-[10px] md:px-6 py-16 overflow-hidden"
       >
         <div className="text-center mb-12">
           <h2 

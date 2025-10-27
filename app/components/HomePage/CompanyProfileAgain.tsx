@@ -80,7 +80,7 @@ export default function CompanyProfileAgain() {
 
   return (
     <section className="overflow-hidden" ref={containerRef}>
-      <div className="max-w-[1200px] mx-auto px-6 md:pt-20 overflow-hidden">
+  <div className="max-w-[1200px] mx-auto px-[10px] md:px-6 md:pt-20 overflow-hidden">
         {/* <div className="">
           <Image
             src="/line.png"

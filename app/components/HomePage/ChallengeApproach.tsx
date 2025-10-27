@@ -83,7 +83,7 @@ export default function ChallengeApproach() {
       ref={containerRef}
       className="px-4 md:px-8 lg:px-16 relative overflow-hidden"
     >
-      <div className="max-w-[1200px] mx-auto px-6 overflow-hidden">
+  <div className="max-w-[1200px] mx-auto px-[10px] md:px-6 overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* The Challenge */}
           <div ref={challengeRef} className="space-y-6">

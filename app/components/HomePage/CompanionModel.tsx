@@ -134,7 +134,7 @@ export default function CompanionModel() {
   return (
     <section className="py-20 bg-[#0a0e1a] overflow-hidden" ref={containerRef}>
 
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-[10px] sm:px-6 lg:px-8 overflow-hidden">
        
         {/* Header */}
         <div className="text-center mb-16" ref={titleRef}>

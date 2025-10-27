@@ -87,7 +87,7 @@ const Testimonials = () => {
   );
 
   return (
-    <section className="max-w-[1200px] mx-auto relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="max-w-[1200px] mx-auto relative py-20 px-[10px] sm:px-6 lg:px-8 overflow-hidden">
    
       
       <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
