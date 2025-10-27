@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Randis Analytics — Modernizing Compliance & Government Analytics",
+  title: "Rutledge & Associates — Modernizing Compliance & Government Analytics",
   description: "Privacy-first compliance and analytics solutions for public sector organizations.",
 };
 
