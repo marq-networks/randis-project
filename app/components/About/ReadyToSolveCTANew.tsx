@@ -163,7 +163,7 @@ const ReadyToSolveCTANew = () => {
                 className="text-center group relative"
               >
                 <div className="relative mb-6 z-0 flex justify-center">
-                  <div className="relative w-full h-full min-h-[140px] transform scale-[0.7]">
+                  <div className="relative w-full h-full min-h-[140px] transform scale-[0.8] md:scale-100">
                     <Image
                       src={step.image}
                       alt={`Step ${step.number}`}

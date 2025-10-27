@@ -140,7 +140,7 @@ const getIcon = (iconType: string) => {
 export default function SuccessStories() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const storiesPerPage = 2;
+  const [storiesPerPage, setStoriesPerPage] = useState(2);
   const totalPages = Math.ceil(STORIES.length / storiesPerPage);
 
   const nextStory = () => {
@@ -161,6 +161,18 @@ export default function SuccessStories() {
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, totalPages]);
+
+  // Set stories per page responsively (1 on mobile, 2 on desktop)
+  useEffect(() => {
+    const updateStoriesPerPage = () => {
+      const perPage = window.innerWidth < 768 ? 1 : 2;
+      setStoriesPerPage(perPage);
+      setCurrentIndex((prev) => Math.min(prev, Math.ceil(STORIES.length / perPage) - 1));
+    };
+    updateStoriesPerPage();
+    window.addEventListener("resize", updateStoriesPerPage);
+    return () => window.removeEventListener("resize", updateStoriesPerPage);
+  }, []);
 
   // Pause auto-play on hover
   const handleMouseEnter = () => setIsAutoPlaying(false);
@@ -188,7 +200,7 @@ export default function SuccessStories() {
         {/* Header */}
         <div className="flex items-start justify-between mb-16">
           <motion.div variants={cardVariants}>
-            <h2 className="text-[42px] md:text-[48px] font-bold text-white leading-tight">
+            <h2 className="text-[32px] md:text-[48px] font-bold text-white leading-tight">
               <span className="text-[#0075FF]">Success</span> Stories
             </h2>
           </motion.div>
@@ -202,12 +214,12 @@ export default function SuccessStories() {
 
         {/* Stories Grid with Navigation */}
         <div className="relative">
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows (hidden on mobile) */}
           <button
             onClick={prevStory}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-105 -translate-x-16"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm items-center justify-center transition-all duration-300 hover:scale-105 -translate-x-16"
             aria-label="Previous story"
           >
             <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -218,7 +230,7 @@ export default function SuccessStories() {
             onClick={nextStory}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-[#0075FF] hover:bg-blue-500 shadow-lg shadow-blue-600/30 flex items-center justify-center transition-all duration-300 hover:scale-105 translate-x-16"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-[#0075FF] hover:bg-blue-500 shadow-lg shadow-blue-600/30 items-center justify-center transition-all duration-300 hover:scale-105 translate-x-16"
             aria-label="Next story"
           >
             <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -239,7 +251,7 @@ export default function SuccessStories() {
                {STORIES.map((story) => (
                  <motion.div
                    key={story.id}
-                   className="w-1/2 flex-shrink-0 px-4"
+                   className="w-full md:w-1/2 flex-shrink-0 px-4"
                    variants={cardVariants}
                    initial="hidden"
                    animate="visible"

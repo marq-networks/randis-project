@@ -80,7 +80,7 @@ export default function ReadyToSolve() {
         >
           <div className="text-center">
             <motion.h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
+              className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight"
               variants={slideInLeft}
             >
               Ready to Solve Your Problem Fast?
@@ -103,7 +103,7 @@ export default function ReadyToSolve() {
               >
                 {/* big background number */}
                 <div className="inset-0 flex items-center justify-center select-none">
-                  <div className="relative w-full h-full min-h-[198px] transform scale-[0.7]">
+                  <div className="relative w-full h-full min-h-[198px] transform scale-[0.8] md:scale-100">
                     <Image
                       src={it.image}
                       alt={`Step ${it.num}`}

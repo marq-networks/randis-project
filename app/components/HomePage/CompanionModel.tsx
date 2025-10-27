@@ -138,7 +138,7 @@ export default function CompanionModel() {
        
         {/* Header */}
         <div className="text-center mb-16" ref={titleRef}>
-          <h2 className="text-[42px] md:text-[48px] font-bold text-white mb-6">
+          <h2 className="text-[32px] md:text-[48px] font-bold text-white mb-6">
             Our Companion Model
           </h2>
         </div>
@@ -205,7 +205,7 @@ export default function CompanionModel() {
                 className="text-center group relative"
               >
                 <div className="relative mb-6 z-0 flex justify-center">
-                  <div className="relative w-full h-full min-h-[198px] transform scale-[0.7]">
+                  <div className="relative w-full h-full min-h-[198px] transform scale-[0.8] md:scale-100">
                     <Image
                       src={step.image}
                       alt={`Step ${step.number}`}

@@ -86,7 +86,7 @@ export default function HeroSection() {
         >
           <h1 
             ref={titleRef}
-            className="section-title text-white text-[42px] md:text-[48px] lg:text-[54px] font-bold leading-tight tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+            className="section-title text-white text-[32px] md:text-[48px] lg:text-[54px] font-bold leading-tight tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
           >
             Modernizing Compliance & Analytics for Government
           </h1>

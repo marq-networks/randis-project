@@ -153,7 +153,7 @@ const ReadyToSolveCTA = () => {
         {/* Main heading */}
         <h2 
           ref={titleRef}
-          className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+          className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
         >
           Ready to Solve Your Problem Fast?
         </h2>
@@ -175,7 +175,7 @@ const ReadyToSolveCTA = () => {
                 className="text-center group relative"
               >
                 <div className="relative mb-6 z-0 flex justify-center">
-                  <div className="relative w-full h-full min-h-[140px] transform scale-[0.7]">
+                  <div className="relative w-full h-full min-h-[140px] transform scale-[0.8] md:scale-100">
                     <Image
                       src={step.image}
                       alt={`Step ${step.number}`}
