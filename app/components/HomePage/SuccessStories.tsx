@@ -236,7 +236,7 @@ export default function SuccessStories() {
                className="flex transition-transform duration-500 ease-in-out"
                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
              >
-               {STORIES.map((story, _) => (
+               {STORIES.map((story) => (
                  <motion.div
                    key={story.id}
                    className="w-1/2 flex-shrink-0 px-4"
