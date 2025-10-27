@@ -205,13 +205,14 @@ export default function CompanionModel() {
                 className="text-center group relative"
               >
                 <div className="relative mb-6 z-0 flex justify-center">
-                  <Image
-                    src={step.image}
-                    alt={`Step ${step.number}`}
-                    width={160}
-                    height={198}
-                    className="object-contain"
-                  />
+                  <div className="relative w-full h-full min-h-[198px] transform scale-[0.7]">
+                    <Image
+                      src={step.image}
+                      alt={`Step ${step.number}`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
                 <div className="text-cente -mt-20 relative z-20">
                   <div className="font-bold text-[22px] text-white mb-2">{step.title}</div>

@@ -103,13 +103,14 @@ export default function ReadyToSolve() {
               >
                 {/* big background number */}
                 <div className="inset-0 flex items-center justify-center select-none">
-                  <Image
-                    src={it.image}
-                    alt={`Step ${it.num}`}
-                    width={160}
-                    height={198}
-                    className="object-contain"
-                  />
+                  <div className="relative w-full h-full min-h-[198px] transform scale-[0.7]">
+                    <Image
+                      src={it.image}
+                      alt={`Step ${it.num}`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
 
                 {/* foreground content */}
