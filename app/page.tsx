@@ -1,7 +1,6 @@
 import HeroSection from "./components/HomePage/HeroSection";
 import CapabilitiesGrid from "./components/HomePage/CapabilitiesGrid";
 import ChallengeApproach from "./components/HomePage/ChallengeApproach";
-import CompanyProfile from "./components/HomePage/CompanyProfile";
 import WhatToExpect from "./components/Shared/WhatToExpect";
 import PartnerCTA from "./components/HomePage/PartnerCTA";
 import CompanionModel from "./components/HomePage/CompanionModel";

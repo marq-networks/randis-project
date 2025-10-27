@@ -157,7 +157,7 @@ const ReadyToSolveCTANew = () => {
         {/* Steps Section */}
         <div ref={stepsRef} className="mb-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {steps.map((step, index) => (
+            {steps.map((step, _) => (
               <div 
                 key={step.number} 
                 className="text-center group relative"

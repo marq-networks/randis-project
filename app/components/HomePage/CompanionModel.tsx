@@ -199,7 +199,7 @@ export default function CompanionModel() {
         {/* Steps */}
         <div className="" ref={stepsRef}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {steps.map((step, index) => (
+            {steps.map((step, _) => (
               <div 
                 key={step.number} 
                 className="text-center group relative"

@@ -11,7 +11,6 @@ export default function AboutUsHeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
-  const arrowRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -54,21 +53,7 @@ export default function AboutUsHeroSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleArrowHover = () => {
-    gsap.to(arrowRef.current, {
-      x: 4,
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
 
-  const handleArrowLeave = () => {
-    gsap.to(arrowRef.current, {
-      x: 0,
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
 
   return (
     <section className="relative overflow-hidden h-[70vh] mx-auto">
