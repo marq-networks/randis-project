@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 /* eslint-disable @next/next/no-html-link-for-pages */
 export default function Footer() {
   return (
     <footer className="">
-      <div className="max-w-[1200px] mx-auto px-6 py-12">
+      <div className="max-w-[1200px] mx-auto px-6 pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
           {/* Company Branding */}
@@ -122,14 +124,24 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
+</div>
         {/* Copyright */}
-        <div className="border-t border-slate-800 mt-12 pt-8 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
+
+          <div className="">
+          <Image
+            src="/line.png"
+            alt="Enterprise Trust"
+            width={1200}
+            height={2}
+            className="w-full h-full"
+          />
+        </div>
+        <div className=" mt-12 py-8 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
           <p className="text-slate-500 text-sm text-center">
             © 2024 Rutledge & Associates. All rights reserved.
           </p>
         </div>
-      </div>
+    
     </footer>
   );
 }

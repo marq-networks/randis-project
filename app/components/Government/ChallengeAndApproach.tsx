@@ -143,10 +143,27 @@ export default function ChallengeAndApproach() {
 
   return (
     <div ref={containerRef}>
-      {/* The Challenge Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-800/30 to-slate-900/50 border-t border-white/10">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+      <div className="">
+          <Image
+            src="/line.png"
+            alt="Enterprise Trust"
+            width={1200}
+            height={200}
+            className="w-full h-auto"
+          />
+        </div>
+      {/* Combined Card Container using provided CSS */}
+      <section className="pt-20">
+        <div className="mx-auto max-w-[1170px] px-6">
+          <div
+            className="rounded-[20.0304px] border border-white/10 overflow-hidden"
+            style={{
+              background:
+                "linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)",
+            }}
+          >
+            {/* First Row: The Challenge */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch p-6 lg:p-8">
             {/* Left Content */}
             <div className="space-y-8">
               <h2 
@@ -216,13 +233,12 @@ export default function ChallengeAndApproach() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+          
 
-      {/* Our Approach Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-800/30 to-slate-900/50 border-t border-white/10">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+            {/* Divider spacing between rows */}
+
+            {/* Second Row: Our Approach */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch p-6 lg:p-8">
             {/* Left Image */}
             <div 
               ref={approachImageRef}
@@ -291,8 +307,11 @@ export default function ChallengeAndApproach() {
                 ))}
               </div>
             </div>
+            </div>
+              </div>
           </div>
-        </div>
+       
+      
       </section>
     </div>
   );
