@@ -103,7 +103,7 @@ export default function ReadyToSolve() {
               >
                 {/* big background number */}
                 <div className="inset-0 flex items-center justify-center select-none">
-                  <div className="relative w-full h-full min-h-[198px] transform scale-[0.8] md:scale-100">
+                  <div className="relative w-full h-full min-h-[198px] transform scale-[0.6] md:scale-80]">
                     <Image
                       src={it.image}
                       alt={`Step ${it.num}`}
@@ -114,7 +114,7 @@ export default function ReadyToSolve() {
                 </div>
 
                 {/* foreground content */}
-                <div className="relative -mt-10 z-10 text-center space-y-3">
+                <div className="relative -mt-16 z-10 text-center space-y-3">
                   <h3 className="text-sm md:text-[18px] font-bold text-white leading-tight">{it.title}</h3>
                   <p className="text-base text-white/70 leading-relaxed">{it.subtitle}</p>
                 </div>

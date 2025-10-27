@@ -162,8 +162,8 @@ const ReadyToSolveCTANew = () => {
                 key={step.number} 
                 className="text-center group relative"
               >
-                <div className="relative mb-6 z-0 flex justify-center">
-                  <div className="relative w-full h-full min-h-[140px] transform scale-[0.8] md:scale-100">
+                <div className="relative  z-0 flex justify-center">
+              <div className="relative w-full h-full min-h-[240px] transform scale-[0.6] md:scale-80]">
                     <Image
                       src={step.image}
                       alt={`Step ${step.number}`}
@@ -172,7 +172,7 @@ const ReadyToSolveCTANew = () => {
                     />
                   </div>
                 </div>
-                <div className="text-center -mt-16 relative z-20">
+                <div className="text-center -mt-26 relative z-20">
                   <div className="font-bold text-[20px] text-white mb-2">{step.title}</div>
                   <div className="text-white/70 text-[16px] leading-relaxed">{step.description}</div>
                 </div>
