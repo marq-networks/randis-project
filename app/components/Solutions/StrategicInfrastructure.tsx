@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CTAButton from "../Shared/CTAButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,11 +150,11 @@ export default function StrategicInfrastructure() {
               ref={buttonRef}
               className="mt-8"
             >
-              <Link
+              <CTAButton
                 href="/contact"
                 className="group inline-flex items-center rounded-full bg-[#3b82f6] hover:bg-[#2563eb] text-white px-8 py-4 text-lg font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30"
-                onMouseEnter={handleArrowHover}
-                onMouseLeave={handleArrowLeave}
+                // onMouseEnter={handleArrowHover}
+                // onMouseLeave={handleArrowLeave}
               >
                 Book Your 90-Day Strategy Call
                 <svg
@@ -165,7 +166,7 @@ export default function StrategicInfrastructure() {
                 >
                   <path d="M13.172 12l-4.95 4.95 1.414 1.414L16 12l-6.364-6.364-1.414 1.414z" />
                 </svg>
-              </Link>
+              </CTAButton>
             </div>
           </div>
 

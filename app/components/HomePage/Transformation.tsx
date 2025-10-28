@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import PrimaryLinkButton from "../Shared/PrimaryLinkButton";
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -117,26 +118,8 @@ export default function Transfromation() {
               You Don not Just Get A Product. You Get The Future You Imagined — Launched, Hosted, And Maintained With Strength.
             </p>
 
-            <div 
-              ref={buttonRef}
-              className="mt-10 flex justify-center"
-            >
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 rounded-full bg-[#0075FF] hover:bg-blue-500 transition-all duration-300 md:px-8 px-4 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-900/30 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 group"
-              >
-                Book Your 90-Day Strategy Call
-                <svg
-                  ref={arrowRef}
-                  className="w-5 h-5 transition-transform duration-300"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
+            <div ref={buttonRef} className="mt-10 flex justify-center">
+              <PrimaryLinkButton href="/contact" arrowRef={arrowRef} />
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import PrimaryButton from './PrimaryButton';
 import Image from 'next/image';
 
 // Register GSAP plugin
@@ -252,15 +253,11 @@ export default function BookStrategyCall() {
               </div>
 
               {/* Submit Button */}
-              <button
+              <PrimaryButton
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center space-x-2 group"
-              >
-                <span>Schedule a Free Consultation</span>
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </button>
+                label="Schedule a Free Consultation"
+                className="w-full justify-center md:text-[16px] text-[12px] px-6 py-3" 
+              />
             </form>
           </div>
         </div>

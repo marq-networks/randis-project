@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import CTAButton from "../Shared/CTAButton";
 
 export default function GovSolutionsHeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -124,11 +125,11 @@ export default function GovSolutionsHeroSection() {
             ref={buttonRef}
             className="flex justify-center"
           >
-            <Link
+            <CTAButton
               href="/contact-us"
               className="inline-flex items-center gap-3 rounded-full bg-[#0075FF] hover:bg-blue-500 transition-all duration-300 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-900/30 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 group"
-              onMouseEnter={handleArrowHover}
-              onMouseLeave={handleArrowLeave}
+              // onMouseEnter={handleArrowHover}
+              // onMouseLeave={handleArrowLeave}
             >
               Learn More
               <svg
@@ -141,7 +142,7 @@ export default function GovSolutionsHeroSection() {
                 <path d="M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 <path d="M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </CTAButton>
           </div>
         </div>
       </div>

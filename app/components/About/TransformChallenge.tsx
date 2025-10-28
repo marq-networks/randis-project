@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import PrimaryButton from "../Shared/PrimaryButton";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -105,20 +106,7 @@ const TransformChallenge = () => {
         </p>
         
         {/* CTA Button */}
-        <button 
-          ref={buttonRef}
-          className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 mx-auto"
-        >
-          <span>Book Your 90-Day Strategy Call</span>
-          <svg 
-            className="w-5 h-5 transition-transform duration-300" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </button>
+        <PrimaryButton ref={buttonRef} label="Book Your 90-Day Strategy Call" />
       </div>
     </section>
   );

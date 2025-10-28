@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CTAButton from "../Shared/CTAButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,7 +113,7 @@ When everyone else is still scheduling meetings about your challenge, we are alr
               ref={buttonRef}
               className="mt-8"
             >
-              <Link 
+              <CTAButton 
                 href="/contact"
                 className="inline-flex  rounded-4xl items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4  font-medium text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 group"
               >
@@ -125,7 +126,7 @@ When everyone else is still scheduling meetings about your challenge, we are alr
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </Link>
+              </CTAButton>
             </div>
           </div>
 
