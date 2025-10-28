@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import CTAButton from "../Shared/CTAButton";
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -120,10 +120,7 @@ export default function PartnerCTA() {
             ref={buttonRef}
             className="mt-8 flex justify-center"
           >
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-500 transition-all duration-300 px-6 py-3 text-sm font-semibold shadow-lg shadow-blue-900/30 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 group"
-            >
+            <CTAButton href="/contact">
               View Capability Statement
               <svg
                 ref={arrowRef}
@@ -135,7 +132,7 @@ export default function PartnerCTA() {
                 <path d="M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 <path d="M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </CTAButton>
           </div>
         </div>
         </div>
