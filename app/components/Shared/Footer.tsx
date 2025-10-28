@@ -133,10 +133,10 @@ export default function Footer() {
             alt="Enterprise Trust"
             width={1200}
             height={2}
-            className="w-full h-full"
+            className="w-full h-[50px]"
           />
         </div>
-        <div className=" mt-12 py-8 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
+        <div className="py-8 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
           <p className="text-slate-500 text-sm text-center">
             © 2024 Rutledge & Associates. All rights reserved.
           </p>

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 type Story = {
   id: string;
@@ -143,6 +144,9 @@ export default function SuccessStories() {
   const [storiesPerPage, setStoriesPerPage] = useState(2);
   const totalPages = Math.ceil(STORIES.length / storiesPerPage);
 
+  const pathname = usePathname();
+  const showLineDivider = pathname !== "/our-projects";
+
   const nextStory = () => {
     setCurrentIndex((prev) => (prev + 1) % totalPages);
   };
@@ -180,15 +184,17 @@ export default function SuccessStories() {
 
   return (
     <section className=" ">
-        <div className="">
-          <Image 
-            src="/line.png" 
-            alt="Enterprise Trust" 
-            width={1200} 
-            height={5} 
-            className="w-full h-auto" 
-          />
-        </div>
+        {showLineDivider && (
+          <div className="">
+            <Image 
+              src="/line.png" 
+              alt="Enterprise Trust" 
+              width={1200} 
+              height={5} 
+              className="w-full h-auto" 
+            />
+          </div>
+        )}
       <motion.div 
         className="max-w-[1200px] pt-20 mx-auto"
         variants={containerVariants}
