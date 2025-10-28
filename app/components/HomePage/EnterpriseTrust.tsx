@@ -2,8 +2,11 @@
 
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
+import { useRef } from 'react';
+import CTAButton from "../Shared/CTAButton";
 
 export default function EnterpriseTrust() {
+  const arrowRef = useRef<SVGSVGElement>(null);
   // Animation variants
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -114,18 +117,22 @@ export default function EnterpriseTrust() {
               </div>
 
               <div className="pt-4">
-                <motion.button
-                  className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 group md:text-base text-[14px] hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30"
-                  variants={slideInLeft}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <CTAButton
+                  href="/contact"
+                  className="group inline-flex items-center rounded-full btn-primary px-2 md:px-6 py-3 text-[12px] md:text-sm font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30"
                 >
                   Book Your 90-Day Strategy Call
-                  <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg
+                    ref={arrowRef}
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="ml-2 h-4 w-4"
+                  >
+                    <path d="M13.172 12l-4.95 4.95 1.414 1.414L16 12l-6.364-6.364-1.414 1.414z" />
                   </svg>
-                </motion.button>
+                </CTAButton>
               </div>
+              
             </div>
 
             {/* Right Features List - Timeline Design */}

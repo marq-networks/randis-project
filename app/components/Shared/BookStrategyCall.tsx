@@ -168,7 +168,7 @@ export default function BookStrategyCall() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Fields */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 grid-col-1 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-slate-300 mb-2">
                     First Name*
@@ -202,7 +202,7 @@ export default function BookStrategyCall() {
               </div>
 
               {/* Email and Business Name Fields */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 grid-col-1 gap-4">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
                     Email*

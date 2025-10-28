@@ -13,7 +13,7 @@ type PrimaryLinkButtonProps = {
 };
 
 const baseClasses =
-  "group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2";
+  "group relative px-4 md:px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 text-[12px]";
 
 const PrimaryLinkButton = forwardRef<HTMLAnchorElement, PrimaryLinkButtonProps>(
   ({ href, label = "Book Your 90-Day Strategy Call", className = "", onClick, children, arrowRef }, ref) => {
