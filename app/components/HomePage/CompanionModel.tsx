@@ -197,15 +197,15 @@ export default function CompanionModel() {
         </div>
 
         {/* Steps */}
-        <div className="" ref={stepsRef}>
+        <div className="mt-8 relative z-10" ref={stepsRef}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step) => (
               <div 
                 key={step.number} 
                 className="text-center group relative"
               >
-                <div className="relative mb-6 z-0 flex justify-center">
-                  <div className="relative w-full h-fullmin-h-[140px] md:min-h-[240px] transform scale-[0.6] md:scale-80]">
+                <div className="relative mb-6 z-10 flex justify-center">
+                  <div className="relative w-full min-h-[160px] md:min-h-[240px] transform scale-[0.6] md:scale-[0.3]">
                     <Image
                       src={step.image}
                       alt={`Step ${step.number}`}
@@ -214,7 +214,7 @@ export default function CompanionModel() {
                     />
                   </div>
                 </div>
-                <div className="text-cente -mt-20 relative z-20">
+                <div className="text-center -mt-10 md:-mt-20 relative z-20">
                   <div className="font-bold text-[22px] text-white mb-2">{step.title}</div>
                   <div className="text-white/70 text-[18px] leading-relaxed">{step.description}</div>
                 </div>
