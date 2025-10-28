@@ -93,17 +93,17 @@ export default function ReadyToSolve() {
             </motion.p>
           </div>
 
-          <div className=" grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className=" grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-12">
             {items.map((it, index) => (
               <motion.div
                 key={it.num}
-                className="relative overflow-hidden px-8 py-12 bg-transparent transition-transform duration-300"
+                className="relative overflow-hidden px-8 py-4 md:py-12 bg-transparent transition-transform duration-300"
                 variants={index % 2 === 0 ? slideInLeft : slideInRight}
                 whileHover={{ scale: 1.02 }}
               >
                 {/* big background number */}
                 <div className="inset-0 flex items-center justify-center select-none">
-                  <div className="relative w-full h-full min-h-[198px] transform scale-[0.6] md:scale-80]">
+                  <div className="relative w-full h-full min-h-[140px] md:min-h-[240px] transform scale-[0.6] md:scale-80]">
                     <Image
                       src={it.image}
                       alt={`Step ${it.num}`}
@@ -114,7 +114,7 @@ export default function ReadyToSolve() {
                 </div>
 
                 {/* foreground content */}
-                <div className="relative -mt-16 z-10 text-center space-y-3">
+                <div className="relative -mt-14  md:-mt-16 z-10 text-center space-y-3">
                   <h3 className="text-sm md:text-[18px] font-bold text-white leading-tight">{it.title}</h3>
                   <p className="text-base text-white/70 leading-relaxed">{it.subtitle}</p>
                 </div>

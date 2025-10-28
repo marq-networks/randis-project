@@ -106,7 +106,7 @@ export default function Transfromation() {
           >
             <h2 
               ref={titleRef}
-              className="text-[42px] md:text-[48px] font-bold text-white leading-tight"
+              className="text-[30px] md:text-[48px] font-bold text-white leading-tight"
             >
               Complete <span className="text-[#0075FF]">transformation</span> in 8 weeks
             </h2>
@@ -123,7 +123,7 @@ export default function Transfromation() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 rounded-full bg-[#0075FF] hover:bg-blue-500 transition-all duration-300 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-900/30 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 group"
+                className="inline-flex items-center gap-3 rounded-full bg-[#0075FF] hover:bg-blue-500 transition-all duration-300 md:px-8 px-4 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-900/30 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 group"
               >
                 Book Your 90-Day Strategy Call
                 <svg

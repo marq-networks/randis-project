@@ -183,7 +183,7 @@ export default function SuccessStories() {
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
-    <section className=" ">
+    <section className="px-2 ">
         {showLineDivider && (
           <div className="">
             <Image 
@@ -196,7 +196,7 @@ export default function SuccessStories() {
           </div>
         )}
       <motion.div 
-        className="max-w-[1200px] pt-20 mx-auto"
+        className="max-w-[1200px] md:pt-20 sm:pt-0 mx-auto"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -204,7 +204,7 @@ export default function SuccessStories() {
       >
        
         {/* Header */}
-        <div className="flex items-start justify-between mb-16">
+        <div className="flex items-start justify-between md:mb-16 sm:mb-2 mb-6">
           <motion.div variants={cardVariants}>
             <h2 className="text-[32px] md:text-[48px] font-bold text-white leading-tight">
               <span className="text-[#0075FF]">Success</span> Stories
@@ -257,7 +257,7 @@ export default function SuccessStories() {
                {STORIES.map((story) => (
                  <motion.div
                    key={story.id}
-                   className="w-full md:w-1/2 flex-shrink-0 px-4"
+                   className="w-full md:w-1/2 flex-shrink-0 "
                    variants={cardVariants}
                    initial="hidden"
                    animate="visible"

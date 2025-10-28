@@ -78,7 +78,7 @@ export default function WhatToExpect() {
     },
   ];
   return (
-    <section className="pt-20  overflow-hidden" ref={containerRef}>
+    <section className="pt-20 px-4  overflow-hidden" ref={containerRef}>
       <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-12 items-center overflow-hidden">
         <div className="space-y-8" ref={leftSectionRef}>
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">

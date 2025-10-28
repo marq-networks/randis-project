@@ -58,7 +58,7 @@ export default function EnterpriseTrust() {
   ];
 
   return (
-    <section className="pt-20  ">
+    <section className="pt-20 px-4  ">
 
       <div className="max-w-[1200px]  mx-auto">
 
@@ -115,7 +115,7 @@ export default function EnterpriseTrust() {
 
               <div className="pt-4">
                 <motion.button
-                  className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 group text-base hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30"
+                  className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 group md:text-base text-[14px] hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30"
                   variants={slideInLeft}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
