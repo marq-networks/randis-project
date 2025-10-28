@@ -57,7 +57,7 @@ export default function TurningProblems() {
             <div className="p-8 lg:p-12 flex flex-col justify-center">
               {/* Blue accent line */}
               
-              <h3 className="text-[28px] lg:text-[36px] font-bold text-white mb-6 leading-tight">
+              <h3 className="text-[24px] lg:text-[36px] font-bold text-white mb-6 leading-tight">
                 Turning Problems into
                 <span className="block text-[#3b82f6]">Strategic Solutions</span>
               </h3>
@@ -115,7 +115,7 @@ export default function TurningProblems() {
             <div className="p-8 lg:p-12 flex flex-col justify-center">
               {/* Blue accent line */}
               
-              <h3 className="text-[28px] lg:text-[36px] font-bold text-white mb-6 leading-tight">
+              <h3 className="text-[24px] md:text-[36px] font-bold text-white mb-6 leading-tight">
                 Turning Problems into
                 <span className="block text-[#3b82f6]">Strategic Solutions</span>
               </h3>
