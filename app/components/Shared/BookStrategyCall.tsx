@@ -103,29 +103,15 @@ export default function BookStrategyCall() {
           <div className="space-y-8" ref={leftSectionRef}>
             <div>
               <h2 className="text-[30px] md:text-[42px] font-bold text-white mb-6 leading-tight">
-                Book Your Strategy Call
+                Let's Build the Systems That Move Your Mission Forward
               </h2>
               <p className="text-[18px] text-slate-300 leading-relaxed">
-                Ready to transform your business into a competitive advantage?
-                Click below to schedule your free 30-day strategy call.
+                We partner with agencies and enterprises ready to modernize operations, automate oversight, and act on data with confidence.
               </p>
             </div>
 
             {/* Contact Details */}
             <div className="space-y-6">
-              {/* Phone */}
-              <div className="flex items-center space-x-4 transition-transform duration-300 hover:scale-105">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Call us:</p>
-                  <p className="text-slate-300">610-938-7897</p>
-                </div>
-              </div>
-
               {/* Email */}
               <div className="flex items-center space-x-4 transition-transform duration-300 hover:scale-105">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -135,7 +121,7 @@ export default function BookStrategyCall() {
                 </div>
                 <div>
                   <p className="text-white font-semibold">Email us:</p>
-                  <p className="text-slate-300">contact@rutledge.associates</p>
+                  <p className="text-slate-300">info@rutledge.associates</p>
                 </div>
               </div>
 
@@ -149,7 +135,20 @@ export default function BookStrategyCall() {
                 </div>
                 <div>
                   <p className="text-white font-semibold">Address:</p>
-                  <p className="text-slate-300">8350 Bee Ridge Suite 262</p>
+                  <p className="text-slate-300">Atlanta, GA</p>
+                </div>
+              </div>
+
+              {/* URL */}
+              <div className="flex items-center space-x-4 transition-transform duration-300 hover:scale-105">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5zm0 0c1.5 2.25 1.5 5.25 0 7.5s-1.5 5.25 0 7.5" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-white font-semibold">URL:</p>
+                  <p className="text-slate-300">https://rutledge.associates</p>
                 </div>
               </div>
             </div>
