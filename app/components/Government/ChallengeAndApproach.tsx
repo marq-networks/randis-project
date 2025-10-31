@@ -15,6 +15,7 @@ export default function ChallengeAndApproach() {
   const approachTitleRef = useRef<HTMLHeadingElement>(null);
   const approachContentRef = useRef<HTMLDivElement>(null);
   const approachImageRef = useRef<HTMLDivElement>(null);
+  const processRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -88,6 +89,22 @@ export default function ChallengeAndApproach() {
         ease: "power2.out"
       }, "-=0.6");
 
+      // Fade-in for Process section (Discover, Design, Build, Evolve)
+      gsap.set(processRef.current, { opacity: 0, y: 50 });
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: processRef.current,
+          start: "top 85%",
+          end: "bottom 15%",
+          toggleActions: "play none none reverse"
+        }
+      }).to(processRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+
     }, containerRef);
 
     return () => {
@@ -98,47 +115,74 @@ export default function ChallengeAndApproach() {
   const challenges = [
     {
       id: 1,
-      title: "System",
-      description: "Outdated and fragmented systems that produce siloed or inconsistent data."
+      title: "When Operations Slow Down Under Complexity",
+      description:
+        "Disconnected tools and manual workarounds cost time and focus. We unify workflows, automate processes, and design systems that move as fast as your mission."
     },
     {
       id: 2,
-      title: "Error and delay",
-      description: "Manual, labor-intensive audit and compliance processes vulnerable to error and delay."
+      title: "When Compliance Drains Capacity",
+      description:
+        "Manual audits and spreadsheets keep teams stuck in review mode. We build automated compliance engines that track, validate, and report in real time."
     },
     {
       id: 3,
-      title: "Lack of real-time insights",
-      description: "Slow decision making due to lack of real-time insights and visibility."
+      title: "When Visibility Is Lost in Silos",
+      description:
+        "Data hidden in different systems leads to blind spots. We create dashboards and analytics environments that make insight instant."
     },
     {
       id: 4,
-      title: "Transparency demands",
-      description: "Rising regulatory, security and transparency demands from oversight bodies and the public."
+      title: "When Technology Doesn't Fit People",
+      description:
+        "Systems that confuse users never gain traction. We design intuitive, accessible interfaces that match the way people work."
+    },
+    {
+      id: 5,
+      title: "When Information Doesn't Inspire Action",
+      description:
+        "We transform raw data into visual intelligence that tells a story and guides next steps."
     }
   ];
 
   const approachSteps = [
     {
       id: 1,
-      title: "Assess & Strategize",
-      description: "We work alongside your team to map current systems, data flows and business risks, and define a clear roadmap aligned with your mission and compliance goals."
+      title: "Outcome",
+      description: "Faster operations, cleaner data, and effortless coordination."
     },
     {
       id: 2,
-      title: "Prototype & Build",
-      description: "We deliver secure, working prototypes fast — validating architecture, data integration and analytics capabilities, ensuring early stakeholder buy-in."
+      title: "Outcome",
+      description: "Continuous readiness, lower risk, and restored confidence."
     },
     {
       id: 3,
-      title: "Deploy & Integrate",
-      description: "We implement robust SaaS/PaaS platforms within your ecosystems — connecting disparate systems, automating workflows, and enabling secure, scalable deployment."
+      title: "Outcome",
+      description: "Clear decisions, proactive action, measurable progress."
     },
     {
       id: 4,
-      title: "Train & Sustain",
-      description: "We empower your workforce with training, governance frameworks and support mechanisms so your teams operate independently and your solution evolves."
+      title: "Outcome",
+      description: "Higher adoption, fewer errors, lasting change."
+    },
+    {
+      id: 5,
+      title: "Outcome",
+      description: "Foresight instead of hindsight."
+    },
+    {
+      id: 6,
+      title: "Outcome",
+      description: "Higher adoption, fewer errors, lasting change."
     }
+  ];
+
+  const processSteps = [
+    { id: 1, title: "Discover", image: "/GovSolutions/01.png" },
+    { id: 2, title: "Design", image: "/GovSolutions/02.png" },
+    { id: 3, title: "Build", image: "/GovSolutions/03.png" },
+    { id: 4, title: "Evolve", image: "/GovSolutions/04.png" }
   ];
 
   return (
@@ -308,10 +352,44 @@ export default function ChallengeAndApproach() {
               </div>
             </div>
             </div>
+              <div className="mx-auto max-w-[1170px] px-6">
+          <div
+            ref={processRef}
+            className=" overflow-hidden p-6 md:p-8"
+          
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 items-end">
+              {processSteps.map((step) => (
+                <div key={step.id} className="text-center">
+                  <div className="relative mx-auto w-[140px] h-[90px] md:w-[180px] md:h-[110px]">
+                    <Image
+                      src={step.image}
+                      alt={`${step.title} number`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <p className="mt-2 text-base md:text-lg font-semibold text-white">
+                    {step.title}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 max-w-[800px] mx-auto text-center text-white/70 text-sm md:text-base leading-relaxed">
+              Each engagement begins with understanding the human problem, not the technical one. We collaborate, prototype,
+              and implement solutions that keep momentum long after go-live.
+            </p>
+          </div>
+        </div>
               </div>
           </div>
        
-      
+     
+      </section>
+
+      {/* Process Section: 01 Discover, 02 Design, 03 Build, 04 Evolve */}
+      <section className=" pb-16">
+       
       </section>
     </div>
   );

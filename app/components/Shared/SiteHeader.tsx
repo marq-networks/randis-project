@@ -11,7 +11,6 @@ export default function SiteHeader() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
     { href: "/solutions", label: "Solutions" },
-    { href: "/gov-solutions", label: "Gov Solutions" },
     { href: "/our-projects", label: "Our Projects" },
   ];
 

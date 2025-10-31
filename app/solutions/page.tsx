@@ -1,19 +1,18 @@
-import SolutionsHeroSection from "../components/Solutions/SolutionsHeroSection";
-import StrategicInfrastructure from "../components/Solutions/StrategicInfrastructure";
-import TransformChallenge from "../components/About/TransformChallenge";
-import ReadyToSolveCTANew from "../components/About/ReadyToSolveCTANew";
-import TurningProblems from "../components/Solutions/TurningProblems";
+import GovSolutionsHeroSection from "../components/Government/GovSolutionsHeroSection";
+import WhyChooseUs from "../components/Government/WhyChooseUs";
+import ChallengeAndApproach from "../components/Government/ChallengeAndApproach";
+import SuccessStories from "../components/Government/SuccessStories";
 import BookStrategyCall from "../components/Shared/BookStrategyCall";
 import Footer from "../components/Shared/Footer";
 
-export default function Solutions() {
+export default function GovSolutions() {
   return (
     <div className="min-h-screen text-white">
-      <SolutionsHeroSection />
-      <StrategicInfrastructure />
-      <TransformChallenge />
-      <ReadyToSolveCTANew />
-      <TurningProblems />
+      <GovSolutionsHeroSection />
+      {/* <WhyChooseUs /> */}
+      <ChallengeAndApproach />
+      <SuccessStories />
+
       <BookStrategyCall />
       <Footer />
     </div>

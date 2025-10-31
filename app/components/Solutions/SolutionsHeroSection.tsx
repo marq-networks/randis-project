@@ -112,20 +112,38 @@ export default function SolutionsHeroSection() {
             ref={titleRef}
             className="section-title text-white text-[42px] md:text-[48px] lg:text-[54px] font-bold leading-tight tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] mb-6"
           >
-            Solutions
+            Commercial Solutions
           </h1>
           
           <p 
             ref={descriptionRef}
             className="text-white/80 text-lg md:text-xl leading-relaxed mb-8 max-w-[600px]"
           >
-         We Solve Operational Problems Through Intelligent, Human-Centered Systems    </p>
+            Transform your business challenges into competitive advantages with our enterprise-grade solutions designed for rapid deployment and lasting impact.
+          </p>
           
           <div 
             ref={buttonRef}
             className="flex justify-center"
           >
-        
+            <CTAButton
+              href="/contact"
+              className="inline-flex items-center gap-3 rounded-full bg-[#0075FF] hover:bg-blue-500 transition-all duration-300 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-900/30 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 group"
+              // onMouseEnter={handleArrowHover}
+              // onMouseLeave={handleArrowLeave}
+            >
+              Get Started Today
+              <svg
+                ref={arrowRef}
+                className="w-5 h-5 transition-transform duration-300"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <path d="M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </CTAButton>
           </div>
         </div>
       </div>
