@@ -114,20 +114,26 @@ const ReadyToSolveCTANew = () => {
     {
       number: "01",
       image: "/01.png",
-      title: "Week 1-2",
-      description: "Strategic Discovery & Architecture Alignment"
+      title: "Simplify",
+      description: "Complex Workflows And Reduce Administrative Burden"
     },
     {
       number: "02",
       image: "/02.png",
-      title: "Week 3-10", 
-      description: "Rapid Development & Enterprise Integration"
+      title: "Automate", 
+      description: "Oversight, Compliance, And Reporting"
     },
     {
       number: "03",
       image: "/03.png",
-      title: "Week 11-12",
-      description: "Production Deployment & Competitive Advantage"
+      title: "Connect",
+      description: "Teams And Data Across Departments"
+    },
+    {
+      number: "04",
+      image: "/04.png",
+      title: "Empower",
+      description: "Leaders With Real-Time Insight And Measurable Outcomes"
     }
   ];
 
@@ -148,22 +154,29 @@ const ReadyToSolveCTANew = () => {
       
       <div 
         ref={containerRef}
-        className="relative  pt-20 mx-auto text-center"
+        className="relative pt-20 mx-auto text-center"
       >
+        {/* Section Heading */}
+        <h2 
+          ref={titleRef}
+          className="section-title text-white text-[32px] md:text-[42px] lg:text-[48px] font-bold leading-tight mb-10"
+        >
+          Our Focus
+        </h2>
      
         
     
 
         {/* Steps Section */}
         <div ref={stepsRef} className="mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1200px] mx-auto px-6">
             {steps.map((step) => (
               <div 
                 key={step.number} 
                 className="text-center group relative"
               >
-                <div className="relative  z-0 flex justify-center">
-              <div className="relative w-full h-full min-h-[140px] md:min-h-[240px] transform scale-[0.6] md:scale-80]">
+                <div className="relative z-0 flex justify-center">
+                  <div className="relative w-full h-full min-h-[140px] md:min-h-[240px] transform scale-[0.6] md:scale-80]">
                     <Image
                       src={step.image}
                       alt={`Step ${step.number}`}
@@ -172,9 +185,9 @@ const ReadyToSolveCTANew = () => {
                     />
                   </div>
                 </div>
-                <div className="text-center -mt-26 relative z-20">
-                  <div className="font-bold text-[20px] text-white mb-2">{step.title}</div>
-                  <div className="text-white/70 text-[16px] leading-relaxed">{step.description}</div>
+                <div className="text-center -mt-16 relative z-20">
+                  <div className="font-bold text-[18px] md:text-[20px] text-white mb-2">{step.title}</div>
+                  <div className="text-white/70 text-[14px] md:text-[16px] leading-relaxed">{step.description}</div>
                 </div>
               </div>
             ))}

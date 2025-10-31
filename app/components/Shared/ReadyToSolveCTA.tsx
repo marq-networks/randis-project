@@ -4,17 +4,31 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ReadyToSolveCTA = () => {
+type ReadyToSolveCTAProps = {
+  title?: string;
+  subtitle?: string;
+  primaryCtaLabel?: string;
+  primaryCtaHref?: string;
+  hideSteps?: boolean;
+};
+
+const ReadyToSolveCTA = ({
+  title = "Ready to Solve Your Problem Fast?",
+  subtitle = "Stop compromising between speed and quality. We deliver best-in-class solutions for rapid execution without sacrificing enterprise-grade results. Our 90-day competitive advantage here.",
+  primaryCtaLabel = "Book Your 90-Day Strategy Call",
+  primaryCtaHref = "/contact-us",
+  hideSteps = false,
+}: ReadyToSolveCTAProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const stepsRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const primaryButtonRef = useRef<HTMLButtonElement>(null);
-  const secondaryButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -23,9 +37,7 @@ const ReadyToSolveCTA = () => {
     const steps = stepsRef.current;
     const buttons = buttonsRef.current;
     const primaryButton = primaryButtonRef.current;
-    const secondaryButton = secondaryButtonRef.current;
-
-    if (!container || !title || !subtitle || !steps || !buttons || !primaryButton || !secondaryButton) return;
+    if (!container || !title || !subtitle) return;
 
     // Set initial states
     gsap.set([title, subtitle], {
@@ -33,15 +45,19 @@ const ReadyToSolveCTA = () => {
       y: -50
     });
 
-    gsap.set(steps, {
-      opacity: 0,
-      y: 50
-    });
+    if (steps) {
+      gsap.set(steps, {
+        opacity: 0,
+        y: 50
+      });
+    }
 
-    gsap.set(buttons, {
-      opacity: 0,
-      y: 30
-    });
+    if (buttons) {
+      gsap.set(buttons, {
+        opacity: 0,
+        y: 30
+      });
+    }
 
     // Create timeline
     const tl = gsap.timeline({
@@ -65,18 +81,22 @@ const ReadyToSolveCTA = () => {
       duration: 0.8,
       ease: "power2.out"
     }, "-=0.4")
-    .to(steps, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.4")
-    .to(buttons, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.4");
+    if (steps) {
+      tl.to(steps, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+      }, "-=0.4");
+    }
+    if (buttons) {
+      tl.to(buttons, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+      }, "-=0.4");
+    }
 
     // Button hover animations
     const setupButtonHover = (button: HTMLButtonElement) => {
@@ -102,8 +122,7 @@ const ReadyToSolveCTA = () => {
       }
     };
 
-    setupButtonHover(primaryButton);
-    setupButtonHover(secondaryButton);
+    if (primaryButton) setupButtonHover(primaryButton);
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -155,7 +174,7 @@ const ReadyToSolveCTA = () => {
           ref={titleRef}
           className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
         >
-          Ready to Solve Your Problem Fast?
+          {title}
         </h2>
         
         {/* Subtitle */}
@@ -163,34 +182,55 @@ const ReadyToSolveCTA = () => {
           ref={subtitleRef}
           className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-16"
         >
-          Stop compromising between speed and quality. We deliver best-in-class solutions for rapid execution without sacrificing enterprise-grade results. Our 90-day competitive advantage here.
+          {subtitle}
         </p>
 
-        {/* Steps Section */}
-        <div ref={stepsRef} className="mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {steps.map((step) => (
-              <div 
-                key={step.number} 
-                className="text-center group relative"
-              >
-                <div className="relative mb-2 md:mb-6 z-0 flex justify-center">
-                <div className="relative w-full h-full min-h-[140px] md:min-h-[240px] transform scale-[0.6] md:scale-80]">
-                    <Image
-                      src={step.image}
-                      alt={`Step ${step.number}`}
-                      fill
-                      className="object-contain"
-                    />
+        {!hideSteps && (
+          <div ref={stepsRef} className="mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {steps.map((step) => (
+                <div 
+                  key={step.number} 
+                  className="text-center group relative"
+                >
+                  <div className="relative mb-2 md:mb-6 z-0 flex justify-center">
+                  <div className="relative w-full h-full min-h-[140px] md:min-h-[240px] transform scale-[0.6] md:scale-80]">
+                      <Image
+                        src={step.image}
+                        alt={`Step ${step.number}`}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="text-center -mt-16 relative z-20">
+                    <div className="font-bold text-[20px] text-white mb-2">{step.title}</div>
+                    <div className="text-white/70 text-[16px] leading-relaxed">{step.description}</div>
                   </div>
                 </div>
-                <div className="text-center -mt-16 relative z-20">
-                  <div className="font-bold text-[20px] text-white mb-2">{step.title}</div>
-                  <div className="text-white/70 text-[16px] leading-relaxed">{step.description}</div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+        )}
+
+        {/* CTA Button */}
+        <div ref={buttonsRef} className="flex justify-center">
+          <Link href={primaryCtaHref} className="inline-flex">
+            <button
+              ref={primaryButtonRef}
+              className="group inline-flex items-center rounded-full bg-[#0075FF] hover:bg-blue-500 transition-all duration-300 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30"
+            >
+              {primaryCtaLabel}
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 24 24" 
+                fill="currentColor" 
+                className="ml-2 h-4 w-4"
+              >
+                <path d="M13.172 12l-4.95 4.95 1.414 1.414L16 12l-6.364-6.364-1.414 1.414z" />
+              </svg>
+            </button>
+          </Link>
         </div>
         
     

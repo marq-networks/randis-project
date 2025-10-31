@@ -104,8 +104,7 @@ export default function AboutUsSection() {
             
             <div className="space-y-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
               <p className="text-[18px]">
-When everyone else is still scheduling meetings about your challenge, we are already building the solution that makes your competition obsolete.              </p>
-              
+We Turn Complex Operations Into Clear, Connected Systems</p>       
           <p>We do not just solve technology problems—we architect the unfair advantages that keep you three steps ahead of everyone still debating transformation strategies. Our approach transforms your biggest business challenges into competitive infrastructure in 90 days. While others compromise between speed and quality, we optimize for both—delivering enterprise-grade solutions that redefine how modern business systems should work.</p>
             </div>
 

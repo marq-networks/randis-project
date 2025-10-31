@@ -14,7 +14,13 @@ export default function AboutUs() {
       <AboutUsHeroSection />
       <AboutUsCapabilitiesGrid />
       <AboutUsSection />
-      <ReadyToSolveCTA />
+      <ReadyToSolveCTA 
+        title="Who We Are"
+        subtitle="Rutledge & Associates is a woman- and veteran-led consulting firm specializing in digital transformation for the public sector. For more than two decades, we've helped agencies streamline operations, automate compliance, and strengthen data-driven decision-making. We bridge strategy, technology, and human experience — delivering systems that simplify work and empower results."
+        primaryCtaLabel="Book Your 90-Day Strategy Call"
+        primaryCtaHref="/contact-us"
+        hideSteps
+      />
       <TransformChallenge />
 
       <ReadyToSolveCTANew />
