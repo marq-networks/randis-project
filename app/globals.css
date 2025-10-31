@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-bai-jamjuree);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +24,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans);
+}
+
+/* Global heading font */
+h1, h2, h3, h4, h5, .section-title {
+  font-family: var(--font-heading);
 }
 
 /* GPU Acceleration Optimizations for Framer Motion */
