@@ -4,10 +4,12 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ReadyToSolveCTANew = () => {
+  const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -194,6 +196,38 @@ const ReadyToSolveCTANew = () => {
           </div>
         </div>
         
+        {/* Trusted By CTA (About page only) */}
+        {pathname === '/about' && (
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 rounded-[20.0304px] border border-white/10 bg-[linear-gradient(133.24deg,_#0D1832_53.4%,_rgba(19,36,73,0)_104.73%)] p-6 md:p-8">
+              <div className="flex items-start gap-4 text-left">
+                <div className="text-blue-400">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10Z" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M16.5 9.5l-5 5-2-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-white text-[22px] md:text-[24px] font-semibold">Trusted By</h3>
+                  <p className="text-white/70 mt-2 text-[14px] md:text-[16px] max-w-[700px]">
+                    State and federal agencies, healthcare systems, and mission-driven enterprises committed to modernization with purpose.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="/contact"
+                className="inline-flex items-center whitespace-nowrap rounded-full bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 font-medium transition-colors"
+                aria-label="Book Your 90-Day Strategy Call"
+              >
+                Book Your 90-Day Strategy Call
+                <svg className="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12h12M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        )}
+
     
       </div>
       
