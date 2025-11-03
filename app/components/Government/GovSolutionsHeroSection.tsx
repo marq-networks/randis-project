@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import CTAButton from "../Shared/CTAButton";
 
 export default function GovSolutionsHeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,7 +11,6 @@ export default function GovSolutionsHeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
-  const arrowRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

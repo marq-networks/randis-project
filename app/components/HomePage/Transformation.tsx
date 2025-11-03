@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+
 import PrimaryLinkButton from "../Shared/PrimaryLinkButton";
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
