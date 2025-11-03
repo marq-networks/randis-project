@@ -87,7 +87,7 @@ const TransformChallenge = () => {
     };
   }, []);
 const pathname = usePathname();
-  // const containerRef = useRef(null);
+ 
   const bgStyle =
     pathname === "/solution"
       ? {

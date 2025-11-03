@@ -257,30 +257,30 @@ export default function ChallengeAndApproach() {
                         <p className="text-white/70 text-base leading-relaxed">
                           {challenge.description}
                         </p>
-                       
+
                       </div>
                     </div>
                   ))}
                 </div>
-                 <div
-                          ref={buttonRef}
-                          className="mt-8"
-                        >
-                          <CTAButton
-                            href="/contact"
-                            className="inline-flex  rounded-4xl items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4  font-medium text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 group"
-                          >
-                            Get to Know Strategy Call
-                            <svg
-                              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                          </CTAButton>
-                        </div>
+                <div
+                  ref={buttonRef}
+                  className="mt-8"
+                >
+                  <CTAButton
+                    href="/contact"
+                    className="inline-flex  rounded-4xl items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4  font-medium text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 group"
+                  >
+                    Get to Know Strategy Call
+                    <svg
+                      className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </CTAButton>
+                </div>
               </div>
 
               {/* Right Image */}
@@ -370,31 +370,31 @@ export default function ChallengeAndApproach() {
                         <p className="text-white/70 text-base leading-relaxed">
                           {step.description}
                         </p>
-                     
+
                       </div>
-                      
+
                     </div>
                   ))}
                 </div>
-                    <div
-                          ref={buttonRef}
-                          className="mt-8"
-                        >
-                          <CTAButton
-                            href="/contact"
-                            className="inline-flex  rounded-4xl items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4  font-medium text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 group"
-                          >
-                            Get to Know Strategy Call
-                            <svg
-                              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                          </CTAButton>
-                        </div>
+                <div
+                  ref={buttonRef}
+                  className="mt-8"
+                >
+                  <CTAButton
+                    href="/contact"
+                    className="inline-flex  rounded-4xl items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4  font-medium text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 group"
+                  >
+                    Get to Know Strategy Call
+                    <svg
+                      className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </CTAButton>
+                </div>
               </div>
             </div>
             <div className="mx-auto max-w-[1170px] px-6">
