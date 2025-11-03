@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import PrimaryButton from "../Shared/PrimaryButton";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { usePathname } from 'next/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,9 +86,22 @@ const TransformChallenge = () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
-
+const pathname = usePathname();
+  // const containerRef = useRef(null);
+  const bgStyle =
+    pathname === "/solution"
+      ? {
+          background:
+            "linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)",
+        }
+      : {
+   background:
+            "linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)",
+        };
   return (
-    <section className="pt-20 bg-[#0a0e1a] overflow-hidden" ref={containerRef}>
+    <section   className="pt-20 pb-10 overflow-hidden"
+      ref={containerRef}
+      style={bgStyle}>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Main heading */}
         <h2 
