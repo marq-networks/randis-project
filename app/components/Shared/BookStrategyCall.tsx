@@ -103,7 +103,7 @@ export default function BookStrategyCall() {
           <div className="space-y-8" ref={leftSectionRef}>
             <div>
               <h2 className="text-[30px] md:text-[42px] font-bold text-white mb-6 leading-tight">
-                Let's Build the Systems That Move Your Mission Forward
+                Lets Build the Systems That Move Your Mission Forward
               </h2>
               <p className="text-[18px] text-slate-300 leading-relaxed">
                 We partner with agencies and enterprises ready to modernize operations, automate oversight, and act on data with confidence.
