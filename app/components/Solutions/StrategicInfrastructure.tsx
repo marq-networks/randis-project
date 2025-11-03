@@ -87,21 +87,7 @@ export default function StrategicInfrastructure() {
     };
   }, []);
 
-  const handleArrowHover = () => {
-    gsap.to(arrowRef.current, {
-      x: 4,
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
-
-  const handleArrowLeave = () => {
-    gsap.to(arrowRef.current, {
-      x: 0,
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
+ 
 
   return (
     <section className=" bg-[#0a0e1a]" ref={containerRef}>

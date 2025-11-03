@@ -54,22 +54,7 @@ export default function GovSolutionsHeroSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleArrowHover = () => {
-    gsap.to(arrowRef.current, {
-      x: 5,
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
-
-  const handleArrowLeave = () => {
-    gsap.to(arrowRef.current, {
-      x: 0,
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
-
+ 
   return (
     <section className="relative overflow-hidden h-[70vh] mx-auto">
       {/* Background image - using solution hero as placeholder until gov-specific image is provided */}

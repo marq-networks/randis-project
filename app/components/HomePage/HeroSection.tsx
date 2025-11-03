@@ -47,21 +47,7 @@ export default function HeroSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleArrowHover = () => {
-    gsap.to(arrowRef.current, {
-      x: 4,
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
 
-  const handleArrowLeave = () => {
-    gsap.to(arrowRef.current, {
-      x: 0,
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
 
   return (
     <section className="relative overflow-hidden h-screen mx-auto">
