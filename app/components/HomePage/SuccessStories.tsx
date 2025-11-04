@@ -19,20 +19,20 @@ const STORIES: Story[] = [
     title: "SDBE Platform - Government Compliance",
     subtitle: "Service-Disabled Business Enterprise",
     description:
-      "Enterprise-grade platform delivered in 90 days, featuring 95% FSM compliance, real-time analytics, and government-grade security. Comprehensive vendor management system with automated compliance workflows, settlement agreement tracking, and multi-stage review processes demonstrating our rapid enterprise delivery capability.",
+      "Enterprise-grade platform delivered in 90 days featuring 95% FISM compliance, real-time analytics, and government-grade security. Includes comprehensive vendor management with automated compliance workflows, settlement agreement tracking, and multi-layer review processes.",
     metrics: [
       { label: "Prototype to Production", value: "90 Days" },
-      { label: "Compliance Rating", value: "95% FSM" },
+      { label: "Compliance Rating", value: "95% FISM" },
       { label: "Security Grade", value: "Enterprise" },
     ],
     icon: "shield",
   },
   {
-    id: "enterprise-data",
+    id: "enterprise-data-platform",
     title: "Enterprise Data Platform",
     subtitle: "Fortune 500 Financial Services",
     description:
-      "Complete stakeholder dashboard and compliance system delivered from prototype to production in 45 days, featuring real-time analytics, automated reporting, and regulatory compliance tools that transformed how the client tracks performance metrics and addresses critical business requirements.",
+      "Stakeholder dashboard and compliance platform delivered from prototype to production in 45 days. Real-time analytics, automated reporting, and regulatory compliance tools transformed performance tracking across critical business requirements.",
     metrics: [
       { label: "Project Value", value: "$125K" },
       { label: "Delivery Time", value: "45 Days" },
@@ -40,57 +40,57 @@ const STORIES: Story[] = [
     ],
     icon: "chart",
   },
-    {
-    id: "enterprise-data",
-    title: "Enterprise Data Platform",
-    subtitle: "Fortune 500 Financial Services",
+  {
+    id: "appspec-builder",
+    title: "AppSpec Builder - AI Specification Agent",
+    subtitle: "Product Development Sector",
     description:
-      "Complete stakeholder dashboard and compliance system delivered from prototype to production in 45 days, featuring real-time analytics, automated reporting, and regulatory compliance tools that transformed how the client tracks performance metrics and addresses critical business requirements.",
+      "Intelligent specification-building platform guiding users through comprehensive product roadmaps via AI-powered interviews. Automates technical blueprint generation, development timeline creation, and stakeholder alignment with real-time progress tracking and AI insights.",
     metrics: [
-      { label: "Project Value", value: "$125K" },
-      { label: "Delivery Time", value: "45 Days" },
-      { label: "Cloud Platform", value: "Azure" },
+      { label: "Project Value", value: "$200K" },
+      { label: "Specification Engine", value: "AI-Powered" },
+      { label: "Blueprint Generation", value: "Automated" },
     ],
-    icon: "chart",
+    icon: "default",
   },
-    {
-    id: "enterprise-data",
-    title: "Enterprise Data Platform",
-    subtitle: "Fortune 500 Financial Services",
+  {
+    id: "vendor-management-platform",
+    title: "Vendor Management Platform",
+    subtitle: "Supply Chain Technology Sector",
     description:
-      "Complete stakeholder dashboard and compliance system delivered from prototype to production in 45 days, featuring real-time analytics, automated reporting, and regulatory compliance tools that transformed how the client tracks performance metrics and addresses critical business requirements.",
+      "Advanced vendor management system streamlining supplier relationships, contract administration, and performance tracking. Features automated onboarding, compliance monitoring, and real-time vendor analytics dashboard.",
     metrics: [
-      { label: "Project Value", value: "$125K" },
-      { label: "Delivery Time", value: "45 Days" },
-      { label: "Cloud Platform", value: "Azure" },
+      { label: "Vendor Onboarding", value: "Automated" },
+      { label: "Performance Analytics", value: "Real-time" },
+      { label: "Monitoring System", value: "Compliance" },
     ],
-    icon: "chart",
+    icon: "default",
   },
-    {
-    id: "enterprise-data",
-    title: "Enterprise Data Platform",
-    subtitle: "Fortune 500 Financial Services",
+  {
+    id: "freshstart-business-builder",
+    title: "FreshStart Business Builder",
+    subtitle: "Entrepreneurship & Small Business Sector",
     description:
-      "Complete stakeholder dashboard and compliance system delivered from prototype to production in 45 days, featuring real-time analytics, automated reporting, and regulatory compliance tools that transformed how the client tracks performance metrics and addresses critical business requirements.",
+      "Comprehensive platform guiding entrepreneurs step-by-step through discovering business potential, creating LLCs, and building sustainable ventures. Includes skills assessment, business planning tools, and launch support.",
     metrics: [
-      { label: "Project Value", value: "$125K" },
-      { label: "Delivery Time", value: "45 Days" },
-      { label: "Cloud Platform", value: "Azure" },
+      { label: "Proven Process", value: "4-Step" },
+      { label: "Free to Start", value: "100%" },
+      { label: "Guidance", value: "Expert" },
     ],
-    icon: "chart",
+    icon: "default",
   },
-   {
-    id: "enterprise-data",
-    title: "Enterprise Data Platform",
-    subtitle: "Fortune 500 Financial Services",
+  {
+    id: "rfpmaster-automation-platform",
+    title: "RFPMaster Automation Platform",
+    subtitle: "Professional Services Industry",
     description:
-      "Complete stakeholder dashboard and compliance system delivered from prototype to production in 45 days, featuring real-time analytics, automated reporting, and regulatory compliance tools that transformed how the client tracks performance metrics and addresses critical business requirements.",
+      "Intelligent RFP response automation system that leverages past knowledge to generate 80% complete draft responses. Features AI content matching, document assembly, and quality assurance workflows.",
     metrics: [
-      { label: "Project Value", value: "$125K" },
-      { label: "Delivery Time", value: "45 Days" },
-      { label: "Cloud Platform", value: "Azure" },
+      { label: "Response Automation", value: "80%" },
+      { label: "Content Match Accuracy", value: "90%+" },
+      { label: "QA Framework", value: "3-tier" },
     ],
-    icon: "chart",
+    icon: "default",
   },
 ];
 
