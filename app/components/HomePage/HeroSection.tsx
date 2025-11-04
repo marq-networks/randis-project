@@ -68,7 +68,7 @@ export default function HeroSection() {
       <div className="max-w-[1200px] min-h-[72vh] md:min-h-[80vh] mx-auto px-[10px] md:px-6 flex items-center">
         <div 
           ref={containerRef}
-          className="max-w-[680px]"
+          className="max-w-[750px]"
         >
           <h1 
             ref={titleRef}

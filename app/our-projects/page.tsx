@@ -5,6 +5,7 @@ import BlueprintToBreakthrough from "../components/Projects/BlueprintToBreakthro
 import BookStrategyCall from "../components/Shared/BookStrategyCall";
 import Footer from "../components/Shared/Footer";
 import TurningProblems from "../components/Solutions/TurningProblems";
+import Testimonials from "../components/HomePage/Testimonials";
 
 export default function OurProjects() {
   return (
@@ -14,6 +15,7 @@ export default function OurProjects() {
       <SuccessStories />
       <TransformChallenge />
       <TurningProblems />
+      <Testimonials />
 
       <BookStrategyCall />
       <Footer />

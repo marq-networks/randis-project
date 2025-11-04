@@ -103,7 +103,7 @@ export default function BookStrategyCall() {
           <div className="space-y-8" ref={leftSectionRef}>
             <div>
               <h2 className="text-[30px] md:text-[42px] font-bold text-white mb-6 leading-tight">
-                Lets Build the Systems That Move Your Mission Forward
+                Let's Build the Systems That Move Your Mission Forward
               </h2>
               <p className="text-[18px] text-slate-300 leading-relaxed">
                 We partner with agencies and enterprises ready to modernize operations, automate oversight, and act on data with confidence.
@@ -135,20 +135,20 @@ export default function BookStrategyCall() {
                 </div>
                 <div>
                   <p className="text-white font-semibold">Address:</p>
-                  <p className="text-slate-300">Atlanta, GA</p>
+                  <p className="text-slate-300">8350 Bee Ridge Rd, Suite 262, Sarasota, FL 3424</p>
                 </div>
               </div>
 
-              {/* URL */}
+              {/* Phone */}
               <div className="flex items-center space-x-4 transition-transform duration-300 hover:scale-105">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5zm0 0c1.5 2.25 1.5 5.25 0 7.5s-1.5 5.25 0 7.5" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3a2 2 0 012 2v2a2 2 0 01-.586 1.414l-1.414 1.414a16 16 0 007.172 7.172l1.414-1.414A2 2 0 0120 15h2a2 2 0 012 2v3a2 2 0 01-2 2h-1C9.163 22 2 14.837 2 6V5a2 2 0 011-0z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-semibold">URL:</p>
-                  <p className="text-slate-300">https://rutledge.associates</p>
+                  <p className="text-white font-semibold">Phone</p>
+                  <p className="text-slate-300">305-345-9077</p>
                 </div>
               </div>
             </div>
