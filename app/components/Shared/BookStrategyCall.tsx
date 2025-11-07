@@ -83,7 +83,7 @@ export default function BookStrategyCall() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('submitting');
     setErrorMessage(null);
@@ -112,9 +112,10 @@ export default function BookStrategyCall() {
       setStatus('success');
       setPreviewUrl(json?.previewUrl ?? null);
       setFormData({ firstName: '', lastName: '', email: '', businessName: '', help: '' });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus('error');
-      setErrorMessage(err?.message || 'Something went wrong. Please try again.');
+      const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+      setErrorMessage(message);
     }
   };
 
