@@ -163,7 +163,7 @@ export default function TurningProblems() {
                   className="mt-8"
                 >
                   <CTAButton
-                    href="/contact"
+                    href="https://cal.com/rutledge-associates"
                     className="inline-flex  rounded-4xl items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4  font-medium text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 group"
                   >
                     Get to Know Strategy Call

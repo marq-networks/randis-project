@@ -69,11 +69,7 @@ export default function EnterpriseTrust() {
 
         {/* Main Container - Matching the image design */}
         <motion.div
-          className="relative rounded-2xl border border-blue-500/30 p-8 lg:p-12 overflow-hidden backdrop-blur-sm"
-          style={{
-            background: "linear-gradient(133.24deg, #0D1832 53.4%, rgba(19, 36, 73, 0) 104.73%)",
-            borderRadius: "20.0304px"
-          }}
+          className="relative rounded-[20.0304px] border border-blue-500/30 p-8 lg:p-12 overflow-hidden backdrop-blur-sm bg-[linear-gradient(133.24deg,#0D1832_53.4%,rgba(19,36,73,0)_104.73%)]"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -118,7 +114,7 @@ export default function EnterpriseTrust() {
 
               <div className="pt-4">
                 <CTAButton
-                  href="/contact"
+                  href="https://cal.com/rutledge-associates"
                   className="group inline-flex items-center rounded-full btn-primary px-2 md:px-6 py-3 text-[12px] md:text-sm font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30"
                 >
                   Book Your 90-Day Strategy Call

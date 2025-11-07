@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import TransformChallenge from "../components/About/TransformChallenge";
 import SuccessStories from "../components/HomePage/SuccessStories";
 import ProjectsHeroSection from "../components/Projects/ProjectsHeroSection";
@@ -22,3 +23,8 @@ export default function OurProjects() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Our Projects — Case Studies & Outcomes",
+  description: "Explore projects and success stories showcasing secure analytics and transformation outcomes.",
+};

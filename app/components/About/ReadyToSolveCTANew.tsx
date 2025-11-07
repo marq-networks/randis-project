@@ -215,7 +215,7 @@ const ReadyToSolveCTANew = () => {
                 </div>
               </div>
               <a
-                href="/contact"
+                href="https://cal.com/rutledge-associates"
                 className="inline-flex items-center whitespace-nowrap rounded-full bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 font-medium transition-colors"
                 aria-label="Book Your 90-Day Strategy Call"
               >

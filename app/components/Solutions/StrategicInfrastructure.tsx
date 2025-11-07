@@ -137,7 +137,7 @@ export default function StrategicInfrastructure() {
               className="mt-8"
             >
               <CTAButton
-                href="/contact"
+                href="https://cal.com/rutledge-associates"
                 className="group inline-flex items-center rounded-full bg-[#3b82f6] hover:bg-[#2563eb] text-white px-8 py-4 text-lg font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30"
                 // onMouseEnter={handleArrowHover}
                 // onMouseLeave={handleArrowLeave}

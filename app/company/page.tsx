@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import CompanyProfile from "../components/HomePage/CompanyProfile";
 
 export default function CompanyPage() {
@@ -11,3 +12,8 @@ export default function CompanyPage() {
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Company — Rutledge & Associates",
+  description: "Company profile, mission, and the value we deliver to public sector and enterprise clients.",
+};

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import GovSolutionsHeroSection from "../components/Government/GovSolutionsHeroSection";
 import ChallengeAndApproach from "../components/Government/ChallengeAndApproach";
 import SuccessStories from "../components/Government/SuccessStories";
@@ -19,3 +20,8 @@ export default function GovSolutions() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Solutions — Secure Analytics & Strategic Infrastructure",
+  description: "Government and enterprise solutions spanning secure analytics, compliance automation, and cloud-enabled infrastructure.",
+};

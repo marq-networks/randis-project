@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import HeroSection from "./components/HomePage/HeroSection";
 import CapabilitiesGrid from "./components/HomePage/CapabilitiesGrid";
 import ChallengeApproach from "./components/HomePage/ChallengeApproach";
@@ -35,3 +36,8 @@ export default function Home() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Rutledge & Associates — Public Sector Analytics & Compliance",
+  description: "Privacy-first digital transformation, secure analytics, and compliance automation for government and regulated organizations.",
+};

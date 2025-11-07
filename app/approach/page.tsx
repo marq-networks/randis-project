@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import ChallengeApproach from "../components/HomePage/ChallengeApproach";
 
 export default function ApproachPage() {
@@ -11,3 +12,8 @@ export default function ApproachPage() {
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Our Approach",
+  description: "How Rutledge & Associates delivers privacy-first analytics and transformation.",
+};

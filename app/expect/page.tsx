@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import WhatToExpect from "../components/Shared/WhatToExpect";
 
 export default function ExpectPage() {
@@ -11,3 +12,8 @@ export default function ExpectPage() {
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: "What to Expect",
+  description: "Expect clear outcomes, milestones, and trust throughout your engagement with Rutledge & Associates.",
+};

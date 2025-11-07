@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import CapabilitiesGrid from "../components/HomePage/CapabilitiesGrid";
 
 export default function CapabilitiesPage() {
@@ -11,3 +12,8 @@ export default function CapabilitiesPage() {
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Capabilities — Rutledge & Associates",
+  description: "Explore our core services: secure analytics, compliance automation, and enterprise solutions.",
+};

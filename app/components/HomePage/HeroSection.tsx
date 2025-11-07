@@ -87,7 +87,7 @@ export default function HeroSection() {
             className="mt-8"
           >
             <CTAButton 
-              href="/contact" 
+              href="https://cal.com/rutledge-associates" 
               className="group inline-flex items-center rounded-full btn-primary px-6 py-3 text-sm font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30"
               // onMouseEnter={handleArrowHover}
               // onMouseLeave={handleArrowLeave}

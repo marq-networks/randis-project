@@ -71,6 +71,10 @@ export default function BookStrategyCall() {
     help: ''
   });
 
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -79,10 +83,39 @@ export default function BookStrategyCall() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setStatus('submitting');
+    setErrorMessage(null);
+    setPreviewUrl(null);
+
+    try {
+      const payload = {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        company: formData.businessName,
+        message: formData.help,
+      };
+
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err?.error || 'Failed to send message');
+      }
+
+      const json = await res.json();
+      setStatus('success');
+      setPreviewUrl(json?.previewUrl ?? null);
+      setFormData({ firstName: '', lastName: '', email: '', businessName: '', help: '' });
+    } catch (err: any) {
+      setStatus('error');
+      setErrorMessage(err?.message || 'Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -121,7 +154,7 @@ export default function BookStrategyCall() {
                 </div>
                 <div>
                   <p className="text-white font-semibold">Email us:</p>
-                  <p className="text-slate-300">info@rutledge.associates</p>
+                  <p className="text-slate-300">rrutledge@rutledge.associates</p>
                 </div>
               </div>
 
@@ -164,6 +197,22 @@ export default function BookStrategyCall() {
             ref={rightSectionRef}
           >
             <h3 className="text-[22px] font-bold text-white mb-8 text-center">Contact Us</h3>
+
+            {status === 'success' && (
+              <div className="mb-4 rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3 text-green-200">
+                Thanks — your message has been sent. We’ll be in touch shortly.
+                {previewUrl && (
+                  <div className="mt-2 text-sm">
+                    Preview (dev only): <a className="underline" href={previewUrl} target="_blank" rel="noreferrer">view email</a>
+                  </div>
+                )}
+              </div>
+            )}
+            {status === 'error' && (
+              <div className="mb-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-red-200">
+                {errorMessage || 'Failed to send message.'}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Fields */}
@@ -254,7 +303,8 @@ export default function BookStrategyCall() {
               {/* Submit Button */}
               <PrimaryButton
                 type="submit"
-                label="Schedule a Free Consultation"
+                label={status === 'submitting' ? 'Sending…' : 'Schedule a Free Consultation'}
+                disabled={status === 'submitting'}
                 className="w-full justify-center md:text-[16px] text-[12px] px-6 py-3" 
               />
             </form>
