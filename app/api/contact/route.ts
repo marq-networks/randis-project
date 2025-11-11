@@ -73,10 +73,36 @@ export async function POST(req: Request) {
       `,
     });
 
-    const previewUrl = usesTestAccount ? nodemailer.getTestMessageUrl(info) : undefined;
+    const previewRaw = usesTestAccount ? nodemailer.getTestMessageUrl(info) : undefined;
+    const previewUrl = typeof previewRaw === "string" ? previewRaw : undefined;
     console.log("Contact mail sent", { messageId: info.messageId, previewUrl });
+    // Send confirmation email to the sender (do not block main flow on failure)
+    let confirmationPreviewUrl: string | undefined;
+    try {
+      const confirmationInfo = await transporter.sendMail({
+        from: fromAddress,
+        to: email,
+        subject: `Thanks for contacting Rutledge & Associates`,
+        text: `Hi ${name},\n\nThanks for reaching out to Rutledge & Associates. We received your message and will get back to you shortly.\n\nYour message:\n${message}\n\nBest regards,\nRutledge & Associates`,
+        html: `
+          <div style="font-family:Arial,sans-serif;font-size:14px;color:#111">
+            <h2 style="margin:0 0 12px">Thanks for contacting Rutledge & Associates</h2>
+            <p>Hi ${name},</p>
+            <p>Thanks for reaching out. We received your message and will get back to you shortly.</p>
+            <hr/>
+            <p style="white-space:pre-line"><strong>Your message:</strong><br/>${message}</p>
+            <p style="margin-top:12px">Best regards,<br/>Rutledge & Associates</p>
+          </div>
+        `,
+      });
+      const confirmationRaw = usesTestAccount ? nodemailer.getTestMessageUrl(confirmationInfo) : undefined;
+      confirmationPreviewUrl = typeof confirmationRaw === "string" ? confirmationRaw : undefined;
+      console.log("Confirmation mail sent", { messageId: confirmationInfo.messageId, confirmationPreviewUrl });
+    } catch (e) {
+      console.warn("Confirmation email failed", e);
+    }
 
-    return NextResponse.json({ ok: true, previewUrl });
+    return NextResponse.json({ ok: true, previewUrl, confirmationPreviewUrl });
   } catch (error) {
     console.error("Contact API error:", error);
     return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
