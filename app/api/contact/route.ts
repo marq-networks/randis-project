@@ -26,6 +26,7 @@ export async function POST(req: Request) {
     const smtpPort = process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : undefined;
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
+    const smtpFrom = process.env.SMTP_FROM;
 
     let transporter: nodemailer.Transporter;
     let usesTestAccount = false;
@@ -48,12 +49,15 @@ export async function POST(req: Request) {
       usesTestAccount = true;
     }
 
-    const toAddress = "rrutledge@rutledge.associates";
+    const toAddress = process.env.CONTACT_TO || "rrutledge@rutledge.associates";
+    const bccAddress = process.env.CONTACT_BCC || "saif@marqnetworks.com"; // temporary BCC for delivery testing
+    const fromAddress = smtpFrom ?? (smtpUser ? smtpUser : `Rutledge & Associates <no-reply@rutledge.associates>`);
 
     const info = await transporter.sendMail({
-      from: `Rutledge & Associates <no-reply@rutledge.associates>`,
+      from: fromAddress,
       replyTo: email,
       to: toAddress,
+      bcc: bccAddress,
       subject: `New Contact Submission – ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nCompany: ${company || ""}\nPhone: ${phone || ""}\n\nMessage:\n${message}`,
       html: `
@@ -70,6 +74,7 @@ export async function POST(req: Request) {
     });
 
     const previewUrl = usesTestAccount ? nodemailer.getTestMessageUrl(info) : undefined;
+    console.log("Contact mail sent", { messageId: info.messageId, previewUrl });
 
     return NextResponse.json({ ok: true, previewUrl });
   } catch (error) {
