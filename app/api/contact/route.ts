@@ -80,7 +80,7 @@ export async function POST(req: Request) {
     let confirmationPreviewUrl: string | undefined;
     try {
       const confirmationInfo = await transporter.sendMail({
-        from: fromAddress,
+        from: smtpUser || fromAddress,
         to: email,
         subject: `Thanks for contacting Rutledge & Associates`,
         text: `Hi ${name},\n\nThanks for reaching out to Rutledge & Associates. We received your message and will get back to you shortly.\n\nYour message:\n${message}\n\nBest regards,\nRutledge & Associates`,
@@ -97,7 +97,7 @@ export async function POST(req: Request) {
       });
       const confirmationRaw = usesTestAccount ? nodemailer.getTestMessageUrl(confirmationInfo) : undefined;
       confirmationPreviewUrl = typeof confirmationRaw === "string" ? confirmationRaw : undefined;
-      console.log("Confirmation mail sent", { messageId: confirmationInfo.messageId, confirmationPreviewUrl });
+      console.log("Confirmation mail sent", { messageId: confirmationInfo.messageId, confirmationPreviewUrl, accepted: confirmationInfo.accepted, rejected: confirmationInfo.rejected, envelope: confirmationInfo.envelope });
     } catch (e) {
       console.warn("Confirmation email failed", e);
     }
