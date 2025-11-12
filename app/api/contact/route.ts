@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Prefer real SMTP via env; otherwise use Ethereal for preview
+    // Read provider env and decide provider
     const smtpHost = process.env.SMTP_HOST;
     const smtpPort = process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : undefined;
     const smtpUser = process.env.SMTP_USER;
@@ -31,36 +31,19 @@ export async function POST(req: Request) {
     const resendApiKey = process.env.RESEND_API_KEY;
     const resendFrom = process.env.RESEND_FROM || smtpUser || smtpFrom || `Rutledge & Associates <no-reply@rutledge.associates>`;
 
+    const hasSMTP = Boolean(smtpHost && smtpPort && smtpUser && smtpPass);
+    const hasResend = Boolean(resendApiKey);
+    const provider: "smtp" | "resend" | "ethereal" = hasSMTP ? "smtp" : (hasResend ? "resend" : "ethereal");
+    console.log("Email provider selected", { provider, hasSMTP, hasResend, smtpHost: Boolean(smtpHost) });
+
     let transporter: nodemailer.Transporter;
     let usesTestAccount = false;
 
-    if (smtpHost && smtpPort && smtpUser && smtpPass) {
-      transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: smtpPort,
-        secure: smtpPort === 465,
-        requireTLS: smtpPort === 587,
-        auth: { user: smtpUser, pass: smtpPass },
-        tls: { minVersion: 'TLSv1.2' },
-      });
-    } else {
-      const testAccount = await nodemailer.createTestAccount();
-      transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false,
-        auth: { user: testAccount.user, pass: testAccount.pass },
-      });
-      usesTestAccount = true;
-    }
-
-    const toAddress = process.env.CONTACT_TO || "rrutledge@rutledge.associates";
-    const bccAddress = process.env.CONTACT_BCC || "saif@marqnetworks.com"; // temporary BCC for delivery testing
-    const fromAddress = smtpFrom ?? (smtpUser ? smtpUser : `Rutledge & Associates <no-reply@rutledge.associates>`);
-
-    // If SMTP is not configured but RESEND is, use Resend API (reliable on Vercel)
-    if (!smtpHost && resendApiKey) {
-      const resend = new Resend(resendApiKey);
+    if (provider === "resend") {
+      // Use Resend API when SMTP is incomplete but Resend is configured (reliable on Vercel)
+      const resend = new Resend(resendApiKey!);
+      const toAddress = process.env.CONTACT_TO || "rrutledge@rutledge.associates";
+      const bccAddress = process.env.CONTACT_BCC || "saif@marqnetworks.com";
       const subject = `New Contact Submission – ${name}`;
       const textBody = `Name: ${name}\nEmail: ${email}\nCompany: ${company || ""}\nPhone: ${phone || ""}\n\nMessage:\n${message}`;
       const htmlBody = `
@@ -85,10 +68,10 @@ export async function POST(req: Request) {
       });
       if (sendResult.error) {
         console.error("Resend contact mail failed", sendResult.error);
-        return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
+        return NextResponse.json({ error: "Failed to send message.", provider }, { status: 500 });
       }
       console.log("Contact mail sent via Resend", { id: sendResult.data?.id });
-      // confirmation via Resend
+      // confirmation via Resend (non-blocking)
       try {
         const confirmation = await resend.emails.send({
           from: resendFrom,
@@ -114,8 +97,35 @@ export async function POST(req: Request) {
       } catch (e) {
         console.warn("Confirmation email via Resend failed", e);
       }
-      return NextResponse.json({ ok: true });
+      return NextResponse.json({ ok: true, provider });
     }
+
+    // Otherwise use SMTP when fully configured; else Ethereal preview
+    if (provider === "smtp") {
+      transporter = nodemailer.createTransport({
+        host: smtpHost!,
+        port: smtpPort!,
+        secure: smtpPort === 465,
+        requireTLS: smtpPort === 587,
+        auth: { user: smtpUser!, pass: smtpPass! },
+        tls: { minVersion: 'TLSv1.2' },
+      });
+    } else {
+      const testAccount = await nodemailer.createTestAccount();
+      transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false,
+        auth: { user: testAccount.user, pass: testAccount.pass },
+      });
+      usesTestAccount = true;
+    }
+
+    const toAddress = process.env.CONTACT_TO || "rrutledge@rutledge.associates";
+    const bccAddress = process.env.CONTACT_BCC || "saif@marqnetworks.com"; // temporary BCC for delivery testing
+    const fromAddress = smtpFrom ?? (smtpUser ? smtpUser : `Rutledge & Associates <no-reply@rutledge.associates>`);
+
+    // Resend handled above; continue with SMTP/Ethereal transporter
 
     const info = await transporter.sendMail({
       from: smtpUser || fromAddress,
@@ -139,7 +149,7 @@ export async function POST(req: Request) {
 
     const previewRaw = usesTestAccount ? nodemailer.getTestMessageUrl(info) : undefined;
     const previewUrl = typeof previewRaw === "string" ? previewRaw : undefined;
-    console.log("Contact mail sent", { messageId: info.messageId, previewUrl });
+    console.log("Contact mail sent", { messageId: info.messageId, previewUrl, provider });
     // Send confirmation email to the sender (do not block main flow on failure)
     let confirmationPreviewUrl: string | undefined;
     try {
@@ -161,12 +171,12 @@ export async function POST(req: Request) {
       });
       const confirmationRaw = usesTestAccount ? nodemailer.getTestMessageUrl(confirmationInfo) : undefined;
       confirmationPreviewUrl = typeof confirmationRaw === "string" ? confirmationRaw : undefined;
-      console.log("Confirmation mail sent", { messageId: confirmationInfo.messageId, confirmationPreviewUrl, accepted: confirmationInfo.accepted, rejected: confirmationInfo.rejected, envelope: confirmationInfo.envelope });
+      console.log("Confirmation mail sent", { messageId: confirmationInfo.messageId, confirmationPreviewUrl, accepted: confirmationInfo.accepted, rejected: confirmationInfo.rejected, envelope: confirmationInfo.envelope, provider });
     } catch (e) {
       console.warn("Confirmation email failed", e);
     }
 
-    return NextResponse.json({ ok: true, previewUrl, confirmationPreviewUrl });
+    return NextResponse.json({ ok: true, previewUrl, confirmationPreviewUrl, provider });
   } catch (error) {
     console.error("Contact API error:", error);
     return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
