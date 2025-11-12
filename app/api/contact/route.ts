@@ -35,7 +35,7 @@ export async function POST(req: Request) {
       transporter = nodemailer.createTransport({
         host: smtpHost,
         port: smtpPort,
-        secure: smtpPort === 465, // 587 uses STARTTLS
+        secure: smtpPort === 465,
         requireTLS: smtpPort === 587,
         auth: { user: smtpUser, pass: smtpPass },
         tls: { minVersion: 'TLSv1.2' },
@@ -112,3 +112,4 @@ export async function POST(req: Request) {
 }
 
 export const dynamic = "force-dynamic"; // ensure route runs on server
+export const runtime = "nodejs";
