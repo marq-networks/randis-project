@@ -35,8 +35,10 @@ export async function POST(req: Request) {
       transporter = nodemailer.createTransport({
         host: smtpHost,
         port: smtpPort,
-        secure: smtpPort === 465, // true for 465, false for other ports
+        secure: smtpPort === 465, // 587 uses STARTTLS
+        requireTLS: smtpPort === 587,
         auth: { user: smtpUser, pass: smtpPass },
+        tls: { minVersion: 'TLSv1.2' },
       });
     } else {
       const testAccount = await nodemailer.createTestAccount();
@@ -54,7 +56,7 @@ export async function POST(req: Request) {
     const fromAddress = smtpFrom ?? (smtpUser ? smtpUser : `Rutledge & Associates <no-reply@rutledge.associates>`);
 
     const info = await transporter.sendMail({
-      from: fromAddress,
+      from: smtpUser || fromAddress,
       replyTo: email,
       to: toAddress,
       bcc: bccAddress,
