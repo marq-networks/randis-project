@@ -70,3 +70,18 @@ CONTACT_BCC=saif@marqnetworks.com
 
 - In production, set these in Vercel → Settings → Environment Variables.
 - When `RESEND_API_KEY` is present and `SMTP_HOST` is not, the API route sends via Resend.
+
+### SendGrid (API) alternative
+
+You can also use SendGrid (no SMTP) for reliable delivery on Vercel:
+
+```
+SENDGRID_API_KEY=your_sendgrid_api_key
+SENDGRID_FROM="Rutledge & Associates <no-reply@rutledge.associates>"
+CONTACT_TO=rrutledge@rutledge.associates
+CONTACT_BCC=saif@marqnetworks.com
+```
+
+- In production, set these in Vercel → Settings → Environment Variables.
+- The route will use SendGrid if SMTP is not complete and Resend is not configured.
+- For best results, verify your sender domain in SendGrid (DKIM/SPF) or use a verified sender address.
