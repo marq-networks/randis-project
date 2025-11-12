@@ -56,3 +56,17 @@ CONTACT_BCC=saif@marqnetworks.com
 - `SMTP_FROM` must be an authorized sender with your provider.
 - If `SMTP_*` envs are not set, the server uses Ethereal (test-only) and returns a preview URL.
 - Restart the dev server after editing `.env.local`.
+
+### Resend (API) alternative
+
+On Vercel, if SMTP isn’t configured, you can use Resend for reliable delivery:
+
+```
+RESEND_API_KEY=your_resend_api_key
+RESEND_FROM="Rutledge & Associates <no-reply@rutledge.associates>"
+CONTACT_TO=rrutledge@rutledge.associates
+CONTACT_BCC=saif@marqnetworks.com
+```
+
+- In production, set these in Vercel → Settings → Environment Variables.
+- When `RESEND_API_KEY` is present and `SMTP_HOST` is not, the API route sends via Resend.
