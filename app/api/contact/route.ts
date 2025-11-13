@@ -11,6 +11,96 @@ type ContactPayload = {
   message?: string;
 };
 
+// ------------------------------
+// Reusable email templates (HTML + Text)
+// ------------------------------
+const BRAND_NAME = "Rutledge & Associates";
+const COLORS = {
+  bg: "#f8fafc",
+  card: "#ffffff",
+  border: "#e2e8f0",
+  text: "#0f172a",
+  muted: "#475569",
+  primary: "#0b5fff",
+};
+
+function wrapEmail(content: string): string {
+  return `
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>${BRAND_NAME} Message</title>
+    </head>
+    <body style="margin:0;padding:24px;background:${COLORS.bg};font-family:Arial,Helvetica,sans-serif;color:${COLORS.text}">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td align="center">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;background:${COLORS.card};border:1px solid ${COLORS.border};border-radius:12px;overflow:hidden">
+              <tr>
+                <td style="background:${COLORS.card};padding:20px;border-bottom:1px solid ${COLORS.border}">
+                  <div style="font-size:18px;font-weight:700;color:${COLORS.text}">${BRAND_NAME}</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:24px">${content}</td>
+              </tr>
+              <tr>
+                <td style="padding:16px 24px;border-top:1px solid ${COLORS.border};color:${COLORS.muted};font-size:12px">
+                  This is an automated message from ${BRAND_NAME}. If you didn’t request this, you can ignore it.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
+  </html>`;
+}
+
+function fieldRow(label: string, value?: string): string {
+  if (!value) return "";
+  return `<div style="margin:6px 0"><span style="color:${COLORS.muted}">${label}:</span> <span style="color:${COLORS.text}">${value}</span></div>`;
+}
+
+function adminEmailHtml(p: ContactPayload): string {
+  const content = `
+    <h2 style="margin:0 0 12px;color:${COLORS.text}">New Contact Submission</h2>
+    ${fieldRow("Name", p.name)}
+    ${fieldRow("Email", p.email)}
+    ${fieldRow("Company", p.company)}
+    ${fieldRow("Phone", p.phone)}
+    <div style="margin:16px 0;padding:12px;border:1px solid ${COLORS.border};border-radius:8px;background:${COLORS.bg}">
+      <div style="margin-bottom:6px;color:${COLORS.muted}">Message:</div>
+      <div style="white-space:pre-line;color:${COLORS.text}">${p.message || ""}</div>
+    </div>
+  `;
+  return wrapEmail(content);
+}
+
+function adminEmailText(p: ContactPayload): string {
+  return `New Contact Submission\n\nName: ${p.name}\nEmail: ${p.email}\nCompany: ${p.company || "-"}\nPhone: ${p.phone || "-"}\n\nMessage:\n${p.message || ""}`;
+}
+
+function confirmationEmailHtml(p: ContactPayload): string {
+  const content = `
+    <h2 style="margin:0 0 12px;color:${COLORS.text}">Thanks for contacting ${BRAND_NAME}</h2>
+    <p style="margin:0 0 12px;color:${COLORS.text}">Hi ${p.name || "there"},</p>
+    <p style="margin:0 0 12px;color:${COLORS.text}">Thanks for reaching out. We received your message and will get back to you shortly.</p>
+    <div style="margin:16px 0;padding:12px;border:1px solid ${COLORS.border};border-radius:8px;background:${COLORS.bg}">
+      <div style="margin-bottom:6px;color:${COLORS.muted}">Your message:</div>
+      <div style="white-space:pre-line;color:${COLORS.text}">${p.message || ""}</div>
+    </div>
+    <p style="margin:12px 0 0;color:${COLORS.muted}">Best regards,<br/>${BRAND_NAME}</p>
+  `;
+  return wrapEmail(content);
+}
+
+function confirmationEmailText(p: ContactPayload): string {
+  return `Hi ${p.name || "there"},\n\nThanks for reaching out to ${BRAND_NAME}. We received your message and will get back to you shortly.\n\nYour message:\n${p.message || ""}\n\nBest regards,\n${BRAND_NAME}`;
+}
+
 export async function POST(req: Request) {
   try {
     const data: ContactPayload = await req.json();
@@ -49,18 +139,8 @@ export async function POST(req: Request) {
       const toAddress = process.env.CONTACT_TO || "rrutledge@rutledge.associates";
       const bccAddress = process.env.CONTACT_BCC || "saif@marqnetworks.com";
       const subject = `New Contact Submission – ${name}`;
-      const textBody = `Name: ${name}\nEmail: ${email}\nCompany: ${company || ""}\nPhone: ${phone || ""}\n\nMessage:\n${message}`;
-      const htmlBody = `
-        <div style="font-family:Arial,sans-serif;font-size:14px;color:#111">
-          <h2 style="margin:0 0 12px">New Contact Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
-          ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-          <hr/>
-          <p style="white-space:pre-line"><strong>Message:</strong><br/>${message}</p>
-        </div>
-      `;
+      const textBody = adminEmailText({ name, email, company, phone, message });
+      const htmlBody = adminEmailHtml({ name, email, company, phone, message });
       const sendResult = await resend.emails.send({
         from: resendFrom,
         to: toAddress,
@@ -81,17 +161,8 @@ export async function POST(req: Request) {
           from: resendFrom,
           to: email!,
           subject: `Thanks for contacting Rutledge & Associates`,
-          text: `Hi ${name},\n\nThanks for reaching out to Rutledge & Associates. We received your message and will get back to you shortly.\n\nYour message:\n${message}\n\nBest regards,\nRutledge & Associates`,
-          html: `
-            <div style=\"font-family:Arial,sans-serif;font-size:14px;color:#111\">
-              <h2 style=\"margin:0 0 12px\">Thanks for contacting Rutledge & Associates</h2>
-              <p>Hi ${name},</p>
-              <p>Thanks for reaching out. We received your message and will get back to you shortly.</p>
-              <hr/>
-              <p style=\"white-space:pre-line\"><strong>Your message:</strong><br/>${message}</p>
-              <p style=\"margin-top:12px\">Best regards,<br/>Rutledge & Associates</p>
-            </div>
-          `,
+          text: confirmationEmailText({ name, message }),
+          html: confirmationEmailHtml({ name, message }),
         });
         if (confirmation.error) {
           console.warn("Resend confirmation mail failed", confirmation.error);
@@ -110,18 +181,8 @@ export async function POST(req: Request) {
       const toAddress = process.env.CONTACT_TO || "rrutledge@rutledge.associates";
       const bccAddress = process.env.CONTACT_BCC || "saif@marqnetworks.com";
       const subject = `New Contact Submission – ${name}`;
-      const textBody = `Name: ${name}\nEmail: ${email}\nCompany: ${company || ""}\nPhone: ${phone || ""}\n\nMessage:\n${message}`;
-      const htmlBody = `
-        <div style=\"font-family:Arial,sans-serif;font-size:14px;color:#111\">
-          <h2 style=\"margin:0 0 12px\">New Contact Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
-          ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-          <hr/>
-          <p style=\"white-space:pre-line\"><strong>Message:</strong><br/>${message}</p>
-        </div>
-      `;
+      const textBody = adminEmailText({ name, email, company, phone, message });
+      const htmlBody = adminEmailHtml({ name, email, company, phone, message });
       const msg = {
         to: toAddress,
         bcc: bccAddress,
@@ -144,17 +205,8 @@ export async function POST(req: Request) {
           to: email!,
           from: sendgridFrom,
           subject: `Thanks for contacting Rutledge & Associates`,
-          text: `Hi ${name},\n\nThanks for reaching out to Rutledge & Associates. We received your message and will get back to you shortly.\n\nYour message:\n${message}\n\nBest regards,\nRutledge & Associates`,
-          html: `
-            <div style=\"font-family:Arial,sans-serif;font-size:14px;color:#111\">
-              <h2 style=\"margin:0 0 12px\">Thanks for contacting Rutledge & Associates</h2>
-              <p>Hi ${name},</p>
-              <p>Thanks for reaching out. We received your message and will get back to you shortly.</p>
-              <hr/>
-              <p style=\"white-space:pre-line\"><strong>Your message:</strong><br/>${message}</p>
-              <p style=\"margin-top:12px\">Best regards,<br/>Rutledge & Associates</p>
-            </div>
-          `,
+          text: confirmationEmailText({ name, message }),
+          html: confirmationEmailHtml({ name, message }),
         });
         console.log("Confirmation mail sent via SendGrid", { statusCode: confRes?.statusCode });
       } catch (e) {
@@ -196,18 +248,8 @@ export async function POST(req: Request) {
       to: toAddress,
       bcc: bccAddress,
       subject: `New Contact Submission – ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nCompany: ${company || ""}\nPhone: ${phone || ""}\n\nMessage:\n${message}`,
-      html: `
-        <div style="font-family:Arial,sans-serif;font-size:14px;color:#111">
-          <h2 style="margin:0 0 12px">New Contact Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
-          ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-          <hr/>
-          <p style="white-space:pre-line"><strong>Message:</strong><br/>${message}</p>
-        </div>
-      `,
+      text: adminEmailText({ name, email, company, phone, message }),
+      html: adminEmailHtml({ name, email, company, phone, message }),
     });
 
     const previewRaw = usesTestAccount ? nodemailer.getTestMessageUrl(info) : undefined;
@@ -220,17 +262,8 @@ export async function POST(req: Request) {
         from: smtpUser || fromAddress,
         to: email,
         subject: `Thanks for contacting Rutledge & Associates`,
-        text: `Hi ${name},\n\nThanks for reaching out to Rutledge & Associates. We received your message and will get back to you shortly.\n\nYour message:\n${message}\n\nBest regards,\nRutledge & Associates`,
-        html: `
-          <div style="font-family:Arial,sans-serif;font-size:14px;color:#111">
-            <h2 style="margin:0 0 12px">Thanks for contacting Rutledge & Associates</h2>
-            <p>Hi ${name},</p>
-            <p>Thanks for reaching out. We received your message and will get back to you shortly.</p>
-            <hr/>
-            <p style="white-space:pre-line"><strong>Your message:</strong><br/>${message}</p>
-            <p style="margin-top:12px">Best regards,<br/>Rutledge & Associates</p>
-          </div>
-        `,
+        text: confirmationEmailText({ name, message }),
+        html: confirmationEmailHtml({ name, message }),
       });
       const confirmationRaw = usesTestAccount ? nodemailer.getTestMessageUrl(confirmationInfo) : undefined;
       confirmationPreviewUrl = typeof confirmationRaw === "string" ? confirmationRaw : undefined;
